@@ -5,8 +5,7 @@ import ArticleList from './components/article_list';
 import MainImage from './assets/article_images/robo_article_image_1.jpg'
 import SideImage1 from './assets/article_images/robo_article_image_2.png'
 import SideImage2 from './assets/article_images/robo_article_image_3.png'
-import { TopNav } from '../../../components/home_topnav'
-import { FooterNav } from '../../../components/footer_nav/home_footernav'
+
 const articles = [
   {
     title: 'From Reflex to Reasoning',
@@ -32,16 +31,7 @@ export default function Infra_Section() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h1
-        style={{
-          fontFamily: 'Inter, sans-serif',
-          fontWeight: 400,
-          fontSize: 40,
-          lineHeight: '40px',
-          letterSpacing: 0,
-          verticalAlign: 'middle',
-          color: '#000',
-        }}
-        className="mb-12"
+        className="coda-font mb-12"
       >
         INFRASTRUCTURE
       </h1>

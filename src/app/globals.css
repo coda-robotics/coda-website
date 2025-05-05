@@ -28,3 +28,10 @@ body {
 .bg-radial-custom {
   background: radial-gradient(54.72% 42.07% at 46.92% 34.31%, #B1B1B1 0%, #FFFFFF 100%);
 }
+.coda-font {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0;
+  line-height: 100%;
+  vertical-align: middle;
+  color: var(--section-heading-color, #000);
+}

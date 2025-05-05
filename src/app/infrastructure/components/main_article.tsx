@@ -27,15 +27,7 @@ export default function Main_Article({ date, title, image_url, href }: MainArtic
         />
         <div className="absolute left-6 bottom-6 text-black">
           <time
-            className="block mb-1"
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 400,
-              fontSize: 16,
-              lineHeight: '100%',
-              letterSpacing: 0,
-              verticalAlign: 'middle',
-            }}
+            className="coda-font text-[16px]"
           >
             {date}
           </time>

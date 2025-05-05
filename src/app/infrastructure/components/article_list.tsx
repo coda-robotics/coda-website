@@ -25,29 +25,12 @@ export default function Article_List({ articles }: ArticleList) {
         >
           <Link href={article.href}>
             <h3
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: 400,
-                fontSize: 25,
-                lineHeight: '100%',
-                letterSpacing: 0,
-                verticalAlign: 'middle',
-                color: '#000',
-              }}
+              className="coda-font text-[25px]" 
             >
               {article.title}
             </h3>
             <time
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: 400,
-                fontSize: 15,
-                lineHeight: '100%',
-                letterSpacing: 0,
-                verticalAlign: 'middle',
-                color: '#000',
-              }}
-              className="block mt-1"
+              className="coda-font text-[15px]"
             >
               {article.date}
             </time>
