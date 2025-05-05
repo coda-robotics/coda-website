@@ -1,19 +1,15 @@
 import Head from 'next/head';
-import { FooterNav } from '../../components/home_footernav';
+import { FooterNav } from '../../components/footer_nav/home_footernav';
 import { TopNav } from '../../components/home_topnav';
 import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-black font-sans">
+    <div className="min-h-screen text-black font-sans max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <Head>
         <title>CODA</title>
         <meta name="description" content="CODA delivers data infrastructure for AI robotics." />
       </Head>
-
-      {/* Header without navbar */}
-      <TopNav />
-
       {/* Main Section */}
       <main className="px-6 lg:px-28 py-5">
         {/* Hero Section */}
@@ -66,12 +62,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      {/* Footer with imported FooterNav */}
-      <FooterNav />
-    <div className="min-h-screen bg-white">
-      {/* You can add header/sidebar/footer here if you want */}
-      <Infra_Section />
     </div>
   );
 }
