@@ -1,4 +1,3 @@
-// components/home_topnav.js
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -19,7 +18,7 @@ export function TopNav() {
 
           {/* Desktop nav now *next to* logo */}
           <nav className="hidden md:flex space-x-5">
-            {['/research', '/careers', '/about'].map((path) => {
+            {['/infrastructure', '/careers', '/about'].map((path) => {
               const label = path.slice(1);
               const capitalized = label.charAt(0).toUpperCase() + label.slice(1).toLowerCase();
               return (
@@ -42,31 +41,33 @@ export function TopNav() {
       </div>
 
       {/* Mobile overlay menu */}
-      {menuOpen && (
-        <div className="fixed inset-0 bg-white flex flex-col items-center justify-center z-40">
-          <button
-            onClick={() => setMenuOpen(false)}
-            className="absolute top-6 right-6 text-black text-xl font-bold"
-          >
-            ×
-          </button>
-          <nav className="flex flex-col space-y-6 mt-12">
-            {['/research', '/careers', '/about'].map((path) => {
-              const label = path.slice(1);
-              const capitalized = label.charAt(0).toUpperCase() + label.slice(1).toLowerCase();
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  className="text-black text-xl font-medium hover:underline"
-                  onClick={() => setMenuOpen(false)} // Close on click
-                >
-                  {capitalized}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      )}
+      <div
+        className={`fixed inset-0 flex flex-col items-center justify-center z-40 transition-opacity duration-300 ease-in-out ${
+          menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        } bg-white/30 backdrop-blur-md`}
+      >
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="absolute top-6 right-6 text-black text-xl font-bold"
+        >
+          ×
+        </button>
+        <nav className="flex flex-col space-y-6 mt-12">
+          {['/infrastructure', '/careers', '/about'].map((path) => {
+            const label = path.slice(1);
+            const capitalized = label.charAt(0).toUpperCase() + label.slice(1).toLowerCase();
+            return (
+              <Link
+                key={path}
+                href={path}
+                className="text-black text-xl font-medium hover:underline"
+                onClick={() => setMenuOpen(false)} // Close on click
+              >
+                {capitalized}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
     </header>
 )}

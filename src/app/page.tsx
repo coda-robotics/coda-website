@@ -35,7 +35,7 @@ export default function Home() {
                 Infrastructure
               </Link>
               <Link
-                href="/join-us"
+                href="/careers"
                 className="text-black text-[20px] underline underline-offset-4 decoration-[1.5px]"
               >
                 Join Us

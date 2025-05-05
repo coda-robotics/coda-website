@@ -8,7 +8,7 @@ export function FooterNav() {
         {/* Email subscription section */}
         <div className="w-full md:w-1/2 flex md:justify-end">
           <div className="w-full max-w-md">
-            <h3 className="text-[50px] mb-2 sm:whitespace-nowrap">STAY UPDATED</h3>
+            <h3 className="text-[50px] mb-2 whitespace-nowrap">STAY UPDATED</h3>
             <p className="mb-2">Get research updates, news, and events.</p>
             <div className="flex flex-col space-y-4">
               <input
@@ -16,7 +16,7 @@ export function FooterNav() {
                 placeholder="Email Address"
                 className="border-b p-2 w-full focus:outline-none"
               />
-              <button className="bg-black text-white py-2 px-6 rounded w-[100px]">
+              <button className="bg-black text-white py-2 px-6 rounded w-[100px] mb-10">
                 ENTER
               </button>
             </div>
