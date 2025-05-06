@@ -12,8 +12,8 @@ export default function StayUpdated() {
           placeholder="Email Address"
           className="border-b p-2 w-full focus:outline-none"
         />
-        <button className="bg-black text-white border border-black py-2 px-6 rounded w-[100px] mb-10">
-          ENTER
+        <button className="bg-black text-white border border-black py-2 px-6 rounded w-[100px] mb-10 hover:border-black hover:text-black hover:bg-white">
+          Submit
         </button>
       </div>
     </div>

@@ -8,7 +8,7 @@ export default function Roles() {
   ];
 
   return (
-    <div className="max-w-2xl mx-auto mt-12">
+    <div className="max-w-2xl mx-auto mt-21">
       {roles.map((role, idx) => (
         <div key={role.title} className="flex items-center justify-between py-6 border-b border-black">
           <span className="coda-font text-[17 px]">{role.title}</span>
@@ -17,14 +17,13 @@ export default function Roles() {
           </Link>
         </div>
       ))}
-      <button className="mt-15 bg-black rounded" style={{
+      <button className="mt-15 bg-black rounded hover:bg-white hover:text-black border hover:border-black" style={{
         height: '34px',
         width: '101px',
-        color: '#fff',
         fontSize: '14px',
         letterSpacing: '0px',
       }}>
-        SEE MORE
+        See More
       </button>
     </div>
   );

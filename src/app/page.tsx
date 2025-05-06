@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-black font-inter">
+    <div className="min-h-screen text-black font-inter">
       <Head>
         <title>CODA</title>
         <meta name="description" content="CODA delivers data infrastructure for AI robotics." />
@@ -28,21 +28,21 @@ export default function Home() {
             <h1 className="text-[calc(2.5rem)] lg:text-[50px] leading-[1.2] my-4 max-w-[1000px] transition-all duration-300 ease-in-out">
               CODA DELIVERS <br /> DATA INFRASTRUCTURE <br /> FOR AI ROBOTICS
             </h1>
-            <div className="flex flex-wrap gap-x-8 my-8">
+            <div className="flex flex-wrap gap-x-8 my-8 font-inter">
               <Link
                 href="/infrastructure"
-                className="text-black text-[20px] underline underline-offset-4 decoration-[1.5px]"
+                className="text-black text-[25px] underline underline-offset-4 decoration-[1.5px]"
               >
                 Infrastructure
               </Link>
               <Link
                 href="/careers"
-                className="text-black text-[20px] underline underline-offset-4 decoration-[1.5px]"
+                className="text-black text-[25px] underline underline-offset-4 decoration-[1.5px]"
               >
                 Join Us
               </Link>
             </div>
-            <p className="text-[17px] mb-10 leading-[2] w-full sm:w-[540px] transition-all duration-300 ease-in-out">
+            <p className="text-[18px] mb-10 leading-[2] w-full sm:w-[540px] transition-all duration-300 ease-in-out">
               Coda delivers high-quality, large-scale data pipelines to power robotic neural networks. We specialize in collecting, labeling, and structuring the complex datasets needed to fuel intelligent machines and systems in the real world. From perception to decision-making, we accelerate robotics innovation by providing the data infrastructure AI systems need to continually evolve.
             </p>
             <div className="flex space-x-4">
