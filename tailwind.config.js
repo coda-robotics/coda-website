@@ -4,6 +4,9 @@ module.exports = {
         colors: {
           'footernav-gray': '#FFFFFF'
         },
+        colors:{
+          'xs': '520px'
+        }
       },
     },
   }

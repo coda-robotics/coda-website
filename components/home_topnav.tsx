@@ -11,12 +11,13 @@ export function TopNav() {
       <div className="flex items-center justify-between px-6 lg:px-28 py-10 transition-all duration-300 ease-in-out">
         {/* Left group: logo + desktop nav */}
         <div className="flex items-center space-x-20">
-          <div onClick={() => setMenuOpen(!menuOpen)} className="flex items-center cursor-pointer">
+          {/* Logo/CODA now navigates home */}
+          <Link href="/" className="flex items-center cursor-pointer">
             <img src="/coda.svg" alt="Coda Logo" className="w-7 h-7 mr-5" />
-            <span className="text-[30px] font-[400]">CODA</span>
-          </div>
+            <span className="text-[30px] text-black font-[400]">CODA</span>
+          </Link>
 
-          {/* Desktop nav now *next to* logo */}
+          {/* Desktop nav */}
           <nav className="hidden md:flex space-x-5">
             {['/infrastructure', '/careers', '/about'].map((path) => {
               const label = path.slice(1);
@@ -25,7 +26,7 @@ export function TopNav() {
                 <Link
                   key={path}
                   href={path}
-                  className="bg-black text-white border border-black py-1 rounded-[4px] hover:bg-white hover:text-black hover:border-black text-[10px] w-20 text-center transition"
+                  className="bg-black text-white border border-black py-1 rounded-[4px] hover:bg-white hover:text-black text-[10px] w-20 text-center transition"
                 >
                   {capitalized}
                 </Link>
@@ -35,7 +36,10 @@ export function TopNav() {
         </div>
 
         {/* Right: Mobile menu toggle */}
-        <button className="md:hidden text-[20px]" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className="md:hidden text-[20px] text-black"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
           {menuOpen ? 'Close' : 'Menu'}
         </button>
       </div>
@@ -61,7 +65,7 @@ export function TopNav() {
                 key={path}
                 href={path}
                 className="text-black text-xl font-medium hover:underline"
-                onClick={() => setMenuOpen(false)} // Close on click
+                onClick={() => setMenuOpen(false)}
               >
                 {capitalized}
               </Link>
@@ -70,4 +74,5 @@ export function TopNav() {
         </nav>
       </div>
     </header>
-)}
+  );
+}

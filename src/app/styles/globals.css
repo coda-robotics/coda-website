@@ -35,3 +35,8 @@ body {
   vertical-align: middle;
   color: var(--section-heading-color, #000);
 }
+
+h1 {
+
+  font-size: 35px
+}

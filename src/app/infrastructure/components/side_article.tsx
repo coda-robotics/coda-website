@@ -10,17 +10,18 @@ interface SideArticle {
   href: string;
 }
 
-export default function Side_Article({ 
-  title, 
-  date,
-  image_url, 
-  href 
-}: SideArticle) {
+export default function Side_Article({ title, date, image_url, href }: SideArticle) {
   return (
-    <Link href={href} className="block group p-2">
+    <Link href={href} className="block group">
       <div
-        className="relative overflow-hidden rounded-[5px] "
-        style={{ width: 308.49, height: 212.71 }}
+        className="
+          relative
+          w-full
+          sm:max-w-[308.49px]
+          aspect-square sm:aspect-[308.49/212.71]
+          overflow-hidden
+          rounded-[5px]
+        "
       >
         <Image
           src={image_url}
@@ -29,32 +30,8 @@ export default function Side_Article({
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div className="absolute left-4 bottom-4 text-black">
-          <time
-            className="block mb-1"
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 400,
-              fontSize: 14,
-              lineHeight: '100%',
-              letterSpacing: 0,
-              verticalAlign: 'middle',
-            }}
-          >
-            {date}
-          </time>
-          <h3
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 400,
-              fontSize: 20,
-              lineHeight: '120%',
-              letterSpacing: 0,
-              verticalAlign: 'middle',
-              wordWrap: 'break-word',
-              overflowWrap: 'break-word',
-              maxWidth: '65%'
-            }}
-          >
+          <time className="coda-font text-[clamp(5px,2vw,14px)]">{date}</time>
+          <h3 className="mt-1 max-w-[75%] coda-font text-[clamp(5px,5vw,22px)] leading-none">
             {title}
           </h3>
         </div>

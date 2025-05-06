@@ -1,29 +1,29 @@
+// components/external_links.js
 import Link from 'next/link';
+import React from 'react';
 
-export default function External_Links() {
-    return (
-        <div
-            className="grid grid-cols-2 gap-x-12 py-30"
-            style={{
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: 400,
-                fontSize: 20,
-                lineHeight: '100%',
-                color: '#605F5F',
-            }}
-        >
-            {/* Left column */}
-            <div className="flex flex-col gap-4">
-                <Link href="/infrastructure/research"><h3>RESEARCH</h3></Link>
-                <Link href="/infrastructure/careers"><h3>CAREERS</h3></Link>
-                <Link href="/infrastructure/about"><h3>ABOUT</h3></Link>
-            </div>
-            {/* Right column */}
-            <div className="flex flex-col gap-4">
-                <Link href="/infrastructure/linkedin"><h3>LINKEDIN</h3></Link>
-                <Link href="/infrastructure/X"><h3>X</h3></Link>
-            </div>
-        </div>
-    );
+export default function ExternalLinks() {
+  return (
+    <>
+      <div className="flex flex-col space-y-4 mb-6 sm:mb-0">
+        <Link href="/research" className="hover:underline underline-offset-4 text-gray-600">
+          RESEARCH
+        </Link>
+        <Link href="/careers" className="hover:underline underline-offset-4 text-gray-600">
+          CAREERS
+        </Link>
+        <Link href="/about" className="hover:underline underline-offset-4 text-gray-600">
+          ABOUT
+        </Link>
+      </div>
+      <div className="flex flex-col space-y-4">
+        <Link href="https://linkedin.com" target="_blank" className="hover:underline underline-offset-4 text-gray-600">
+          LINKEDIN
+        </Link>
+        <Link href="https://x.com" target="_blank" className="hover:underline text-gray-600 underline-offset-4">
+          X
+        </Link>
+      </div>
+    </>
+  );
 }
-  
