@@ -1,3 +1,4 @@
+import './globals.css';
 import Head from 'next/head';
 import { FooterNav } from '../../components/home_footernav';
 import { TopNav } from '../../components/home_topnav';
