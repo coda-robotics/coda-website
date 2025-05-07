@@ -1,31 +1,29 @@
 import './styles/globals.css';
 import Head from 'next/head';
-import { FooterNav } from '../../components/footer_nav/home_footernav';
-import { TopNav } from '../../components/home_topnav';
 import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="min-h-screen text-black font-inter">
+    <div className=" text-black font-inter">
       <Head>
         <title>CODA</title>
         <meta name="description" content="CODA delivers data infrastructure for AI robotics." />
       </Head>
 
       {/* Header without navbar */}
-      <TopNav />
 
       {/* Main Section */}
       <main className="px-6 lg:px-28 py-5">
         {/* Hero Section */}
         <section className="relative flex items-center overflow-hidden">
+        <div className="max-w-[51rem] w-full flex items-center relative mx-auto">
           {/* Text Column: shrinks responsively */}
           <div className="relative z-10 w-full sm:w-4/5 md:w-3/5 lg:w-1/2 xl:w-2/5 transition-all duration-300 ease-in-out">
             <p className="text-[15px]">
               Announcing{' '}
               <span className="underline underline-offset-2">OpenVLA-ER</span> ↗
             </p>
-            <h1 className="text-[calc(2.5rem)] lg:text-[50px] leading-[1.2] my-4 max-w-[1000px] transition-all duration-300 ease-in-out">
+            <h1 className="text-[calc(2.5rem)] lg:text-[50px] leading-[1.2] my-4 w-full max-w-[1500px] transition-all duration-300 ease-in-out">
               CODA DELIVERS <br /> DATA INFRASTRUCTURE <br /> FOR AI ROBOTICS
             </h1>
             <div className="flex flex-wrap gap-x-8 my-8 font-inter">
@@ -65,11 +63,11 @@ export default function Home() {
               className="w-[500px] h-[500px] max-w-[700px]"
             />
           </div>
+         </div>
         </section>
       </main>
 
       {/* Footer with imported FooterNav */}
-      <FooterNav />
     </div>
   );
 }

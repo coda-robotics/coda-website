@@ -2,8 +2,6 @@
 
 import '../styles/globals.css';
 import { useState } from 'react';
-import { FooterNav } from '../../../components/footer_nav/home_footernav';
-import { TopNav } from '../../../components/home_topnav';
 import MainArticle from './components/main_article';
 import SideArticle from './components/side_article';
 import ArticleList from './components/article_list';
@@ -50,7 +48,6 @@ export default function Infra_Section() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="px-0 lg:px-22">
-        <TopNav />
       </div>
       <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
         <h1 className="coda-font mb-12 mt-8">INFRASTRUCTURE</h1>
@@ -126,7 +123,6 @@ export default function Infra_Section() {
         <ArticleList articles={articles} />
       </div>
       <div className="px-0 lg:px-30">
-        <FooterNav />
       </div>
     </section>
   );

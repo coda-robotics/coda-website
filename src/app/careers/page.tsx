@@ -6,7 +6,6 @@ export default function Careers_Section() {
   return (
 
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <TopNav/>
       <div className="grid grid-cols-1 md:grid-cols-2 items-start px-[22px] sm:px-[20px] lg:px-[105px]">
         {/* Left: Heading and Description */}
         <div>
@@ -42,7 +41,6 @@ export default function Careers_Section() {
           <Roles />
         </div>
       </div>
-        <FooterNav />
     </section>
   );
 }

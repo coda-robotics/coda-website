@@ -1,3 +1,4 @@
+// components/topnav.js
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -7,21 +8,16 @@ export function TopNav() {
 
   return (
     <header className="relative z-50">
-      {/* Top bar */}
-      <div className="flex items-center justify-between px-6 lg:px-28 py-10 transition-all duration-300 ease-in-out">
-        {/* Left group: logo + desktop nav */}
+      <div className="flex items-center justify-between px-6 lg:px-134 py-10 transition-all duration-300 ease-in-out">
         <div className="flex items-center space-x-20">
-          {/* Logo/CODA now navigates home */}
           <Link href="/" className="flex items-center cursor-pointer">
             <img src="/coda.svg" alt="Coda Logo" className="w-7 h-7 mr-5" />
             <span className="text-[30px] text-black font-[400]">CODA</span>
           </Link>
-
-          {/* Desktop nav */}
           <nav className="hidden md:flex space-x-5">
             {['/infrastructure', '/careers', '/about'].map((path) => {
               const label = path.slice(1);
-              const capitalized = label.charAt(0).toUpperCase() + label.slice(1).toLowerCase();
+              const capitalized = label.charAt(0).toUpperCase() + label.slice(1);
               return (
                 <Link
                   key={path}
@@ -34,17 +30,14 @@ export function TopNav() {
             })}
           </nav>
         </div>
-
-        {/* Right: Mobile menu toggle */}
         <button
           className="md:hidden text-[20px] text-black"
-          onClick={() => setMenuOpen((open) => !open)}
+          onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? 'Close' : 'Menu'}
         </button>
       </div>
 
-      {/* Mobile overlay menu */}
       <div
         className={`fixed inset-0 flex flex-col items-center justify-center z-40 transition-opacity duration-300 ease-in-out ${
           menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -59,7 +52,7 @@ export function TopNav() {
         <nav className="flex flex-col space-y-6 mt-12">
           {['/infrastructure', '/careers', '/about'].map((path) => {
             const label = path.slice(1);
-            const capitalized = label.charAt(0).toUpperCase() + label.slice(1).toLowerCase();
+            const capitalized = label.charAt(0).toUpperCase() + label.slice(1);
             return (
               <Link
                 key={path}

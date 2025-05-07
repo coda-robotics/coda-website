@@ -17,7 +17,7 @@ export default function Roles() {
           </Link>
         </div>
       ))}
-      <button className="mt-15 bg-black rounded hover:bg-white hover:text-black border hover:border-black" style={{
+      <button className="mt-15 bg-black rounded hover:bg-white hover:text-black text-white border hover:border-black" style={{
         height: '34px',
         width: '101px',
         fontSize: '14px',
