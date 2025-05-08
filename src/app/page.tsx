@@ -15,8 +15,8 @@ export default function Home() {
       {/* Main Section */}
       <main className="px-6 lg:px-28 py-5">
         {/* Hero Section */}
-        <section className="relative flex items-center overflow-hidden">
-        <div className="max-w-[51rem] w-full flex items-center relative mx-auto">
+        <section className="overflow-hidden">
+        <div className="w-full relative">
           {/* Text Column: shrinks responsively */}
           <div className="relative z-10 w-full sm:w-4/5 md:w-3/5 lg:w-1/2 xl:w-2/5 transition-all duration-300 ease-in-out">
             <p className="text-[15px]">
