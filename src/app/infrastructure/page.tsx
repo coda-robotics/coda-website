@@ -47,7 +47,7 @@ export default function Infra_Section() {
   };
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 -translate-x-60">
+    <section className="w-full px-4 sm:px-6 lg:px-8 -translate-x-57">
       <div className="px-0 lg:px-22">
       </div>
       
