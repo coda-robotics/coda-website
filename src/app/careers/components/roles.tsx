@@ -8,11 +8,11 @@ export default function Roles() {
   ];
 
   return (
-    <div className="max-w-2xl mx-auto mt-21">
+    <div className="max-w-2xl mx-auto mt-21 text-[15px]">
       {roles.map((role, idx) => (
         <div key={role.title} className="flex items-center justify-between py-6 border-b border-black">
           <span className="coda-font text-[17 px]">{role.title}</span>
-          <Link href={role.link} className="coda-font text-[11 px]">
+          <Link href={role.link} className="coda-font text-[14px]">
             Apply Now
           </Link>
         </div>

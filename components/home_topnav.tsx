@@ -1,14 +1,21 @@
 // components/topnav.js
 'use client';
+
 import { useState } from 'react';
+import { usePathname } from 'next/navigation'
 import Link from 'next/link';
 
 export function TopNav() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const pathname = usePathname()
+  
+  if (pathname.startsWith('/posts/')) {
+    return null; // Hide the navbar for anything under /posts/
+  }
+  
   return (
     <header className="relative z-50">
-      <div className="flex items-center justify-between px-6 lg:px-134 py-10 transition-all duration-300 ease-in-out">
+      <div className="flex items-center justify-between px-6 lg:px-80 md:px-22 py-10 transition-all duration-300 ease-in-out">
         <div className="flex items-center space-x-20">
           <Link href="/" className="flex items-center cursor-pointer">
             <img src="/coda.svg" alt="Coda Logo" className="w-7 h-7 mr-5" />
