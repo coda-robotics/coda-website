@@ -1,5 +1,3 @@
-import { FooterNav } from '../../../components/footer_nav/home_footernav';
-import { TopNav } from '../../../components/home_topnav';
 import Roles from "./components/roles";
 
 export default function Careers_Section() {

@@ -1,4 +1,4 @@
-import './styles/globals.css';
+import '../styles/globals.css';
 import Head from 'next/head';
 import Link from 'next/link';
 import { getAllPostsMeta } from '@/lib/posts'
@@ -26,19 +26,19 @@ export default function Home() {
                 Announcing{' '}
                 <span className="underline underline-offset-2">OpenVLA-ER</span> ↗
               </p>
-              <h1 className="text-[calc(2.5rem)] leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">
+              <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">
                 CODA DELIVERS <br /> DATA INFRASTRUCTURE <br /> FOR AI ROBOTICS
               </h1>
               <div className="flex flex-wrap gap-x-8 my-8 font-inter">
                 <Link
                   href="/infrastructure"
-                  className="text-black text-[25px] underline underline-offset-4 decoration-[1.5px]"
+                  className="text-black text-[20px] underline underline-offset-4 decoration-[1.5px]"
                 >
                   Infrastructure
                 </Link>
                 <Link
                   href="/careers"
-                  className="text-black text-[25px] underline underline-offset-4 decoration-[1.5px]"
+                  className="text-black text-[20px] underline underline-offset-4 decoration-[1.5px]"
                 >
                   Join Us
                 </Link>
@@ -74,7 +74,7 @@ export default function Home() {
         {/* Highlights Section with image */}
         <section className="mt-10 px-6 md:px-10 lg:px-20 flex flex-col md:flex-row">
           {/* Left Image */}
-          <div className="w-full md:w-auto md:flex-shrink-0 md:pr-6">
+          <div className="hidden md:block w-full md:w-auto md:flex-shrink-0 md:pr-6">
             <img
               src="/coda3d.png"
               alt="Coda 3D"
@@ -82,27 +82,32 @@ export default function Home() {
             />
           </div>
           {/* Highlights Content */}
-          <div className="ml-[2rem] mt-6 md:mt-12 w-full md:flex-1">
+          <div className=" -ml-6 md:ml-[2rem] mt-6 md:mt-12 w-full md:flex-1">
             <h1 className="md:pl-6">Highlights</h1>
 
             {/* Render the 3 posts */}
             <ul className="mt-6 space-y-6 md:pl-6 max-w-md">
-              {posts.map(({ slug, title, date, excerpt }) => (
+              {posts.map(({ slug, title, date, excerpt, link }) => (
                 <li key={slug} className="border-b pb-4 w-full">
                   <div className="pb-[4px]">
-                    <Link
-                      href={`/posts/${slug}`}
-                      className="block w-full text-[18px]" 
-                    >
-                      {title}
-                    </Link>
+                    {link ? (
+                      <Link
+                        href={link} // If 'link' is provided, use it
+                        className="block w-full text-[18px]"
+                      >
+                        {title}
+                      </Link>
+                    ) : (
+                      <Link
+                        href={`/infrastructure/${slug}`} // Otherwise, link to the markdown page
+                        className="block w-full text-[18px]"
+                      >
+                        {title}
+                      </Link>
+                    )}
                   </div>
                   <p className="text-gray-600 text-sm pb-[2px]">
-                    {new Date(date).toLocaleDateString(undefined, {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                    })}
+                    {date}
                   </p>
                   <p className="mt-1">{excerpt}</p>
                 </li>

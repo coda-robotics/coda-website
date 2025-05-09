@@ -14,16 +14,16 @@ export function FooterNav() {
   }
 
   return (
-    <footer className="text-black pt-20">
-     <div className="max-w-[62rem] w-full mx-auto px-6 lg:px-28">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-30">
+    <footer className="text-black px-15 pt-10 mb-14">
+     <div className="max-w-[62rem] w-full mx-auto lg:px-28">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-40">
           {/* Email subscription section */}
           <div className="w-full md:w-1/2 flex md:justify-end">
             <StayUpdated />
           </div>
 
           {/* Navigation section */}
-          <nav className="w-full md:w-1/2 flex flex-col sm:flex-row space-x-[70px] pt-4">
+          <nav className="w-full md:w-1/2 flex flex-col sm:flex-row space-x-[50px] pt-4 ">
             <ExternalLinks />
           </nav>
         </div>

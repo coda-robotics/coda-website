@@ -15,7 +15,7 @@ export function TopNav() {
   
   return (
     <header className="relative z-50">
-      <div className="flex items-center justify-between px-6 lg:px-80 md:px-22 py-10 transition-all duration-300 ease-in-out">
+      <div className="flex items-center justify-between px-16 lg:px-80 md:px-22 py-10 transition-all duration-300 ease-in-out">
         <div className="flex items-center space-x-20">
           <Link href="/" className="flex items-center cursor-pointer">
             <img src="/coda.svg" alt="Coda Logo" className="w-7 h-7 mr-5" />

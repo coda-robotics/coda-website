@@ -6,8 +6,8 @@ export default function ExternalLinks() {
   return (
     <>
       <div className="flex flex-col space-y-4 mb-6 sm:mb-0">
-        <Link href="/research" className="hover:underline underline-offset-4 text-gray-600">
-          RESEARCH
+        <Link href="/infrastructure" className="hover:underline underline-offset-4 text-gray-600">
+          INFRASTRUCTURE 
         </Link>
         <Link href="/careers" className="hover:underline underline-offset-4 text-gray-600">
           CAREERS

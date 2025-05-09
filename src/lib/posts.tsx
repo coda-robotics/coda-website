@@ -1,4 +1,5 @@
 // src/lib/posts.ts
+
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -8,34 +9,41 @@ import { Post, PostMeta } from '@/types/post'
 
 const postsDir = path.join(process.cwd(), 'posts')
 
-// Get all posts' metadata
 export function getAllPostsMeta(): PostMeta[] {
-  const fileNames = fs.readdirSync(postsDir)
+  return fs
+    .readdirSync(postsDir)
+    .map((fileName) => {
+      const slug = fileName.replace(/\.md$/, '')
+      const { data } = matter(fs.readFileSync(path.join(postsDir, fileName), 'utf8'))
 
-  return fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.md$/, '')
-    const fullPath = path.join(postsDir, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const { data } = matter(fileContents)
+      return {
+        slug,
+        title: data.title,
+        date: data.date,
+        excerpt: data.excerpt,
+        link: data.link,      // ← grab link if present
+      }
+    })
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+}
 
+export async function getPost(slug: string): Promise<Post> {
+  const fullPath = path.join(postsDir, `${slug}.md`)
+  const { data, content } = matter(fs.readFileSync(fullPath, 'utf8'))
+
+  // if front-matter has `link`, we only need that
+  if (data.link) {
     return {
       slug,
       title: data.title,
       date: data.date,
       excerpt: data.excerpt,
-    } as PostMeta
-  }).sort((a, b) => (a.date < b.date ? 1 : -1))
-}
+      longExcerpt: data.longExcerpt,
+      link: data.link,
+    }
+  }
 
-// Get a single post's data
-export async function getPost(slug: string): Promise<Post> {
-  const fullPath = path.join(postsDir, `${slug}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
-
-  const processed = await remark().use(html).process(content)
-  const contentHtml = processed.toString()
-
+  const contentHtml = String(await remark().use(html).process(content))
   return {
     slug,
     title: data.title,
