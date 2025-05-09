@@ -1,3 +1,11 @@
+### Modifications
+
+- Added Graphs / Charts / etc similar to pi_clone website.
+- Added simple about page.
+- Blogs under infrastructure are now created on the fly as we create new files under posts/*.md and provide a link in it's yaml (infrastructure/{name}) that links to the actual page of the blog (you must create a file under infrastructure/{name}/page.tsx) where page.tsx is the blog post you want to render.
+  - Not using markdown this time around, due to complexity of adding different graphs / charts / etc
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
