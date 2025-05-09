@@ -6,21 +6,11 @@ import Link from 'next/link';
 import SideNav from '@components/side_nav';
 import { useState, useMemo } from 'react';
 
-// Define categories based on article content
-const categories = [
-    'all',
-    'robotics',
-    'AI',
-    'infrastructure',
-    'research'
-];
-
 function NewsPage() {
-    const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [sortBy, setSortBy] = useState<'date' | 'title'>('date');
 
-    // Filter and sort articles based on search, category, and sort criteria
+    // Filter and sort articles based on search and sort criteria
     const filteredAndSortedArticles = useMemo(() => {
         let filtered = [...articles];
 
@@ -34,13 +24,6 @@ function NewsPage() {
             );
         }
 
-        // Apply category filter
-        if (selectedCategory !== 'all') {
-            filtered = filtered.filter(article =>
-                article.content.toLowerCase().includes(selectedCategory.toLowerCase())
-            );
-        }
-
         // Apply sorting
         return filtered.sort((a, b) => {
             if (sortBy === 'date') {
@@ -49,7 +32,7 @@ function NewsPage() {
                 return a.title.localeCompare(b.title);
             }
         });
-    }, [articles, searchQuery, selectedCategory, sortBy]);
+    }, [articles, searchQuery, sortBy]);
 
     const featuredArticle = filteredAndSortedArticles[0];
     const remainingArticles = filteredAndSortedArticles.slice(1);
@@ -102,23 +85,6 @@ function NewsPage() {
                                     <option value="title">Sort by Title</option>
                                 </select>
                             </div>
-                        </div>
-
-                        {/* Category Filters */}
-                        <div className="flex gap-4 mb-8 overflow-x-auto pb-2">
-                            {categories.map((category) => (
-                                <button
-                                    key={category}
-                                    onClick={() => setSelectedCategory(category)}
-                                    className={`px-4 py-2 rounded-full transition-colors whitespace-nowrap ${
-                                        selectedCategory === category
-                                            ? 'bg-gray-600 text-white'
-                                            : 'bg-gray-100 hover:bg-gray-200'
-                                    }`}
-                                >
-                                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                                </button>
-                            ))}
                         </div>
 
                         {/* Featured Article */}
