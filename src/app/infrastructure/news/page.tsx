@@ -3,7 +3,7 @@
 import { articles } from '../data/articles';
 import Image from 'next/image';
 import Link from 'next/link';
-import SideNav from '../components/side_nav';
+import SideNav from '@components/side_nav';
 import { useState, useMemo } from 'react';
 
 // Define categories based on article content
@@ -56,29 +56,30 @@ function NewsPage() {
 
     if (!featuredArticle) {
         return (
-            <section className="w-full px-4 sm:px-6 lg:px-8 -translate-x-57">
-                <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
-                    <div className="grid grid-cols-[1fr_3fr] gap-8">
-                        <SideNav />
-                        <div>
+            <div className="flex min-h-screen">
+                <SideNav />
+                <main className="flex-1 pl-32">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
+                            <h1 className="coda-font mb-12 mt-8">NEWS</h1>
                             <div className="text-center py-12">
                                 <p className="text-gray-600 text-lg">No articles found.</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </main>
+            </div>
         );
     }
 
     return (
-        <section className="w-full px-4 sm:px-6 lg:px-8 -translate-x-57">
-            <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
-                <div className="grid grid-cols-[1fr_3fr] gap-8">
-                    <SideNav />
-                    <div>
+        <div className="flex min-h-screen">
+            <SideNav />
+            <main className="flex-1 pl-32">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
                         <div className="flex justify-between items-center mb-12">
-                            <h1 className="coda-font">NEWS</h1>
+                            <h1 className="coda-font mb-0 mt-8">NEWS</h1>
                             <div className="flex items-center space-x-4">
                                 {/* Search Bar */}
                                 <div className="relative">
@@ -185,8 +186,8 @@ function NewsPage() {
                         )}
                     </div>
                 </div>
-            </div>
-        </section>
+            </main>
+        </div>
     );
 }
 

@@ -39,13 +39,13 @@ export function TopNav() {
         </div>
       </div>
 
-      <MobileMenu is_open={menu_open} on_close={() => set_menu_open(false)}>
+      {/* <MobileMenu is_open={menu_open} on_close={() => set_menu_open(false)}>
         <NavLinks 
           links={NAV_LINKS} 
           on_link_click={() => set_menu_open(false)} 
           is_mobile={true} 
         />
-      </MobileMenu>
+      </MobileMenu> */}
     </header>
   );
 }

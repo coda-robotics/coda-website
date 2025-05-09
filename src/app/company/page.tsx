@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import SideNav from '../infrastructure/components/side_nav';
+import SideNav from '@components/side_nav';
 
 const teamMembers = [
     {
@@ -49,12 +49,13 @@ const values = [
 
 export default function CompanyPage() {
     return (
-        <section className="w-full px-4 sm:px-6 lg:px-8 -translate-x-57">
-            <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
-                <div className="grid grid-cols-[1fr_3fr] gap-8">
-                    <SideNav />
-                    <div>
-                        <h1 className="coda-font text-[40px] mb-12">COMPANY</h1>
+        <div className="flex min-h-screen">
+            <SideNav />
+            
+            <main className="flex-1 pl-32">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
+                        <h1 className="coda-font mb-12 mt-8">COMPANY</h1>
 
                         {/* Mission Statement */}
                         <div className="mb-16">
@@ -139,7 +140,7 @@ export default function CompanyPage() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </main>
+        </div>
     );
 } 

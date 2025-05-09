@@ -1,7 +1,8 @@
 import { Article } from '../types/article';
-import MainImage from '../assets/article_images/robo_article_image_1.jpg';
+import MainImage from '../assets/article_images/robo_article_image_3.jpg';
 import SideImage1 from '../assets/article_images/robo_article_image_2.png';
-import SideImage2 from '../assets/article_images/robo_article_image_3.png';
+import SideImage2 from '../assets/article_images/robo_article_image_1.png';
+
 
 export const articles: Article[] = [
     {

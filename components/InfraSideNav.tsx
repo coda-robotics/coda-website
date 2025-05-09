@@ -13,15 +13,15 @@ export default function SideNav() {
   const path_name = usePathname();
 
   return (
-    <nav className="fixed left-8 pt-8">
-      <ul className="space-y-4">
+    <nav className="side-nav">
+      <ul>
         {nav_items.map(item => (
           <li key={item.name}>
             <Link
               href={item.href}
-              className={`block coda-font text-sm hover:text-gray-600 ${
+              className={`block py-2 px-2${
                 path_name === item.href
-                  ? 'font-semibold'
+                  ? 'font-semibold underline'
                   : ''
               }`}
             >

@@ -1,5 +1,5 @@
 import { articles } from '../data/articles';
-import ArticleDisplay from '../components/article_display';
+import ArticleDisplay from '@components/article_display';
 import { notFound } from 'next/navigation';
 
 interface ArticlePageProps {
