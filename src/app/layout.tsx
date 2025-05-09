@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <TopNav />
-        <main className="container mx-auto px-6 py-8">
+        <main className="px-6 py-8 mt-16">
           {children}
         </main>
         <FooterNav />
