@@ -1,6 +1,6 @@
 import { Article } from '../types/article';
 import MainImage from '../assets/article_images/robo_article_image_3.jpg';
-import SideImage1 from '../assets/article_images/robo_article_image_2.png';
+import SideImage1 from '../assets/article_images/robo_article_image_4.png';
 import SideImage2 from '../assets/article_images/robo_article_image_1.png';
 
 
@@ -10,7 +10,7 @@ export const articles: Article[] = [
         title: 'From Reflex to Reasoning',
         date: 'March 15, 2023',
         description: 'We transferred end-to-end policies based hybrid systems that incorporate symbolic reasoning, enabling more structured learning.',
-        image_url: MainImage,
+        image_url: MainImage.src,
         content: `
 From Reflex to Reasoning represents a groundbreaking advancement in robotic learning systems. Our research bridges the gap between simple reactive behaviors and complex reasoning capabilities in robotic systems.
 
@@ -63,7 +63,7 @@ Future Research Directions:
         title: 'Policy-Aware Data Filtering at Scale',
         date: 'March 18, 2023',
         description: 'We developed a selective filtering facing law that conditions data selection on current policy uncertainty. This reduced overfitting in high-confidence regions by 35% on real-world navigation agents.',
-        image_url: SideImage1,
+        image_url: SideImage1.src,
         content: `
 Policy-aware data filtering represents a significant advancement in how we approach data selection for robotic learning systems. Our research has developed innovative methods for selective data filtering that dramatically improves learning efficiency and model performance.
 
@@ -118,7 +118,7 @@ Future Development:
         title: 'Logs to Curriculum',
         date: 'April 8, 2023',
         description: 'We implemented an automated data curriculum builder that sequences training data by difficulty using logged model errors and task level success.',
-        image_url: SideImage2,
+        image_url: SideImage2.src,
         content: `
 Our Logs to Curriculum research introduces an innovative approach to automated curriculum learning in robotics. By analyzing system logs and performance data, we've developed methods to automatically generate optimal learning sequences for robotic systems.
 
@@ -180,7 +180,7 @@ Future Developments:
         title: 'Embodied Reasoning',
         date: 'April 20, 2023',
         description: 'Exploring how robots can learn and reason about their physical environment through embodied experiences.',
-        image_url: MainImage,
+        image_url: MainImage.src,
         content: `
 Embodied reasoning represents a fundamental shift in how we approach artificial intelligence and robotics. Instead of purely abstract computation, embodied reasoning emphasizes the importance of physical interaction and sensorimotor experiences in developing intelligence.
 
@@ -204,10 +204,10 @@ The results show significant improvements in robot adaptability and task perform
     },
     {
         slug: 'policy-distribution',
-        title: 'Policy Distribution',
-        date: 'May 10, 2025',
+        title: 'VLA Arena',
+        date: 'May 4th, 2025',
         description: 'Investigating efficient methods for distributing and coordinating learned policies across multiple robots.',
-        image_url: SideImage1,
+        image_url: SideImage1.src,
         content: `
 In multi-robot systems, effective policy distribution is crucial for coordinated behavior and efficient task execution. Our research explores novel approaches to sharing and implementing learned policies across robot teams.
 
@@ -242,10 +242,10 @@ Future Directions:
     },
     {
         slug: 'synthetic-data',
-        title: 'Scaling Synthetic Data Generation',
-        date: 'May 12, 2025',
+        title: 'Digital Cousins',
+        date: 'May 1st, 2025',
         description: 'Developing efficient and reliable methods for generating high-quality synthetic data for training robust AI models.',
-        image_url: SideImage2,
+        image_url: SideImage2.src,
         content: `
 Scaling synthetic data generation is a critical challenge in modern robotics and AI systems. Our research focuses on developing efficient and reliable methods for generating high-quality synthetic data that can effectively train robust AI models.
 

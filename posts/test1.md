@@ -1,5 +1,5 @@
 ---
-title: "Scaling Synthetic Data Generation"
+title: "Digital Cousins"
 date: "May 1st, 2025"
 shortDescription: "Expanding synthetic data pipelines for VLA training"
 link: "infrastructure/ssdg"
@@ -7,4 +7,4 @@ longExcerpt: "We introduce Embodied Chain-of-Thought Reasoning (ECoT) for VLAs, 
 image: '/article_images/robo_article_image_2.png'
 ---
 
-Here’s the _body_ of your Markdown post…
+Here's the _body_ of your Markdown post…

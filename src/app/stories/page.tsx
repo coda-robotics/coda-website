@@ -43,7 +43,7 @@ export default function StoriesPage() {
             <main className="flex-1 pl-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
-                        <h1 className="coda-font mb-12 mt-8">STORIES</h1>
+                        <h1 className="coda-font mb-12 mt-8">CASE STUDIES</h1>
                         
                         {/* Featured Story */}
                         <div className="mb-20">

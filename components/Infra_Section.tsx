@@ -38,13 +38,15 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-fit">
       <SideNav />
       
       <main className="flex-1 pl-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
           <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
-            <h1 className="coda-font mb-12 mt-8">INFRASTRUCTURE</h1>
+            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">
+              INFRASTRUCTURE
+            </h1>
 
             {/* Carousel layout with arrows below sm */}
             <div className="sm:hidden relative overflow-hidden">
@@ -114,7 +116,8 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
               </div>
             </div>
 
-            <ArticleList articles={articles} />
+            {/* ArticleList temporarily hidden */}
+            {/* <ArticleList articles={articles} /> */}
           </div>
         </div>
       </main>

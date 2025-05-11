@@ -13,9 +13,12 @@ export function FooterNav() {
     return null; // Hide the navbar for anything under /posts/
   }
 
+  // Check if we're on the infrastructure page
+  const isInfrastructurePage = pathname === '/infrastructure' || pathname.startsWith('/infrastructure/');
+  
   return (
-    <footer className="text-black px-15 pt-10 mb-14">
-     <div className="max-w-[62rem] w-full mx-auto lg:px-28">
+    <footer className={`text-black px-15 pt-10 mb-14 ${isInfrastructurePage ? 'pr-32' : ''}`}>
+     <div className={`max-w-[62rem] w-full mx-auto lg:px-28 ${isInfrastructurePage ? 'ml-32' : ''}`}>
         <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-40">
           {/* Email subscription section */}
           <div className="w-full md:w-1/2 flex md:justify-end">

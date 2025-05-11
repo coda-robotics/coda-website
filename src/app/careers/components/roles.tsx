@@ -4,7 +4,7 @@ export default function Roles() {
   const roles = [
     { title: "RESEARCH ENGINEER, RL", link: "/apply/research-engineer" },
     { title: "DATA ENGINEER, INFRASTRUCTURE", link: "/apply/data-engineer" },
-    { title: "ML ENGINEER, TRAINING INFRASTRUCTURE", link: "/apply/ml-engineer" },
+    { title: "ML ENGINEER, INFRASTRUCTURE", link: "/apply/ml-engineer" },
   ];
 
   return (

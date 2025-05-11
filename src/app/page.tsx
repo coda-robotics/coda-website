@@ -1,11 +1,8 @@
 import '../styles/globals.css';
 import Head from 'next/head';
 import Link from 'next/link';
-import { getAllPostsMeta } from '@/lib/posts'
 
 export default function Home() {
-  const posts = getAllPostsMeta().slice(0, 3)
-
   return (
     <div className="text-black font-inter">
       <Head>
@@ -44,7 +41,13 @@ export default function Home() {
                 </Link>
               </div>
               <p className="text-[18px] mb-10 leading-[2] w-full sm:w-[540px] transition-all duration-300 ease-in-out">
-                Coda delivers high-quality, large-scale data pipelines to power robotic neural networks. We specialize in collecting, labeling, and structuring the complex datasets needed to fuel intelligent machines and systems in the real world. From perception to decision-making, we accelerate robotics innovation by providing the data infrastructure AI systems need to continually evolve.
+                Build better Vision Language Action models faster. 
+                <br />
+                CODA powers the next generation of generalist
+                <br />
+                embodied agents by providing durable, and
+                <br />
+                scalable robotics data infrastructure.
               </p>
               <div className="flex space-x-4">
                 <a href="https://x.com/coda" target="_blank" rel="noopener noreferrer">
@@ -74,7 +77,7 @@ export default function Home() {
         {/* Highlights Section with image */}
         <section className="mt-10 px-6 md:px-10 lg:px-20 flex flex-col md:flex-row">
           {/* Left Image */}
-          <div className="hidden md:block w-full md:w-auto md:flex-shrink-0 md:pr-6">
+          <div className="hidden md:block w-full md:w-auto md:flex-shrink-0 md:pr-6 md:ml-16">
             <img
               src="/coda3d.png"
               alt="Coda 3D"
@@ -85,33 +88,40 @@ export default function Home() {
           <div className=" -ml-6 md:ml-[2rem] mt-6 md:mt-12 w-full md:flex-1">
             <h1 className="md:pl-6">Highlights</h1>
 
-            {/* Render the 3 posts */}
+            {/* Static Highlights based on the image */}
             <ul className="mt-6 space-y-6 md:pl-6 max-w-md">
-              {posts.map(({ slug, title, date, excerpt, link }) => (
-                <li key={slug} className="border-b pb-4 w-full">
-                  <div className="pb-[4px]">
-                    {link ? (
-                      <Link
-                        href={link} // If 'link' is provided, use it
-                        className="block w-full text-[18px]"
-                      >
-                        {title}
-                      </Link>
-                    ) : (
-                      <Link
-                        href={`/infrastructure/${slug}`} // Otherwise, link to the markdown page
-                        className="block w-full text-[18px]"
-                      >
-                        {title}
-                      </Link>
-                    )}
-                  </div>
-                  <p className="text-gray-600 text-sm pb-[2px]">
-                    {date}
-                  </p>
-                  <p className="mt-1">{excerpt}</p>
-                </li>
-              ))}
+              <li className="border-b pb-4 w-[95%]">
+                <div className="pb-[4px]">
+                  <Link href="/infrastructure/embodied-reasoning" className="block w-full text-[18px]">
+                    Embodied Reasoning
+                  </Link>
+                </div>
+                <p className="text-gray-600 text-sm pb-[2px]">
+                  May 15th, 2025
+                </p>
+              </li>
+              
+              <li className="border-b pb-4 w-[95%]">
+                <div className="pb-[4px]">
+                  <Link href="/infrastructure/policy-distribution" className="block w-full text-[18px]">
+                    VLA Arena
+                  </Link>
+                </div>
+                <p className="text-gray-600 text-sm pb-[2px]">
+                  May 4th, 2025
+                </p>
+              </li>
+              
+              <li className="border-b pb-4 w-[95%]">
+                <div className="pb-[4px]">
+                  <Link href="/infrastructure/synthetic-data" className="block w-full text-[18px]">
+                    Digital Cousins
+                  </Link>
+                </div>
+                <p className="text-gray-600 text-sm pb-[2px]">
+                  May 1st, 2025
+                </p>
+              </li>
             </ul>
           </div>
         </section>

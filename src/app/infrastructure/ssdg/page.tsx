@@ -569,8 +569,8 @@ const Reason = () => {
     `Put small spoon from basket to tray`,
   ];
   const reasoningTexts = [
-    `Episode 1: put small spoon from basket to tray\n\nTASK:\n“put small spoon from basket to tray”\n\nPLAN:\nMove to the small spoon, grasp it, move to the tray", release the small spoon.\n\nSUBTASK REASONING:\nThe device needs to adjust its horizontal position for the task: “put small spoon from basket to tray”\n\nSUBTASK:\nMove right\n\nMOVE REASONING:\nMoving right will align the gripper with the target location\n\nMOVE:\nmove right\n\nVISIBLE OBJECTS:\na small spoon various utensils the small spoon [134, 112, 170, 188], a tray [87, 81, 256, 256], a basket [0, 75, 128, 229]\n\nGRIPPER POSITION:\n[98, 57]`,
-    `Episode 1: put small spoon from basket to tray\n\nTASK:\n“put small spoon from basket to tray”\n\nPLAN:\nMove to the small spoon, grasp it, move to the tray”, release the small spoon.\n\nSUBTASK REASONING:\nThe device needs to raise its position to manipulate objects for the task: “put small spoon from basket to tray”\n\nSUBTASK:\nMove upward\n\nMOVE REASONING:\nMoving upward will position the gripper at the right height\n\nMOVE:\nmove backward up\n\nVISIBLE OBJECTS:\na basket [0, 58, 128, 228], a small spoon various utensils the small spoon [135, 113, 170, 187], a a stainless steel dish a a dish drainer a dish drainer tray the dish [87, 81, 256, 256], a a small spoon [10, 92, 44, 129]\n\nGRIPPER POSITION:\n[106, 39]`,
+    `Episode 1: put small spoon from basket to tray\n\nTASK:\n"put small spoon from basket to tray"\n\nPLAN:\nMove to the small spoon, grasp it, move to the tray', release the small spoon.\n\nSUBTASK REASONING:\nThis movement is needed to progress in completing the task: "put small spoon from basket to tray"\n\nSUBTASK:\nExecute movement: move down, rotate clockwise\n\nMOVE REASONING:\nThis specific movement helps position the device correctly\n\nMOVE:\nmove down, rotate clockwise\n\nVISIBLE OBJECTS:\na small spoon various utensils the small spoon [128, 117, 162, 184], a tray [87, 81, 256, 256], a basket [0, 59, 125, 228], a a small spoon [8, 90, 40, 153]\n\nGRIPPER POSITION:\n[134, 56]`,
+    `Episode 1: put small spoon from basket to tray\n\nTASK:\n"put small spoon from basket to tray"\n\nPLAN:\nMove to the small spoon, grasp it, move to the tray", release the small spoon.\n\nSUBTASK REASONING:\nThe device needs to raise its position to manipulate objects for the task: "put small spoon from basket to tray"\n\nSUBTASK:\nMove upward\n\nMOVE REASONING:\nMoving upward will position the gripper at the right height\n\nMOVE:\nmove backward up\n\nVISIBLE OBJECTS:\na basket [0, 58, 128, 228], a small spoon various utensils the small spoon [135, 113, 170, 187], a a stainless steel dish a a dish drainer a dish drainer tray the dish [87, 81, 256, 256], a a small spoon [10, 92, 44, 129]\n\nGRIPPER POSITION:\n[106, 39]`,
     `Episode 1: put small spoon from basket to tray\n\nTASK:\n"put small spoon from basket to tray"\n\nPLAN:\nMove to the small spoon, grasp it, move to the tray', release the small spoon.\n\nSUBTASK REASONING:\nThis movement is needed to progress in completing the task: "put small spoon from basket to tray"\n\nSUBTASK:\nExecute movement: move down, rotate clockwise\n\nMOVE REASONING:\nThis specific movement helps position the device correctly\n\nMOVE:\nmove down, rotate clockwise\n\nVISIBLE OBJECTS:\na small spoon various utensils the small spoon [128, 117, 162, 184], a tray [87, 81, 256, 256], a basket [0, 59, 125, 228], a a small spoon [8, 90, 40, 153]\n\nGRIPPER POSITION:\n[134, 56]`,
   ];
 
@@ -596,20 +596,10 @@ const Reason = () => {
 
       <div className="max-w-[50rem] mx-auto px-6 py-0">
         <div className="mt-0 md:mt-0">
-          {/* Back to Systems button with consistent spacing */}
-          <div className="mb-8">
-            <Link href="/infrastructure" className=" text-sm hover:underline flex items-center">
-                <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Back to Infrastructure
-            </Link>
-          </div>
-          
           {/* Heading with consistent spacing */}
-          <div className="mb-12">
+          <div className="mb-12 mt-8">
             <h1 className="bw-gradual-heading research-heading">
-              <span>Scaling Synthetic Data Generation</span>
+              <span>Digital Cousins</span>
             </h1>
           </div>
           
