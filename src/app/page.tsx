@@ -92,7 +92,7 @@ export default function Home() {
             <ul className="mt-6 space-y-6 md:pl-6 max-w-md">
               <li className="border-b pb-4 w-[95%]">
                 <div className="pb-[4px]">
-                  <Link href="/infrastructure/embodied-reasoning" className="block w-full text-[18px]">
+                  <Link href="/infrastructure/ecot" className="block w-full text-[18px]">
                     Embodied Reasoning
                   </Link>
                 </div>

@@ -292,59 +292,31 @@ const Reason = () => {
   // Performance comparison data for various models
   const modelPerformanceData = [
     {
-      task: "Object Recognition",
-      openVLA: 0.45,
-      openVLAR: 0.62,
-      pi0: 0.70,
-      pi0R: 0.87,
-      rt2: 0.42,
-      rt2R: 0.58,
-      octo: 0.39,
-      octoR: 0.55
-    },
-    {
-      task: "Physical Problem Solving",
-      openVLA: 0.38,
+      task: "Select Book",
+      openVLA: 0.28,
       openVLAR: 0.58,
-      pi0: 0.65,
-      pi0R: 0.84,
-      rt2: 0.36,
+      rt2: 0.26,
       rt2R: 0.53,
-      octo: 0.33,
+      octo: 0.21,
       octoR: 0.49
     },
     {
-      task: "Causal Inference",
-      openVLA: 0.32,
+      task: "Add Condiment",
+      openVLA: 0.22,
       openVLAR: 0.53,
-      pi0: 0.60,
-      pi0R: 0.79,
       rt2: 0.31,
-      rt2R: 0.49,
-      octo: 0.29,
+      rt2R: 0.52,
+      octo: 0.19,
       octoR: 0.45
     },
     {
-      task: "Multi-Step Planning",
-      openVLA: 0.40,
-      openVLAR: 0.61,
-      pi0: 0.68,
-      pi0R: 0.88,
-      rt2: 0.38,
+      task: "Select Drink",
+      openVLA: 0.22,
+      openVLAR: 0.55,
+      rt2: 0.29,
       rt2R: 0.55,
-      octo: 0.34,
+      octo: 0.19,
       octoR: 0.52
-    },
-    {
-      task: "Adapt to Obstacles",
-      openVLA: 0.43,
-      openVLAR: 0.64,
-      pi0: 0.72,
-      pi0R: 0.90,
-      rt2: 0.41,
-      rt2R: 0.59,
-      octo: 0.37,
-      octoR: 0.54
     }
   ];
 
@@ -398,7 +370,7 @@ const Reason = () => {
           <p className="font-bold">{`${label}`}</p>
           {payload.map((entry, index) => {
             // Check if this is an "-R" model to make it bold
-            const isReasoningModel = entry.name.includes('-R');
+            const isReasoningModel = entry.name.includes('-ER');
             return (
               <p key={index} style={{ 
                 color: entry.color,
@@ -526,7 +498,7 @@ const Reason = () => {
     {
       src: sample1Videos.right,
       title: "Visual Understanding with Reasoning",
-      description: "OpenVLA-R demonstrates enhanced visual understanding through reasoning about spatial relationships and object interactions."
+      description: "OpenVLA-ER demonstrates enhanced visual understanding through reasoning about spatial relationships and object interactions."
     },
     {
       src: sample2Videos.top,
@@ -609,120 +581,53 @@ const Reason = () => {
             
             <div className="text-gray-600">Email</div>
             <div className="md:col-span-3">
-              <a href="mailto:research@physicalintelligence.company" className="underline hover:no-underline">
+              <a href="mailto:founders@codarobotics.ai" className="underline hover:no-underline">
                 founders@codarobotics.ai
+              </a>
+            </div>
+            
+            <div className="md:col-span-4">
+              <a href="/infrastructure/embodied-reasoning" className="hover:underline text-gray-600">
+                View Blog ↗
               </a>
             </div>
             
          </div>
           
-          {/*<div className="mb-10">
-            <button className="border border-black rounded px-3 py-1  flex items-center hover:bg-gray-100">
-              <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Convert Datasets
+          <div className="mb-10">
+            <button 
+              className="bg-black hover:bg-white px-5 py-2 text-white hover:text-black text-sm border border-black transition-colors"
+              style={{ 
+                borderRadius: '4px',
+                boxShadow: '1px 1px 0px rgba(0,0,0,0.5)'
+              }}
+            >
+              <strong>Convert Datasets</strong>
             </button>
-          </div> */}
+          </div>
           
           <div className="space-y-6  text-base">
             <p>
-            We're thrilled to unveil a groundbreaking leap in our robot intelligence research: empowering robots to reason deeply about the physical world through Embodied Chain-of-Thought (ECoT) reasoning. Building on the foundation of our vision-language-action (VLA) models, which leverage vision-language models (VLMs) as their backbone, this new framework equips robots with the ability to tackle complex tasks by reasoning through plans, subtasks, motions, bounding boxes, and end effector positions before executing actions.
+            We're thrilled to unveil a groundbreaking leap in our robot intelligence research: empowering robots 
+            to reason deeply about the physical world through Embodied Chain-of-Thought (ECoT) reasoning. Building 
+            on the foundation of our vision-language-action (VLA) models, which leverage vision-language models 
+            (VLMs) as their backbone, this new framework equips robots with the ability to tackle complex tasks 
+            by reasoning through plans, subtasks, motions, bounding boxes, and end effector positions before 
+            executing actions.
             </p>
             
-            <p>
+            {/* <p>
             Unlike naive Chain-of-Thought (CoT) prompting, which often lacks grounding in real-world contexts, our Embodied Reasoning approach trains VLAs to autoregressively generate structured reasoning chains for both high-level subtask planning and low-level control. This enables robots to carefully deliberate through each task, ensuring robust decision-making in dynamic environments. The result is a system that not only follows instructions but also understands the problem at hand, adapting fluidly to novel challenges.
-            </p>
+            </p> */}
             
-            <p>
+            {/* <p>
             A key innovation of ECoT is its human-in-the-loop integration, which simplifies diagnosing policy failures by allowing engineers to inspect reasoning chains. This transparency boosts performance, with human-in-the-loop oversight improving outcomes by up to 48%. By combining high-level reasoning for task decomposition with precise low-level control reasoning, our framework ensures robots can navigate complex scenarios with unparalleled adaptability.
-            </p>
+            </p> */}
 
-            <p>
+            {/* <p>
             To showcase this capability, we've developed a visual process demonstration, featuring a video animation with typing text to illustrate the robot's reasoning steps in real-time. This advancement marks a significant step toward robots that reason, plan, and act with human-like intelligence, paving the way for more capable and versatile robotic systems.
-            </p>
+            </p> */}
 
-            {/* Reasoning Episode Comparison Section */}
-            <div className="mt-12 mb-10 py-8">
-              <h2 className=" text-xl font-medium mb-8 flex items-center text-gray-900">
-                View a Random Action
-                <button
-                  className="ml-4 px-4 py-2 bg-black text-white  text-sm rounded shadow hover:bg-white hover:text-black transition text-center border border-black flex items-center"
-                  onClick={() => setSampleIndex(Math.floor(Math.random() * 3))}
-                  type="button"
-                >
-                  {/* <svg className="h-5 w-5 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582M20 20v-5h-.581M5 9A7.003 7.003 0 0012 19a7.003 7.003 0 007-10M5 9V8a7 7 0 0114 0v1" />
-                  </svg> */}
-                  Sample
-                </button>
-              </h2>
-              <div className="flex flex-col md:flex-row gap-8 items-start justify-center relative">
-                {/* Left: Original Image and Instruction */}
-                <div className="flex flex-col items-center w-full md:w-1/2">
-                  <span className=" text-base text-gray-600 mb-2">Original Episode</span>
-                  <div className="border border-gray-200 rounded-xl shadow-sm p-4 flex flex-col items-center bg-white">
-                    <img
-                      src={originalImages[sampleIndex]}
-                      alt={`Original episode ${sampleIndex + 1}`}
-                      className="rounded-lg shadow w-full max-w-xs mb-4 border border-gray-300 object-contain"
-                      style={{ background: '#fff', minHeight: 220 }}
-                    />
-                    <div className="mt-2 px-4 py-2 text-white text-sm rounded shadow text-center border border-black bg-black">
-                      {originalInstructions[sampleIndex]}
-                    </div>
-                  </div>
-                </div>
-                {/* Right: Reasoned Image and Reasoning Text */}
-                <div className="flex flex-col items-center w-full md:w-1/2 relative">
-                  <span className=" text-base text-gray-600 mb-2">Embodied Reasoning</span>
-                  <div className="border border-gray-200 rounded-xl shadow-sm p-4 flex flex-col items-center bg-white">
-                    <img
-                      src={reasonedImages[sampleIndex]}
-                      alt={`Reasoned episode ${sampleIndex + 1}`}
-                      className="rounded-lg shadow w-full max-w-xs mb-4 border border-gray-300 object-contain"
-                      style={{ background: '#fff', minHeight: 220 }}
-                    />
-                    <button
-                      className="mt-2 px-4 py-2 bg-black hover:bg-white text-white hover:text-black text-sm rounded shadow transition text-center border border-black"
-                      onClick={() => setShowReasoningModal(true)}
-                      type="button"
-                    >
-                      View Embodied Reasoning &rarr;
-                    </button>
-                    {/* Modal for full reasoning text, positioned to the right */}
-                    {showReasoningModal && (
-                      <div
-                        className="absolute z-50"
-                        style={{
-                          left: 'calc(100% - 50px)',
-                          top: '50%',
-                          transform: 'translateY(-50%)',
-                          height: '50%',
-                          display: 'flex',
-                          alignItems: 'stretch',
-                        }}
-                      >
-                        <div className="bg-white rounded-xl shadow-2xl border border-gray-300 relative flex flex-col justify-between" style={{ width: 260, height: '100%' }}>
-                          <button
-                            className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 font-bold text-lg"
-                            onClick={() => setShowReasoningModal(false)}
-                            aria-label="Close"
-                          >
-                            &times;
-                          </button>
-                          <h3 className=" text-sm font-bold mb-2 text-gray-900 px-8 pt-8">Embodied Reasoning</h3>
-                          <pre className="whitespace-pre-line  text-xs text-gray-900 rounded p-8 pt-0 overflow-x-auto overflow-y-auto flex-1 bg-white" style={{ minHeight: 0 }}>
-                            {reasoningTexts[sampleIndex]}
-                          </pre>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-            
             {/* Model Performance Comparison Chart Section */}
             <div className="mt-12 mb-8">
               <h3 className=" text-xl font-medium mb-4">Performance Improvements on <a href="https://vlabench.github.io/" className="underline hover:text-gray-700 transition-colors duration-300">VLA Bench</a></h3>
@@ -736,11 +641,11 @@ const Reason = () => {
                     boxShadow: '1px 1px 0px rgba(0,0,0,0.5)'
                   }}
                 >
-                  VLAs trained on reasoning datasets achieve 25% higher accuracy
+                  VLAs trained on reasoning datasets achieve <strong>30% higher accuracy</strong> 
                 </div>
               </div>
               
-              <div className="bg-transparent p-6">
+              <div className="bg-cream/30 border border-gray-200 rounded-lg p-6">
                 <div className="h-[400px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
@@ -749,43 +654,90 @@ const Reason = () => {
                       barGap={2}
                       barCategoryGap={20}
                     >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#444" vertical={false} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#eaeaea" vertical={false} />
                       <XAxis 
                         dataKey="task" 
-                        tick={{ fill: '#aaa', fontFamily: 'monospace', fontSize: 9 }}
+                        tick={{ fill: '#888', fontFamily: 'monospace', fontSize: 12 }}
                         tickLine={false}
-                        axisLine={{ stroke: '#555' }}
-                        height={60}
+                        axisLine={{ stroke: '#e0e0e0' }}
+                        height={80}
                         interval={0}
+                        dy={20}
+                        label={{ 
+                          value: '',
+                          position: 'insideBottom', 
+                          offset: -10
+                        }}
                       />
                       <YAxis 
                         domain={[0, 1]} 
                         ticks={[0, 0.2, 0.4, 0.6, 0.8, 1.0]}
                         tickFormatter={(value) => `${(value * 100).toFixed(0)}`}
-                        tick={{ fill: '#aaa', fontFamily: 'monospace', fontSize: 12 }}
-                        axisLine={{ stroke: '#555' }}
-                        tickLine={{ stroke: '#555' }}
+                        tick={{ fill: '#888', fontFamily: 'monospace', fontSize: 12 }}
+                        axisLine={{ stroke: '#e0e0e0' }}
+                        tickLine={{ stroke: '#e0e0e0' }}
                         label={{ 
                           value: 'Success Rate (%)', 
                           angle: -90, 
                           position: 'insideLeft',
-                          style: { textAnchor: 'middle', fill: '#aaa', fontSize: 14, fontFamily: 'monospace' }
+                          style: { textAnchor: 'middle', fill: '#888', fontSize: 14, fontFamily: 'monospace' }
                         }}
                       />
                       <Tooltip content={<CustomTooltip />} />
-
-                      {/* Monochrome bars - light to dark gray scale */}
-                      <Bar dataKey="pi0" name="π₀" fill="#222" stroke="#000" strokeWidth={1} />
-                      <Bar dataKey="pi0R" name="π₀-R" fill="#333" stroke="#000" strokeWidth={1} />
-
-                      <Bar dataKey="openVLA" name="OpenVLA" fill="#444" stroke="#000" strokeWidth={1} />
-                      <Bar dataKey="openVLAR" name="OpenVLA-R" fill="#555" stroke="#000" strokeWidth={1} />
-
-                      <Bar dataKey="rt2" name="RT-2" fill="#666" stroke="#000" strokeWidth={1} />
-                      <Bar dataKey="rt2R" name="RT-2-R" fill="#777" stroke="#000" strokeWidth={1} />
-
-                      <Bar dataKey="octo" name="Octo" fill="#888" stroke="#000" strokeWidth={1} />
-                      <Bar dataKey="octoR" name="Octo-R" fill="#999" stroke="#000" strokeWidth={1} />
+                      
+                      {/* OpenVLA bars - Green color scheme */}
+                      <Bar 
+                        dataKey="openVLA" 
+                        name="OpenVLA" 
+                        fill="#4CAF50"
+                        stroke="#000" 
+                        strokeWidth={1}
+                        radius={[0, 0, 0, 0]}
+                      />
+                      <Bar 
+                        dataKey="openVLAR" 
+                        name="OpenVLA-ER" 
+                        fill="#8BC34A"
+                        stroke="#000" 
+                        strokeWidth={1}
+                        radius={[0, 0, 0, 0]}
+                      />
+                      
+                      {/* RT-2 bars - Blue color scheme */}
+                      <Bar 
+                        dataKey="rt2" 
+                        name="RT-2" 
+                        fill="#2196F3"
+                        stroke="#000" 
+                        strokeWidth={1}
+                        radius={[0, 0, 0, 0]}
+                      />
+                      <Bar 
+                        dataKey="rt2R" 
+                        name="RT-2-ER" 
+                        fill="#90CAF9"
+                        stroke="#000" 
+                        strokeWidth={1}
+                        radius={[0, 0, 0, 0]}
+                      />
+                      
+                      {/* Octo bars - Gray color scheme */}
+                      <Bar 
+                        dataKey="octo" 
+                        name="Octo" 
+                        fill="#607D8B"
+                        stroke="#000" 
+                        strokeWidth={1}
+                        radius={[0, 0, 0, 0]}
+                      />
+                      <Bar 
+                        dataKey="octoR" 
+                        name="Octo-ER" 
+                        fill="#B0BEC5"
+                        stroke="#000" 
+                        strokeWidth={1}
+                        radius={[0, 0, 0, 0]}
+                      />
 
                       <Legend
                         verticalAlign="bottom"
@@ -795,7 +747,7 @@ const Reason = () => {
                           paddingTop: '20px',
                           fontFamily: 'monospace',
                           fontSize: '12px',
-                          color: '#aaa'
+                          paddingBottom: '0px'
                         }}
                         iconType="square"
                         iconSize={10}
@@ -806,11 +758,15 @@ const Reason = () => {
               </div>
             </div>
             
-            {/* Task Video Section */}
+            {/* 
+            Value of Reasoning, Simulation to Real World Transfer, Inference Speeds, 
+            and Human Intervention Improves Performance sections are temporarily hidden
+            but will be useful for later
+
+            Task Video Section 
             <div className="mt-12 mb-8">
               <h3 className=" text-xl font-medium mb-4">The Value of Reasoning</h3>
               
-              {/* Add the "View more demonstrations" link right after the heading */}
               <div className="mb-6">
                 <button 
                   onClick={() => setIsModalOpen(true)}
@@ -824,16 +780,14 @@ const Reason = () => {
               </div>
               
               <div className="bg-cream/30 border border-gray-200 rounded-lg p-6">
-                {/* Task and Status Selection */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  {/* Task Dropdown */}
                   <div>
                     <label htmlFor="taskSelect" className="block text-gray-700 mb-2 ">Task</label>
                     <div className="relative">
                     <select
                       id="taskSelect"
                       value={selectedTask}
-                      onChange={(e) => setSelectedTask(e.target.value as TaskKey)}  // Casting the value as TaskKey
+                      onChange={(e) => setSelectedTask(e.target.value as TaskKey)}
                       className="appearance-none w-full bg-black text-white border border-black px-4 py-2 pr-8  focus:outline-none"
                     >
                         {taskOptions.map(task => (
@@ -848,7 +802,6 @@ const Reason = () => {
                     </div>
                   </div>
                   
-                  {/* Success/Fail Toggle (now w/ Coda and w/o Coda) */}
                   <div>
                     <label className="block text-gray-700 mb-2 ">Status</label>
                     <div className="flex">
@@ -876,7 +829,6 @@ const Reason = () => {
                   </div>
                 </div>
                 
-                {/* Video Player */}
                 <div className="relative rounded-lg overflow-hidden bg-black">
                   <video 
                     src={currentVideo} 
@@ -887,7 +839,6 @@ const Reason = () => {
                   />
                 </div>
                 
-                {/* Description Text - Modified for reasoning context */}
                 <p className="mt-4 text-sm text-gray-600 ">
                   {taskDescriptions[selectedTask]} {selectedStatus === 'fail' 
                     ? "This demonstration shows the task attempt without Coda's reasoning-enhanced tokenization approach, highlighting the limitations in adaptability and problem-solving." 
@@ -896,11 +847,10 @@ const Reason = () => {
               </div>
             </div>
             
-            {/* Simulation vs Real World Chart Section */}
+            Simulation vs Real World Chart Section 
             <div className="mt-12 mb-8">
               <h3 className=" text-xl font-medium mb-4">Simulation to Real World Transfer</h3>
               
-              {/* Sim-to-Real explanation box */}
               <div className="flex mb-6">
                 <div 
                   className="bg-black text-white px-5 py-2 text-center  text-sm border border-black"
@@ -958,25 +908,23 @@ const Reason = () => {
                         }}
                         formatter={(value, name) => {
                           const formattedValue = `${(Number(value) * 100).toFixed(0)}%`;
-                          const displayName = name === 'simulation' ? 'OpenVLA-R (sim)' : 'OpenVLA-R (real)';
+                          const displayName = name === 'simulation' ? 'OpenVLA-ER (sim)' : 'OpenVLA-ER (real)';
                           return [`${formattedValue}`, displayName];
                         }}
                       />
 
-                      {/* Simulation bars - dark gray */}
                       <Bar 
                         dataKey="simulation" 
-                        name="OpenVLA-R (sim)" 
+                        name="OpenVLA-ER (sim)" 
                         fill="#444"
                         stroke="#000" 
                         strokeWidth={1}
                         radius={[0, 0, 0, 0]}
                       />
 
-                      {/* Real world bars - light gray */}
                       <Bar 
                         dataKey="realWorld" 
-                        name="OpenVLA-R (real)" 
+                        name="OpenVLA-ER (real)" 
                         fill="#aaa"
                         stroke="#000" 
                         strokeWidth={1}
@@ -1000,18 +948,16 @@ const Reason = () => {
                   </ResponsiveContainer>
                 </div>
                 
-                {/* Description text - with the correct content for this section */}
                 <p className="text-sm text-gray-600  mt-2 text-center">
-                  Comparison of OpenVLA-R performance in simulation vs real-world environments. The reasoning framework enables robust transfer, with only a small performance drop when deployed on physical robots.
+                  Comparison of OpenVLA-ER performance in simulation vs real-world environments. The reasoning framework enables robust transfer, with only a small performance drop when deployed on physical robots.
                 </p>
               </div>
             </div>
             
-            {/* Inference Speeds Section */}
+            Inference Speeds Section 
             <div className="mt-12 mb-8">
               <h3 className=" text-xl font-medium mb-4">Inference Speeds</h3>
               
-              {/* Inference speed explanation box */}
               <div className="flex mb-6">
                 <div 
                   className="bg-black px-5 py-2 text-center text-white text-sm border border-black"
@@ -1020,7 +966,7 @@ const Reason = () => {
                     boxShadow: '2px 2px 0px rgba(0,0,0,0.5)'
                   }}
                 >
-                  OpenVLA-R is only 2.5% slower yet achieves 5x performance
+                  OpenVLA-ER is only 2.5% slower yet achieves 5x performance
                 </div>
               </div>
               
@@ -1075,7 +1021,6 @@ const Reason = () => {
                         labelFormatter={(value) => `Time: ${value} ms`}
                       />
                       
-                      {/* OpenVLA line - dark gray */}
                       <Line
                         type="monotone"
                         dataKey="openVLA"
@@ -1092,7 +1037,6 @@ const Reason = () => {
                         connectNulls
                       />
                       
-                      {/* OpenVLA-R line - light gray */}
                       <Line
                         type="monotone"
                         dataKey="openVLAR"
@@ -1105,14 +1049,13 @@ const Reason = () => {
                           stroke: "#bbb"
                         }}
                         activeDot={{ r: 8, stroke: "#bbb", strokeWidth: 2 }}
-                        name="OpenVLA-R (ours)"
+                        name="OpenVLA-ER (ours)"
                         connectNulls
                       />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
                 
-                {/* Custom legend centered below the chart */}
                 <div className="text-center mt-6 text-sm text-gray-400">
                   <div className="flex justify-center items-center space-x-8">
                     <div className="flex items-center">
@@ -1121,24 +1064,22 @@ const Reason = () => {
                     </div>
                     <div className="flex items-center">
                       <span className="inline-block w-3 h-3 rounded-full bg-gray-300 mr-2"></span>
-                      <span>OpenVLA-R (ours)</span>
+                      <span>OpenVLA-ER (ours)</span>
                     </div>
                   </div>
                 </div>
                 
-                {/* Description text */}
                 <p className="text-sm text-gray-500 mt-6 text-center">
-                  Despite a minimal increase in inference time, our reasoning-enhanced model (OpenVLA-R) delivers substantially higher task success rates across various reasoning challenges.
+                  Despite a minimal increase in inference time, our reasoning-enhanced model (OpenVLA-ER) delivers substantially higher task success rates across various reasoning challenges.
                 </p>
               </div>
 
             </div>
             
-            {/* Human in the Loop Section */}
+            Human in the Loop Section 
             <div className="mt-12 mb-8">
               <h3 className=" text-xl font-medium mb-4">Human Intervention Improves Performance</h3>
               
-              {/* Human-in-the-loop explanation box */}
               <div className="flex mb-6">
                 <div 
                   className="bg-black text-white px-5 py-2 text-center text-sm border border-black"
@@ -1221,13 +1162,12 @@ const Reason = () => {
                           let displayName = name;
                           if (name === 'openVLA') displayName = 'OpenVLA';
                           if (name === 'openVLAHI') displayName = 'OpenVLA-HI';
-                          if (name === 'openVLAR') displayName = 'OpenVLA-R';
-                          if (name === 'openVLARHI') displayName = 'OpenVLA-R-HI';
+                          if (name === 'openVLAR') displayName = 'OpenVLA-ER';
+                          if (name === 'openVLARHI') displayName = 'OpenVLA-ER-HI';
                           return [` ${displayName}: ${formattedValue}`, ''];
                         }}
                       />
                       
-                      {/* OpenVLA bars - dark gray */}
                       <Bar 
                         dataKey="openVLA" 
                         name="OpenVLA" 
@@ -1237,7 +1177,6 @@ const Reason = () => {
                         radius={[0, 0, 0, 0]}
                       />
                       
-                      {/* OpenVLA-HI bars - medium gray */}
                       <Bar 
                         dataKey="openVLAHI" 
                         name="OpenVLA-HI" 
@@ -1247,26 +1186,24 @@ const Reason = () => {
                         radius={[0, 0, 0, 0]}
                       />
                       
-                      {/* OpenVLA-R bars - light gray */}
                       <Bar 
                         dataKey="openVLAR" 
-                        name="OpenVLA-R" 
+                        name="OpenVLA-ER" 
                         fill="#888"
                         stroke="#444" 
                         strokeWidth={1}
                         radius={[0, 0, 0, 0]}
                       />
                       
-                      {/* OpenVLA-R-HI bars - very light gray */}
                       <Bar 
                         dataKey="openVLARHI" 
-                        name="OpenVLA-R-HI" 
+                        name="OpenVLA-ER-HI" 
                         fill="#aaa"
                         stroke="#555" 
                         strokeWidth={1}
                         radius={[0, 0, 0, 0]}
                       />
-                      
+
                       <Legend
                         verticalAlign="bottom"
                         align="center"
@@ -1275,7 +1212,7 @@ const Reason = () => {
                           paddingTop: '20px',
                           fontFamily: 'monospace',
                           fontSize: '12px',
-                          color: '#999'
+                          color: '#aaa'
                         }}
                         iconType="square"
                         iconSize={10}
@@ -1283,15 +1220,15 @@ const Reason = () => {
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
-
-                {/* Description text */}
+                
                 <p className="text-sm text-gray-500 mt-2 text-center">
-                  Comparison showing how human intervention during training significantly enhances model performance. Models with reasoning plus human intervention (OpenVLA-R-HI) achieve the highest success rates across all tasks.
+                  Comparison showing how human intervention during training significantly enhances model performance. Models with reasoning plus human intervention (OpenVLA-ER-HI) achieve the highest success rates across all tasks.
                 </p>
               </div>
-           </div>
+            </div>
+            */}
             
-            <p>
+            {/* <p>
               Our results show that robots equipped with our reasoning framework can solve complex problems 
               significantly more effectively than baseline models. The framework enables robots to:
             </p>
@@ -1308,7 +1245,7 @@ const Reason = () => {
               systems that can reason about the world in ways that are more aligned with human cognition. 
               In the coming months, we'll be releasing more details about our approach and demonstrating its 
               capabilities on increasingly complex tasks.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
