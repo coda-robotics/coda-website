@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Roles() {
   const roles = [
-    { title: "RESEARCH ENGINEER, RL", link: "/apply/research-engineer" },
-    { title: "DATA ENGINEER, INFRASTRUCTURE", link: "/apply/data-engineer" },
-    { title: "ML ENGINEER, INFRASTRUCTURE", link: "/apply/ml-engineer" },
+    { title: "RESEARCH ENGINEER, RL", link: "/hiring" },
+    { title: "DATA ENGINEER, INFRASTRUCTURE", link: "/hiring" },
+    { title: "ML ENGINEER, INFRASTRUCTURE", link: "/hiring" },
   ];
 
   return (
@@ -17,14 +17,16 @@ export default function Roles() {
           </Link>
         </div>
       ))}
-      <button className="mt-15 bg-black rounded hover:bg-white hover:text-black text-white border mb-4 hover:border-black" style={{
-        height: '34px',
-        width: '101px',
-        fontSize: '14px',
-        letterSpacing: '0px',
-      }}>
-        See More
-      </button>
+      <Link href="/hiring">
+        <button className="mt-15 bg-black rounded hover:bg-white hover:text-black text-white border mb-4 hover:border-black" style={{
+          height: '34px',
+          width: '101px',
+          fontSize: '14px',
+          letterSpacing: '0px',
+        }}>
+          See More
+        </button>
+      </Link>
     </div>
   );
 }

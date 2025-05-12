@@ -21,7 +21,7 @@ export default function Home() {
             <div className="w-full sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 z-1">
               <p className="text-[15px]">
                 Announcing{' '}
-                <span className="underline underline-offset-2">OpenVLA-ER</span> ↗
+                <Link href="/infrastructure/ecot" className="underline underline-offset-2">Embodied Reasoning <span>↗</span></Link>
               </p>
               <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">
                 CODA DELIVERS <br /> DATA INFRASTRUCTURE <br /> FOR AI ROBOTICS
@@ -50,10 +50,10 @@ export default function Home() {
                 scalable robotics data infrastructure.
               </p>
               <div className="flex space-x-4">
-                <a href="https://x.com/coda" target="_blank" rel="noopener noreferrer">
+                <a href="https://x.com/juliansaks" target="_blank" rel="noopener noreferrer">
                   <img src="/xlogo.png" alt="X logo" className="w-6 h-6" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/juliansaks/" target="_blank" rel="noopener noreferrer">
                   <img src="/linkedinlogo.png" alt="LinkedIn logo" className="w-6 h-6" />
                 </a>
               </div>
@@ -97,7 +97,7 @@ export default function Home() {
                   </Link>
                 </div>
                 <p className="text-gray-600 text-sm pb-[2px]">
-                  why coda? why now?
+                  Why data infrastructure is key to advance embodied AI
                 </p>
               </li>
               
@@ -108,18 +108,18 @@ export default function Home() {
                   </Link>
                 </div>
                 <p className="text-gray-600 text-sm pb-[2px]">
-                 reasoning - 30% better 
+                 Achieve +30% policy improvements with embodied reasoning
                 </p>
               </li>
               
               <li className="border-b pb-4 w-[95%]">
                 <div className="pb-[4px]">
-                  <Link href="/infrastructure/policy-distribution" className="block w-full text-[18px]">
+                  <Link href="/vla_arena" className="block w-full text-[18px]">
                     VLA Arena
                   </Link>
                 </div>
                 <p className="text-gray-600 text-sm pb-[2px]">
-                  vla arena is so cool 
+                  Evaluate VLA models head-to-head 
                 </p>
               </li>
             </ul>

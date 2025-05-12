@@ -588,11 +588,12 @@ const Reason = () => {
               </a>
             </div>
             
-            <div className="md:col-span-4">
+            {/* Need to add blog */}
+            {/* <div className="md:col-span-4">
               <a href="/infrastructure/embodied-reasoning" className="hover:underline text-gray-600">
                 View Blog ↗
               </a>
-            </div>
+            </div> */}
             
          </div>
           
@@ -610,12 +611,12 @@ const Reason = () => {
           
           <div className="space-y-6  text-base">
             <p>
-            We're thrilled to unveil a groundbreaking leap in our robot intelligence research: empowering robots 
-            to reason deeply about the physical world through Embodied Chain-of-Thought (ECoT) reasoning. Building 
-            on the foundation of our vision-language-action (VLA) models, which leverage vision-language models 
-            (VLMs) as their backbone, this new framework equips robots with the ability to tackle complex tasks 
-            by reasoning through plans, subtasks, motions, bounding boxes, and end effector positions before 
-            executing actions.
+            Introducing <strong>Embodied Reasoning</strong>, a dataset kit that enhances Vision-Language-Action (VLA) 
+            models with reasoning capabilities. While VLAs already leverage vision-language models (VLMs) 
+            for improved generalization, naive chain-of-thought techniques often fail in physical domains due to the 
+            embodiment gap. Our dataset kit bridges this gap by enabling robots to reason through complex tasks, 
+            considering plans, subtasks, and spatial relationships before action execution. Our kit, applicable to both open-source and proprietary datasets, has achieved <strong>SOTA results </strong>
+            on <a href="https://vlabench.github.io/" className="underline hover:no-underline">VLA Bench</a> with significant policy improvements.
             </p>
             
             {/* <p>
@@ -632,7 +633,7 @@ const Reason = () => {
 
             {/* Model Performance Comparison Chart Section */}
             <div className="mt-12 mb-8">
-              <h3 className=" text-xl font-medium mb-4">Performance Improvements on <a href="https://vlabench.github.io/" className="underline hover:text-gray-700 transition-colors duration-300">VLA Bench</a></h3>
+              <h3 className=" text-xl font-medium mb-4">VLA Performance Improvements</h3>
               
               {/* "R" Suffix Explanation Box */}
               <div className="flex mb-6">
@@ -705,10 +706,10 @@ const Reason = () => {
                         radius={[0, 0, 0, 0]}
                       />
                       
-                      {/* RT-2 bars - Blue color scheme */}
+                      {/* RDT-1B bars - Blue color scheme */}
                       <Bar 
                         dataKey="rt2" 
-                        name="RT-2" 
+                        name="RDT-1B" 
                         fill="#2196F3"
                         stroke="#000" 
                         strokeWidth={1}
@@ -716,7 +717,7 @@ const Reason = () => {
                       />
                       <Bar 
                         dataKey="rt2R" 
-                        name="RT-2-ER" 
+                        name="RDT-1B-ER" 
                         fill="#90CAF9"
                         stroke="#000" 
                         strokeWidth={1}

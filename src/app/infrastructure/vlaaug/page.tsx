@@ -791,8 +791,8 @@ const Reason = () => {
                       <Bar dataKey="openVLA" name="OpenVLA" fill="#444" stroke="#000" strokeWidth={1} />
                       <Bar dataKey="openVLAR" name="OpenVLA-R" fill="#555" stroke="#000" strokeWidth={1} />
 
-                      <Bar dataKey="rt2" name="RT-2" fill="#666" stroke="#000" strokeWidth={1} />
-                      <Bar dataKey="rt2R" name="RT-2-R" fill="#777" stroke="#000" strokeWidth={1} />
+                      <Bar dataKey="rt2" name="RDT-1B" fill="#666" stroke="#000" strokeWidth={1} />
+                      <Bar dataKey="rt2R" name="RDT-1B-R" fill="#777" stroke="#000" strokeWidth={1} />
 
                       <Bar dataKey="octo" name="Octo" fill="#888" stroke="#000" strokeWidth={1} />
                       <Bar dataKey="octoR" name="Octo-R" fill="#999" stroke="#000" strokeWidth={1} />

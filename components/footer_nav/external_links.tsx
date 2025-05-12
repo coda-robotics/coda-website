@@ -17,10 +17,10 @@ export default function ExternalLinks() {
         </Link>
       </div>
       <div className="flex flex-col space-y-4">
-        <Link href="https://linkedin.com" target="_blank" className="hover:underline underline-offset-4 text-gray-600">
+        <Link href="https://www.linkedin.com/in/juliansaks/" target="_blank" className="hover:underline underline-offset-4 text-gray-600">
           LINKEDIN
         </Link>
-        <Link href="https://x.com" target="_blank" className="hover:underline text-gray-600 underline-offset-4">
+        <Link href="https://x.com/juliansaks" target="_blank" className="hover:underline text-gray-600 underline-offset-4">
           X
         </Link>
       </div>

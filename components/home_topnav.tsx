@@ -52,6 +52,12 @@ export function TopNav() {
           >
             News
           </Link>
+          {/* <Link 
+            href="/vla_arena" 
+            className="text-gray-700 hover:text-gray-900 text-sm"
+          >
+            VLA Arena
+          </Link> */}
           <Link 
             href="/careers" 
             className="text-gray-700 hover:text-gray-900 text-sm"

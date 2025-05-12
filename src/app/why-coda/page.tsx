@@ -24,7 +24,7 @@ export default function WhyCodaPage() {
                             <h1 className="coda-font text-[40px] mb-8 mt-8">WHY CODA? WHY NOW?</h1>
                             <div className="w-[800px] mx-auto">
                                 <p className="text-lg mb-5">
-                                    AI is finally beginning to fulfill its massive transformative potential, as evidenced by the state of new AI-enabled products across text, images, <a href="https://a16z.com/why-2023-was-ai-videos-breakout-year-and-what-to-expect-in-2024/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">video</a>, <a href="https://a16z.com/the-future-of-music-how-generative-ai-is-transforming-the-music-industry/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">audio</a>, and <a href="https://a16z.com/ai/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">more</a>. Yet one modality is still years behind - physical intelligence. Much like the early days of NLP, much of the physical actions generally performed by robots have largely been trapped within the confines of <a href="https://en.wikipedia.org/wiki/Moravec%27s_paradox" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Moravec's paradox</a> and have seen no where near the pace of advancement as in other modalities.
+                                    AI is now realizing its immense transformative potential, demonstrated by the emergence of AI-powered innovations in text, images, <a href="https://a16z.com/why-2023-was-ai-videos-breakout-year-and-what-to-expect-in-2024/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">video</a>, <a href="https://a16z.com/the-future-of-music-how-generative-ai-is-transforming-the-music-industry/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">audio</a>, and <a href="https://a16z.com/ai/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">more</a>. However, one domain remains significantly behind - physical intelligence. Similar to NLP's early stages, robotic physical actions have remained largely constrained by <a href="https://en.wikipedia.org/wiki/Moravec%27s_paradox" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Moravec's paradox</a>, experiencing substantially slower progress compared to other AI domains.
                                 </p>
                                 
                                 <p className="text-lg mb-5">
@@ -32,7 +32,7 @@ export default function WhyCodaPage() {
                                 </p>
                                 
                                 <p className="text-lg mb-5">
-                                    LLMs success is largely contributed to the years of humans sharing text since the inception of the internet resulting in a large text corpus to train on. It is widely known that the scaling laws applied to LLMs - training on more data improves these models. However taking the same approach towards building VLAs faces different challenges. Data collection for robotics is hard and frankly there is no way close amount of videos of robots as there is text. This has hindered the generalization of VLAs where today we are no where near GPT-2 performance. It has also led to a unique methods of scaling robot data:
+                                    While in the NLP domain, LLMs success is largely contributed to the years of humans sharing text since the inception of the internet resulting in a large text corpus to train on. It is widely known that the scaling laws applied to LLMs - training on more data improves these models. However taking the same approach towards building VLAs faces different challenges. Data collection for robotics is hard and frankly there is no way close amount of videos of robots as there is text. This has hindered the generalization of VLAs where today we are no where near GPT-2 performance. It has also led to a unique methods of scaling robot data:
                                 </p>
                             </div>
                         </div>
@@ -101,9 +101,9 @@ export default function WhyCodaPage() {
                                     Our team at Coda sees this as an opportunity to innovate and build the most durable products at the robotic data layer to help robotics researchers build better models faster.
                                 </p>
                                 <p className="text-lg font-semibold">
-                                    CODA Team,
+                                    CODA Team
                                 </p>
-                                <div className="h-12 w-40 border-b border-black my-2"></div>
+                                {/* <div className="h-12 w-40 border-b border-black my-2"></div> */}
                             </div>
 
                             {/* <div className="mt-20">

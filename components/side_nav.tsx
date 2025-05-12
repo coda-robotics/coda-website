@@ -4,9 +4,9 @@ import { usePathname } from 'next/navigation';
 const nav_items = [
   { name: 'HOME', href: '/', hidden: false },
   { name: 'INFRASTRUCTURE', href: '/infrastructure', hidden: false },
-  { name: 'CAREERS', href: '/careers', hidden: false },
-  { name: 'ABOUT', href: '/about', hidden: false },
   { name: 'COMPANY', href: '/company', hidden: false },
+  { name: 'CAREERS', href: '/careers', hidden: false },
+  { name: 'ABOUT', href: '/about', hidden: true },
 ];
 
 export default function SideNav() {

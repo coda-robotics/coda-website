@@ -63,9 +63,9 @@ export default function CompanyPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
                         {/* Mission Section */}
-                        <div className="mb-20">
+                        <div className="mb-15">
                             <h1 className="coda-font text-[40px] mb-8 mt-8">MISSION</h1>
-                            <h2 className="coda-font text-[25px] mb-8 mt-8">Through the intersection of AI and Robotics, we are building general purpose humanoid robots. These robots will eliminate the need for unsafe and undesirable jobs, allowing future generations to live happier, more purposeful lives.</h2>
+                            <h2 className="coda-font text-[25px] mb-8 mt-8">CODA's mission is to play a key role towards solving the<br /> Physical Turing Test.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
@@ -85,9 +85,9 @@ export default function CompanyPage() {
                         </div>
 
                         {/* Vision Section */}
-                        <div className="mb-20">
+                        <div className="mb-15">
                             <h1 className="coda-font text-[40px] mb-8 mt-8">VISION</h1>
-                            <h2 className="coda-font text-[25px] mb-8 mt-8">Through the intersection of AI and Robotics, we are building general purpose humanoid robots. These robots will eliminate the need for unsafe and undesirable jobs, allowing future generations to live happier, more purposeful lives.</h2>
+                            <h2 className="coda-font text-[25px] mb-8 mt-8">CODA's vision is to deliver durable data infrastructure to help <br /> roboticists build better Vision Language Action models faster.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
@@ -107,9 +107,9 @@ export default function CompanyPage() {
                         </div>
 
                         {/* Culture Section */}
-                        <div className="mb-20">
+                        <div className="mb-15">
                             <h1 className="coda-font text-[40px] mb-8 mt-8">CULTURE</h1>
-                            <h2 className="coda-font text-[25px] mb-8 mt-8">Through the intersection of AI and Robotics, we are building general purpose humanoid robots. These robots will eliminate the need for unsafe and undesirable jobs, allowing future generations to live happier, more purposeful lives.</h2>
+                            <h2 className="coda-font text-[25px] mb-8 mt-8">High sense of urgency, ownership, and agency.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
@@ -152,8 +152,7 @@ export default function CompanyPage() {
                                 {expandedSection === 1 && (
                                 <div className="mt-6 ml-10 pr-4">
                                     <p className="text-lg">
-                                    Hesitation is the enemy of momentum. We are tackling today's most complex technological challenges by
-                                    testing, experimenting, and taking calculated risks to embrace the unknown without fear of failure.
+                                    Adaptation is key to success and a high learning rate is even more crucial. We value both. 
                                     </p>
                                 </div>
                                 )}
@@ -180,8 +179,7 @@ export default function CompanyPage() {
                                 {expandedSection === 2 && (
                                 <div className="mt-6 ml-10 pr-4">
                                     <p className="text-lg">
-                                    Hesitation is the enemy of momentum. We are tackling today's most complex technological challenges by
-                                    testing, experimenting, and taking calculated risks to embrace the unknown without fear of failure.
+                                    Find happiness by solving hard and relevant problems at scale.
                                     </p>
                                 </div>
                                 )}
@@ -208,8 +206,7 @@ export default function CompanyPage() {
                                 {expandedSection === 3 && (
                                 <div className="mt-6 ml-10 pr-4">
                                     <p className="text-lg">
-                                    Hesitation is the enemy of momentum. We are tackling today's most complex technological challenges by
-                                    testing, experimenting, and taking calculated risks to embrace the unknown without fear of failure.
+                                    Be aggresively optimistic and adopt a champion mindset.
                                     </p>
                                 </div>
                                 )}
@@ -219,7 +216,7 @@ export default function CompanyPage() {
                         </div>
 
                         {/* Join Us Section - Kept from original company page */}
-                        <div className="mb-20">
+                        {/* <div className="mb-20">
                             <div className="max-w-2xl">
                                 <h2 className="text-[25px] mb-4 coda-font">Join Our Team</h2>
                                 <p className="mb-8" style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', lineHeight: '23px' }}>
@@ -234,7 +231,7 @@ export default function CompanyPage() {
                                     View Open Positions
                                 </Link>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </main>
