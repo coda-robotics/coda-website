@@ -4,7 +4,6 @@ import '@/styles/globals.css'
 import { useState } from 'react';
 import MainArticle from '@components/main_article';
 import SideArticle from '@components/side_article';
-import ArticleList from '@components/article_list';
 import SideNav from '@components/side_nav';
 import StayUpdated from '@components/footer_nav/stay_update';
 import ExternalLinks from '@components/footer_nav/external_links';
@@ -21,10 +20,9 @@ interface Infra_SectionProps {
   featuredMain: Article;
   featuredSide1: Article;
   featuredSide2: Article;
-  articles: Article[];
 }
 
-export default function Infra_Section({ featuredMain, featuredSide1, featuredSide2, articles }: Infra_SectionProps) {
+export default function Infra_Section({ featuredMain, featuredSide1, featuredSide2 }: Infra_SectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
@@ -117,9 +115,6 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
                 />
               </div>
             </div>
-
-            {/* ArticleList temporarily hidden */}
-            {/* <ArticleList articles={articles} /> */}
           </div>
           
           {/* Footer section - aligned with content above */}

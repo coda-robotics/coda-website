@@ -1,6 +1,3 @@
-'use client';
-
-import { useParams } from 'next/navigation';
 import ArticleDisplay from '@components/article_display';
 import SideNav from '@components/side_nav';
 
@@ -129,8 +126,8 @@ Future Development:
     }
 ];
 
-export default function StoryPage() {
-    const params = useParams();
+// This is now a server component
+export default function StoryPage({ params }: { params: { slug: string } }) {
     const story = stories.find(s => s.id === params.slug);
 
     if (!story) {
@@ -161,4 +158,11 @@ export default function StoryPage() {
             </main>
         </div>
     );
+}
+
+// Generate static pages for all stories at build time
+export function generateStaticParams() {
+    return stories.map((story) => ({
+        slug: story.id,
+    }));
 } 

@@ -2,13 +2,7 @@ import { articles } from '../data/articles';
 import ArticleDisplay from '@components/article_display';
 import { notFound } from 'next/navigation';
 
-interface ArticlePageProps {
-    params: {
-        slug: string;
-    };
-}
-
-export default function ArticlePage({ params }: ArticlePageProps) {
+export default function ArticlePage({ params }: { params: { slug: string } }) {
     const article = articles.find(a => a.slug === params.slug);
 
     if (!article) {

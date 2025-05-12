@@ -7,6 +7,11 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
+// Define proper error type
+interface ErrorWithMessage {
+  message: string;
+}
+
 export default function StayUpdated() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -28,8 +33,11 @@ export default function StayUpdated() {
       
       setEmail('');
       setMessage('Thank you for subscribing!');
-    } catch (error: any) {
-      setMessage(`Error: ${error.message || 'Something went wrong'}`);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error 
+        ? error.message 
+        : 'Something went wrong';
+      setMessage(`Error: ${errorMessage}`);
     } finally {
       setLoading(false);
     }
