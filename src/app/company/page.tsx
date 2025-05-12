@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SideNav from '@components/side_nav';
+import { useState } from 'react';
 
 const teamMembers = [
     {
@@ -48,6 +49,12 @@ const values = [
 ];
 
 export default function CompanyPage() {
+    const [expandedSection, setExpandedSection] = useState<number | null>(null);
+
+    const toggleSection = (sectionId: number) => {
+        setExpandedSection(expandedSection === sectionId ? null : sectionId);
+    };
+
     return (
         <div className="flex min-h-screen">
             <SideNav />
@@ -55,73 +62,163 @@ export default function CompanyPage() {
             <main className="flex-1 pl-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
-                        <h1 className="coda-font mb-12 mt-8">COMPANY</h1>
+                        {/* Mission Section */}
+                        <div className="mb-20">
+                            <h1 className="coda-font text-[40px] mb-8 mt-8">MISSION</h1>
+                            <h2 className="coda-font text-[25px] mb-8 mt-8">Through the intersection of AI and Robotics, we are building general purpose humanoid robots. These robots will eliminate the need for unsafe and undesirable jobs, allowing future generations to live happier, more purposeful lives.</h2>
+                            <div
+                                style={{
+                                fontFamily: 'Inter, sans-serif',
+                                fontWeight: 400,
+                                fontSize: 16,
+                                lineHeight: '35px',
+                                letterSpacing: 0,
+                                verticalAlign: 'middle',
+                                wordWrap: 'break-word',
+                                overflowWrap: 'break-word',
+                                maxWidth: '100%',
+                                color: '#000',
+                                }}
+                                className="space-y-5"
+                            >
+                            </div>
+                        </div>
 
-                        {/* Mission Statement */}
-                        <div className="mb-16">
-                            <div className="relative w-full h-[500px] rounded-[5px] overflow-hidden">
-                                <Image
-                                    src="/company/mission-banner.jpg"
-                                    alt="CODA Lab Mission"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end">
-                                    <div className="p-12 max-w-3xl">
-                                        <h2 className="text-[clamp(24px,5vw,40px)] mb-4 coda-font text-white">Our Mission</h2>
-                                        <p className="text-[17px] leading-[1.7] text-white/90" style={{ fontFamily: 'Inter, sans-serif' }}>
-                                            To advance the frontiers of robotics and artificial intelligence,
-                                            creating intelligent systems that enhance human capabilities and
-                                            solve real-world challenges.
-                                        </p>
-                                    </div>
+                        {/* Vision Section */}
+                        <div className="mb-20">
+                            <h1 className="coda-font text-[40px] mb-8 mt-8">VISION</h1>
+                            <h2 className="coda-font text-[25px] mb-8 mt-8">Through the intersection of AI and Robotics, we are building general purpose humanoid robots. These robots will eliminate the need for unsafe and undesirable jobs, allowing future generations to live happier, more purposeful lives.</h2>
+                            <div
+                                style={{
+                                fontFamily: 'Inter, sans-serif',
+                                fontWeight: 400,
+                                fontSize: 16,
+                                lineHeight: '35px',
+                                letterSpacing: 0,
+                                verticalAlign: 'middle',
+                                wordWrap: 'break-word',
+                                overflowWrap: 'break-word',
+                                maxWidth: '100%',
+                                color: '#000',
+                                }}
+                                className="space-y-5"
+                            >
+                            </div>
+                        </div>
+
+                        {/* Culture Section */}
+                        <div className="mb-20">
+                            <h1 className="coda-font text-[40px] mb-8 mt-8">CULTURE</h1>
+                            <h2 className="coda-font text-[25px] mb-8 mt-8">Through the intersection of AI and Robotics, we are building general purpose humanoid robots. These robots will eliminate the need for unsafe and undesirable jobs, allowing future generations to live happier, more purposeful lives.</h2>
+                            <div
+                                style={{
+                                fontFamily: 'Inter, sans-serif',
+                                fontWeight: 400,
+                                fontSize: 16,
+                                lineHeight: '35px',
+                                letterSpacing: 0,
+                                verticalAlign: 'middle',
+                                wordWrap: 'break-word',
+                                overflowWrap: 'break-word',
+                                maxWidth: '100%',
+                                color: '#000',
+                                }}
+                                className="space-y-5"
+                            >
+                            </div>
+                        </div>
+
+                        {/* Core Values Section */}
+                        <div className="mb-20">
+                            <h1 className="coda-font text-[40px] mb-8 mt-8">CORE VALUES</h1>
+                            
+                            <div className="border-t border-b border-gray-200 py-8 mb-4 cursor-pointer" 
+                                style={{ maxWidth: '800px' }}
+                                onClick={() => toggleSection(1)}
+                            >
+                                <div className="flex items-center w-full">
+                                <div className="flex items-center flex-1">
+                                    <span className="text-xl font-bold mr-4">01</span>
+                                    <span className="coda-font text-[25px]">Move Fast & Learn Faster</span>
                                 </div>
+                                <span 
+                                    className="text-2xl font-bold"
+                                    aria-label="Toggle section"
+                                >
+                                    {expandedSection === 1 ? '−' : '+'}
+                                </span>
+                                </div>
+                                
+                                {expandedSection === 1 && (
+                                <div className="mt-6 ml-10 pr-4">
+                                    <p className="text-lg">
+                                    Hesitation is the enemy of momentum. We are tackling today's most complex technological challenges by
+                                    testing, experimenting, and taking calculated risks to embrace the unknown without fear of failure.
+                                    </p>
+                                </div>
+                                )}
                             </div>
+                            
+                            {/* Second core value */}
+                            <div className="border-t border-b border-gray-200 py-8 mb-4 cursor-pointer" 
+                                style={{ maxWidth: '800px' }}
+                                onClick={() => toggleSection(2)}
+                            >
+                                <div className="flex items-center w-full">
+                                <div className="flex items-center flex-1">
+                                    <span className="text-xl font-bold mr-4">02</span>
+                                    <span className="coda-font text-[25px]">Tackle Meaningful Challenges</span>
+                                </div>
+                                <span 
+                                    className="text-2xl font-bold"
+                                    aria-label="Toggle section"
+                                >
+                                    {expandedSection === 2 ? '−' : '+'}
+                                </span>
+                                </div>
+                                
+                                {expandedSection === 2 && (
+                                <div className="mt-6 ml-10 pr-4">
+                                    <p className="text-lg">
+                                    Hesitation is the enemy of momentum. We are tackling today's most complex technological challenges by
+                                    testing, experimenting, and taking calculated risks to embrace the unknown without fear of failure.
+                                    </p>
+                                </div>
+                                )}
+                            </div>
+                            
+                            {/* Third core value */}
+                            <div className="border-t border-b border-gray-200 py-8 mb-4 cursor-pointer" 
+                                style={{ maxWidth: '800px' }}
+                                onClick={() => toggleSection(3)}
+                            >
+                                <div className="flex items-center w-full">
+                                <div className="flex items-center flex-1">
+                                    <span className="text-xl font-bold mr-4">03</span>
+                                    <span className="coda-font text-[25px]">Embrace Limitless Possibilities</span>
+                                </div>
+                                <span 
+                                    className="text-2xl font-bold"
+                                    aria-label="Toggle section"
+                                >
+                                    {expandedSection === 3 ? '−' : '+'}
+                                </span>
+                                </div>
+                                
+                                {expandedSection === 3 && (
+                                <div className="mt-6 ml-10 pr-4">
+                                    <p className="text-lg">
+                                    Hesitation is the enemy of momentum. We are tackling today's most complex technological challenges by
+                                    testing, experimenting, and taking calculated risks to embrace the unknown without fear of failure.
+                                    </p>
+                                </div>
+                                )}
+                            </div>
+                            
+                            <hr className="border-t border-gray-300 my-10" style={{ maxWidth: '800px' }} />
                         </div>
 
-                        {/* Values */}
-                        <div className="mb-20">
-                            <h2 className="text-[25px] mb-12 coda-font">Our Values</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                                {values.map((value, index) => (
-                                    <div key={index} className="group">
-                                        <h3 className="text-[20px] mb-3 coda-font">{value.title}</h3>
-                                        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', lineHeight: '23px' }}>
-                                            {value.description}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Leadership Team */}
-                        <div className="mb-20">
-                            <h2 className="text-[25px] mb-12 coda-font">Leadership Team</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                {teamMembers.map((member) => (
-                                    <div key={member.id} className="group">
-                                        <div className="relative w-full aspect-square rounded-[5px] overflow-hidden mb-6">
-                                            <Image
-                                                src={member.image}
-                                                alt={member.name}
-                                                fill
-                                                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                            />
-                                        </div>
-                                        <h3 className="text-[20px] mb-1 coda-font">{member.name}</h3>
-                                        <p className="text-[15px] mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
-                                            {member.role}
-                                        </p>
-                                        <p className="text-gray-600" style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', lineHeight: '23px' }}>
-                                            {member.bio}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Join Us Section */}
+                        {/* Join Us Section - Kept from original company page */}
                         <div className="mb-20">
                             <div className="max-w-2xl">
                                 <h2 className="text-[25px] mb-4 coda-font">Join Our Team</h2>

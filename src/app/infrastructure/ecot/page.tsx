@@ -14,6 +14,8 @@ import {
   Legend
 } from "recharts";
 import { motion, AnimatePresence } from 'framer-motion';
+import StayUpdated from '@components/footer_nav/stay_update';
+import ExternalLinks from '@components/footer_nav/external_links';
 
 // Import video assets
 
@@ -1258,6 +1260,23 @@ const Reason = () => {
         videos={demoVideos}
         initialIndex={initialVideoIndex}
       />
+
+      {/* Footer section */}
+      <div className="w-full mt-20 px-4 sm:px-6 md:px-8 lg:px-24">
+        <div className="relative px-4 sm:px-6 md:px-8 max-w-[65rem] mx-auto ml-auto mr-8 lg:mr-10">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-32">
+            {/* Email subscription section */}
+            <div className="w-full md:w-1/2">
+              <StayUpdated />
+            </div>
+
+            {/* Navigation section */}
+            <nav className="w-full md:w-1/2 flex flex-col sm:flex-row space-x-[70px] pt-4">
+              <ExternalLinks />
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

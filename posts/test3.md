@@ -1,6 +1,6 @@
 ---
 title: "Embodied Reasoning"
-date: "May 15th, 2025"
+# date: "May 15th, 2025"
 link: "/infrastructure/ecot"
 shortDescription: "VLA chain-of-thought in embodied settings."
 image: "/article_images/robo_article_image_1.jpg"

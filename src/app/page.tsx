@@ -92,12 +92,23 @@ export default function Home() {
             <ul className="mt-6 space-y-6 md:pl-6 max-w-md">
               <li className="border-b pb-4 w-[95%]">
                 <div className="pb-[4px]">
+                  <Link href="/why-coda" className="block w-full text-[18px]">
+                    Why CODA? Why Now?
+                  </Link>
+                </div>
+                <p className="text-gray-600 text-sm pb-[2px]">
+                  why coda? why now?
+                </p>
+              </li>
+              
+              <li className="border-b pb-4 w-[95%]">
+                <div className="pb-[4px]">
                   <Link href="/infrastructure/ecot" className="block w-full text-[18px]">
                     Embodied Reasoning
                   </Link>
                 </div>
                 <p className="text-gray-600 text-sm pb-[2px]">
-                  May 15th, 2025
+                 reasoning - 30% better 
                 </p>
               </li>
               
@@ -108,18 +119,7 @@ export default function Home() {
                   </Link>
                 </div>
                 <p className="text-gray-600 text-sm pb-[2px]">
-                  May 4th, 2025
-                </p>
-              </li>
-              
-              <li className="border-b pb-4 w-[95%]">
-                <div className="pb-[4px]">
-                  <Link href="/infrastructure/synthetic-data" className="block w-full text-[18px]">
-                    Digital Cousins
-                  </Link>
-                </div>
-                <p className="text-gray-600 text-sm pb-[2px]">
-                  May 1st, 2025
+                  vla arena is so cool 
                 </p>
               </li>
             </ul>

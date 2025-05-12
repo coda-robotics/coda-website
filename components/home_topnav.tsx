@@ -31,8 +31,14 @@ export function TopNav() {
           </Link>
         </div>
 
-        {/* Center navigation items - reduced space-x from 6 to 4 */}
+        {/* Center navigation items - adjusted to keep Infrastructure centered */}
         <nav className="flex items-center space-x-4">
+          <Link 
+            href="/company" 
+            className="text-gray-700 hover:text-gray-900 text-sm"
+          >
+            Company
+          </Link>
           <Link 
             href="/infrastructure" 
             className="text-gray-700 hover:text-gray-900 text-sm"

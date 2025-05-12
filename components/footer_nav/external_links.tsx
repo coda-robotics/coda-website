@@ -12,8 +12,8 @@ export default function ExternalLinks() {
         <Link href="/careers" className="hover:underline underline-offset-4 text-gray-600">
           CAREERS
         </Link>
-        <Link href="/about" className="hover:underline underline-offset-4 text-gray-600">
-          ABOUT
+        <Link href="/company" className="hover:underline underline-offset-4 text-gray-600">
+          COMPANY
         </Link>
       </div>
       <div className="flex flex-col space-y-4">

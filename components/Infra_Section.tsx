@@ -6,6 +6,8 @@ import MainArticle from '@components/main_article';
 import SideArticle from '@components/side_article';
 import ArticleList from '@components/article_list';
 import SideNav from '@components/side_nav';
+import StayUpdated from '@components/footer_nav/stay_update';
+import ExternalLinks from '@components/footer_nav/external_links';
 
 export interface Article {
   title: string;
@@ -118,6 +120,21 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
 
             {/* ArticleList temporarily hidden */}
             {/* <ArticleList articles={articles} /> */}
+          </div>
+          
+          {/* Footer section - aligned with content above */}
+          <div className="relative px-4 sm:px-6 md:px-8 lg:px-50 mt-20">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-20">
+              {/* Email subscription section */}
+              <div className="w-full md:w-1/2">
+                <StayUpdated />
+              </div>
+
+              {/* Navigation section */}
+              <nav className="w-full md:w-1/2 flex flex-col sm:flex-row space-x-[50px] pt-4">
+                <ExternalLinks />
+              </nav>
+            </div>
           </div>
         </div>
       </main>
