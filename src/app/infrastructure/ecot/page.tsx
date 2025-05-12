@@ -296,29 +296,29 @@ const Reason = () => {
     {
       task: "Select Book",
       openVLA: 0.28,
-      openVLAR: 0.58,
+      openVLAR: 0.37,
       rt2: 0.26,
-      rt2R: 0.53,
+      rt2R: 0.37,
       octo: 0.21,
-      octoR: 0.49
+      octoR: 0.28
     },
     {
       task: "Add Condiment",
       openVLA: 0.22,
-      openVLAR: 0.53,
+      openVLAR: 0.29,
       rt2: 0.31,
-      rt2R: 0.52,
+      rt2R: 0.40,
       octo: 0.19,
-      octoR: 0.45
+      octoR: 0.25
     },
     {
       task: "Select Drink",
-      openVLA: 0.22,
-      openVLAR: 0.55,
-      rt2: 0.29,
-      rt2R: 0.55,
+      openVLA: 0.23,
+      openVLAR: 0.30,
+      rt2: 0.38,
+      rt2R: 0.50,
       octo: 0.19,
-      octoR: 0.52
+      octoR: 0.25
     }
   ];
 
