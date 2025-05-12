@@ -673,8 +673,8 @@ const Reason = () => {
                         }}
                       />
                       <YAxis 
-                        domain={[0, 1]} 
-                        ticks={[0, 0.2, 0.4, 0.6, 0.8, 1.0]}
+                        domain={[0, 0.6]} 
+                        ticks={[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]}
                         tickFormatter={(value) => `${(value * 100).toFixed(0)}`}
                         tick={{ fill: '#888', fontFamily: 'monospace', fontSize: 12 }}
                         axisLine={{ stroke: '#e0e0e0' }}
