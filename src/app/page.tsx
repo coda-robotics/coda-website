@@ -41,13 +41,11 @@ export default function Home() {
                 </Link>
               </div>
               <p className="text-[18px] mb-10 leading-[2] w-full sm:w-[540px] transition-all duration-300 ease-in-out">
-                Build better Vision Language Action models faster. 
+                Build better robotic foundation models faster. 
                 <br />
-                CODA powers the next generation of generalist
+                CODA builds data infrastructure to power the
                 <br />
-                embodied agents by providing durable, and
-                <br />
-                scalable robotics data infrastructure.
+                next generation of generalist embodied agents.
               </p>
               <div className="flex space-x-4">
                 <a href="https://x.com/juliansaks" target="_blank" rel="noopener noreferrer">
@@ -93,7 +91,7 @@ export default function Home() {
               <li className="border-b pb-4 w-[95%]">
                 <div className="pb-[4px]">
                   <Link href="/why-coda" className="block w-full text-[18px]">
-                    Why CODA? Why Now?
+                    Why Build CODA?
                   </Link>
                 </div>
                 <p className="text-gray-600 text-sm pb-[2px]">

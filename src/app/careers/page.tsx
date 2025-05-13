@@ -24,13 +24,13 @@ export default function Careers_Section() {
             className="space-y-5"
           >
             <p>
-              We are a small group of researchers and engineers working to provide robust data infrastructure to power the future of embodied intelligence.
+              We are an ambitious group of researchers and engineers working to deliver durable data infrastructure to power the future of embodied intelligence.
             </p>
             <p>
-              We’re hiring cross-domain researchers & engineers, who are determined to make an impact to the future of intelligent robots, at our headquarters in San Francisco, CA.
+              We’re hiring cross-domain high agency researchers & engineers who want to be a part of the future of embodied AI, at CODA HQ in San Francisco, CA.
             </p>
             <p>
-              The opportune moment to build the next generation of robotics is now. JOIN US!
+              The opportune moment to build the next generation of robotics is now. Join us!
             </p>
           </div>
         </div>

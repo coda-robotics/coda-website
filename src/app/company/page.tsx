@@ -63,9 +63,12 @@ export default function CompanyPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
                         {/* Mission Section */}
-                        <div className="mb-15">
-                            <h1 className="coda-font text-[40px] mb-8 mt-8">MISSION</h1>
-                            <h2 className="coda-font text-[25px] mb-8 mt-8">CODA's mission is to play a key role towards solving the<br /> Physical Turing Test.</h2>
+                        <div className="mb-16">
+                            <p className="text-[15px] mt-6">
+                                <Link href="/why-coda" className="underline underline-offset-2">Why Build CODA <span>↗</span></Link>
+                            </p>
+                            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">MISSION</h1>
+                            <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>CODA was founded on the belief that robotic foundation models are missing two key principles behind NLP and vision breakthroughs: positive transfer from scale and scalable evaluations. We're building durable infrastructure to enable roboticists to achieve similar breakthroughs.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
@@ -85,9 +88,9 @@ export default function CompanyPage() {
                         </div>
 
                         {/* Vision Section */}
-                        <div className="mb-15">
-                            <h1 className="coda-font text-[40px] mb-8 mt-8">VISION</h1>
-                            <h2 className="coda-font text-[25px] mb-8 mt-8">CODA's vision is to deliver durable data infrastructure to help <br /> roboticists build better Vision Language Action models faster.</h2>
+                        <div className="mb-16">
+                            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">VISION</h1>
+                            <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto' }}> We're building data engines, tooling, and evaluation systems to improve the generalization of robotic foundation models with the long-term goal of contributing towards achieving the Physical Turing Test.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
@@ -107,9 +110,9 @@ export default function CompanyPage() {
                         </div>
 
                         {/* Culture Section */}
-                        <div className="mb-15">
-                            <h1 className="coda-font text-[40px] mb-8 mt-8">CULTURE</h1>
-                            <h2 className="coda-font text-[25px] mb-8 mt-8">High sense of urgency, ownership, and agency.</h2>
+                        <div className="mb-16">
+                            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">CULTURE</h1>
+                            <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>Extremely high sense of urgency, ownership, and agency.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
@@ -130,7 +133,7 @@ export default function CompanyPage() {
 
                         {/* Core Values Section */}
                         <div className="mb-20">
-                            <h1 className="coda-font text-[40px] mb-8 mt-8">CORE VALUES</h1>
+                            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">CORE VALUES</h1>
                             
                             <div className="border-t border-b border-gray-200 py-8 mb-4 cursor-pointer" 
                                 style={{ maxWidth: '800px' }}
