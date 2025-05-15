@@ -49,44 +49,52 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
             </h1>
 
             {/* Carousel layout with arrows below sm */}
-            <div className="sm:hidden relative overflow-hidden w-full">
+            <div className="sm:hidden relative overflow-hidden w-full px-3">
               <div className="flex transition-transform duration-300" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 <div className="flex-shrink-0 w-full">
-                  <MainArticle
-                    date={featuredMain.date}
-                    title={featuredMain.title}
-                    image_url={featuredMain.image}
-                    href={featuredMain.href}
-                  />
+                  <div className="mx-auto max-w-[95%]">
+                    <MainArticle
+                      date={featuredMain.date}
+                      title={featuredMain.title}
+                      image_url={featuredMain.image}
+                      href={featuredMain.href}
+                    />
+                  </div>
                 </div>
                 <div className="flex-shrink-0 w-full">
-                  <SideArticle
-                    title={featuredSide1.title}
-                    date={featuredSide1.date}
-                    image_url={featuredSide1.image}
-                    href={featuredSide1.href}
-                  />
+                  <div className="mx-auto max-w-[95%]">
+                    <SideArticle
+                      title={featuredSide1.title}
+                      date={featuredSide1.date}
+                      image_url={featuredSide1.image}
+                      href={featuredSide1.href}
+                    />
+                  </div>
                 </div>
                 <div className="flex-shrink-0 w-full">
-                  <SideArticle
-                    title={featuredSide2.title}
-                    date={featuredSide2.date}
-                    image_url={featuredSide2.image}
-                    href={featuredSide2.href}
-                  />
+                  <div className="mx-auto max-w-[95%]">
+                    <SideArticle
+                      title={featuredSide2.title}
+                      date={featuredSide2.date}
+                      image_url={featuredSide2.image}
+                      href={featuredSide2.href}
+                    />
+                  </div>
                 </div>
               </div>
               <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
-                className={`absolute left-0 top-1/2 transform -translate-y-1/2 bg-black text-white p-2`}
+                className={`absolute left-0 top-1/2 transform -translate-y-1/2 text-black p-2 z-10 text-2xl font-bold ${currentIndex === 0 ? 'opacity-30' : 'opacity-100'}`}
+                aria-label="Previous slide"
               >
                 ←
               </button>
               <button
                 onClick={handleNext}
                 disabled={currentIndex === 2}
-                className={`absolute right-0 top-1/2 transform -translate-y-1/2 bg-black text-white p-2`}
+                className={`absolute right-0 top-1/2 transform -translate-y-1/2 text-black p-2 z-10 text-2xl font-bold ${currentIndex === 2 ? 'opacity-30' : 'opacity-100'}`}
+                aria-label="Next slide"
               >
                 →
               </button>
