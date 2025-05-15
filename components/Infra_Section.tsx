@@ -41,10 +41,10 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
     <div className="flex min-h-fit">
       <SideNav />
       
-      <main className="flex-1 pl-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="relative px-4 sm:px-6 md:px-8 lg:px-50">
-            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">
+      <main className="flex-1 pl-3 sm:pl-32">
+        <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 mb-20">
+          <div className="relative px-0 sm:px-6 md:px-8 lg:px-50">
+            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out text-center sm:text-left">
               INFRASTRUCTURE
             </h1>
 
@@ -118,7 +118,7 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
           </div>
           
           {/* Footer section - aligned with content above */}
-          <div className="relative px-4 sm:px-6 md:px-8 lg:px-50 mt-20">
+          <div className="relative px-3 sm:px-6 md:px-8 lg:px-50 mt-20">
             <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-20">
               {/* Email subscription section */}
               <div className="w-full md:w-1/2">
@@ -126,7 +126,7 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
               </div>
 
               {/* Navigation section */}
-              <nav className="w-full md:w-1/2 flex flex-col sm:flex-row space-x-[50px] pt-4">
+              <nav className="w-full md:w-1/2 flex flex-col sm:flex-row space-x-0 sm:space-x-[50px] pt-4">
                 <ExternalLinks />
               </nav>
             </div>
