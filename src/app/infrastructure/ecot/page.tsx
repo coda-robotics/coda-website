@@ -638,7 +638,7 @@ const Reason = () => {
               {/* "R" Suffix Explanation Box */}
               <div className="flex mb-6">
                 <div 
-                  className="bg-black hover:bg-white px-5 py-2 text-white hover:text-black text-center  text-sm border border-black"
+                  className="bg-black hover:bg-white px-5 py-2 text-white hover:text-black text-center text-[13px] sm:text-sm border border-black"
                   style={{ 
                     borderRadius: '4px',
                     boxShadow: '1px 1px 0px rgba(0,0,0,0.5)'
@@ -648,19 +648,19 @@ const Reason = () => {
                 </div>
               </div>
               
-              <div className="bg-cream/30 border border-gray-200 rounded-lg p-6">
-                <div className="h-[400px] w-full">
+              <div className="bg-cream/30 border border-gray-200 rounded-lg p-2 sm:p-6">
+                <div className="h-[360px] sm:h-[400px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                       data={modelPerformanceData}
-                      margin={{ top: 5, right: 30, left: 20, bottom: 60 }}
-                      barGap={2}
-                      barCategoryGap={20}
+                      margin={{ top: 5, right: 10, left: 0, bottom: 60 }}
+                      barGap={1}
+                      barCategoryGap={10}
                     >
                       <CartesianGrid strokeDasharray="3 3" stroke="#eaeaea" vertical={false} />
                       <XAxis 
                         dataKey="task" 
-                        tick={{ fill: '#888', fontFamily: 'monospace', fontSize: 12 }}
+                        tick={{ fill: '#888', fontFamily: 'monospace', fontSize: 10 }}
                         tickLine={false}
                         axisLine={{ stroke: '#e0e0e0' }}
                         height={80}
@@ -676,14 +676,15 @@ const Reason = () => {
                         domain={[0, 0.6]} 
                         ticks={[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]}
                         tickFormatter={(value) => `${(value * 100).toFixed(0)}`}
-                        tick={{ fill: '#888', fontFamily: 'monospace', fontSize: 12 }}
+                        tick={{ fill: '#888', fontFamily: 'monospace', fontSize: 10 }}
                         axisLine={{ stroke: '#e0e0e0' }}
                         tickLine={{ stroke: '#e0e0e0' }}
+                        width={30}
                         label={{ 
                           value: 'Success Rate (%)', 
                           angle: -90, 
                           position: 'insideLeft',
-                          style: { textAnchor: 'middle', fill: '#888', fontSize: 14, fontFamily: 'monospace' }
+                          style: { textAnchor: 'middle', fill: '#888', fontSize: 11, fontFamily: 'monospace' }
                         }}
                       />
                       <Tooltip content={<CustomTooltip />} />
@@ -747,13 +748,13 @@ const Reason = () => {
                         align="center"
                         layout="horizontal"
                         wrapperStyle={{
-                          paddingTop: '20px',
+                          paddingTop: '10px',
                           fontFamily: 'monospace',
-                          fontSize: '12px',
+                          fontSize: '10px',
                           paddingBottom: '0px'
                         }}
                         iconType="square"
-                        iconSize={10}
+                        iconSize={8}
                       />
                     </BarChart>
                   </ResponsiveContainer>

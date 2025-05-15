@@ -43,13 +43,13 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
       
       <main className="flex-1 pl-3 sm:pl-32">
         <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 mb-20">
-          <div className="relative px-0 sm:px-6 md:px-8 lg:px-50">
-            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out text-center sm:text-left">
+          <div className="relative px-3 sm:px-6 md:px-8 lg:px-50">
+            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out text-left">
               INFRASTRUCTURE
             </h1>
 
             {/* Carousel layout with arrows below sm */}
-            <div className="sm:hidden relative overflow-hidden">
+            <div className="sm:hidden relative overflow-hidden w-full">
               <div className="flex transition-transform duration-300" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 <div className="flex-shrink-0 w-full">
                   <MainArticle
