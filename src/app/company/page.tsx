@@ -142,7 +142,7 @@ export default function CompanyPage() {
                                 <div className="flex items-center w-full">
                                 <div className="flex items-center flex-1">
                                     <span className="text-xl font-bold mr-4">01</span>
-                                    <span className="coda-font text-[25px]">Move Fast & Learn Faster</span>
+                                    <span className="coda-font text-[20px] sm:text-[25px]">Move Fast & Learn Faster</span>
                                 </div>
                                 <span 
                                     className="text-2xl font-bold"
@@ -169,7 +169,7 @@ export default function CompanyPage() {
                                 <div className="flex items-center w-full">
                                 <div className="flex items-center flex-1">
                                     <span className="text-xl font-bold mr-4">02</span>
-                                    <span className="coda-font text-[25px]">Tackle Meaningful Challenges</span>
+                                    <span className="coda-font text-[20px] sm:text-[25px]">Tackle Meaningful Challenges</span>
                                 </div>
                                 <span 
                                     className="text-2xl font-bold"
@@ -196,7 +196,7 @@ export default function CompanyPage() {
                                 <div className="flex items-center w-full">
                                 <div className="flex items-center flex-1">
                                     <span className="text-xl font-bold mr-4">03</span>
-                                    <span className="coda-font text-[25px]">Embrace Limitless Possibilities</span>
+                                    <span className="coda-font text-[20px] sm:text-[25px]">Embrace Limitless Possibilities</span>
                                 </div>
                                 <span 
                                     className="text-2xl font-bold"
