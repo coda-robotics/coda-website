@@ -16,9 +16,9 @@ export function TopNav() {
   
   return (
     <header className="relative z-50 bg-[#F5F5F5] border-b border-gray-200">
-      <div className="flex items-center justify-between px-4 sm:px-8 py-4 max-w-7xl mx-auto">
+      <div className="flex flex-row sm:justify-between md:justify-center items-center px-4 sm:px-8 py-4 max-w-7xl mx-auto">
         {/* Left side - CODA logo */}
-        <div className="w-[120px] sm:w-[200px]">
+        <div className="w-[120px] sm:w-[200px] md:flex-1">
           <Link href="/" className="flex items-center">
             <Image
               src="/coda.svg"
@@ -31,8 +31,8 @@ export function TopNav() {
           </Link>
         </div>
 
-        {/* Center navigation items - pushed more right on mobile */}
-        <nav className="flex items-center space-x-2 md:space-x-4 ml-auto pr-0 sm:pr-4 md:pr-0">
+        {/* Center navigation items - centered on desktop, left-aligned on mobile */}
+        <nav className="flex items-center space-x-2 md:space-x-8 ml-auto sm:ml-0 md:flex-0">
           <Link 
             href="/company" 
             className="text-gray-700 hover:text-gray-900 text-sm"
@@ -66,8 +66,8 @@ export function TopNav() {
           </Link>
         </nav>
 
-        {/* Right side - hidden on mobile to allow nav to use more space */}
-        <div className="hidden sm:block w-[200px]"></div>
+        {/* Right side - empty div for desktop balance */}
+        <div className="hidden sm:block md:flex-1"></div>
       </div>
     </header>
   );

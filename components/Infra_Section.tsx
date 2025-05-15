@@ -1,12 +1,14 @@
 'use client';
 
 import '@/styles/globals.css'
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import MainArticle from '@components/main_article';
 import SideArticle from '@components/side_article';
 import SideNav from '@components/side_nav';
 import StayUpdated from '@components/footer_nav/stay_update';
 import ExternalLinks from '@components/footer_nav/external_links';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export interface Article {
   title: string;
@@ -24,18 +26,97 @@ interface Infra_SectionProps {
 
 export default function Infra_Section({ featuredMain, featuredSide1, featuredSide2 }: Infra_SectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  const slideContainerRef = useRef<HTMLDivElement>(null);
 
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
+  const handleDotClick = (index: number) => {
+    setCurrentIndex(index);
   };
 
-  const handleNext = () => {
-    if (currentIndex < 2) {
+  // Swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchEndX.current - touchStartX.current;
+    const minSwipeDistance = 50;
+
+    if (swipeDistance > minSwipeDistance && currentIndex > 0) {
+      // Swiped right
+      setCurrentIndex(currentIndex - 1);
+    } else if (swipeDistance < -minSwipeDistance && currentIndex < 2) {
+      // Swiped left
       setCurrentIndex(currentIndex + 1);
     }
   };
+
+  // Custom VLA Arena component for mobile view
+  const CustomVLAComponent = () => {
+    return (
+      <Link href={featuredSide1.href} className="block group">
+        <div
+          className="
+            relative
+            w-full
+            aspect-[1/1.2]
+            overflow-hidden
+            rounded-[5px]
+          "
+        >
+          <Image
+            src={featuredSide1.image}
+            alt={featuredSide1.title}
+            fill
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="absolute left-4 bottom-4 text-black">
+            <time className="coda-font text-[clamp(5px,2vw,14px)]">{featuredSide1.date}</time>
+            <h3 className="mt-1 max-w-[75%] coda-font text-[clamp(5px,5vw,22px)] leading-none">
+              {featuredSide1.title}
+            </h3>
+          </div>
+        </div>
+      </Link>
+    );
+  };
+
+  // Array of articles for easier rendering on mobile
+  const articles = [
+    {
+      component: 
+        <MainArticle
+          date={featuredMain.date}
+          title={featuredMain.title}
+          image_url={featuredMain.image}
+          href={featuredMain.href}
+        />
+    },
+    {
+      component: currentIndex === 1 ? 
+        <CustomVLAComponent /> :
+        <SideArticle
+          title={featuredSide1.title}
+          date={featuredSide1.date}
+          image_url={featuredSide1.image}
+          href={featuredSide1.href}
+        />
+    },
+    {
+      component: 
+        <SideArticle
+          title={featuredSide2.title}
+          date={featuredSide2.date}
+          image_url={featuredSide2.image}
+          href={featuredSide2.href}
+        />
+    }
+  ];
 
   return (
     <div className="flex min-h-fit">
@@ -48,56 +129,31 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
               INFRASTRUCTURE
             </h1>
 
-            {/* Carousel layout with arrows below sm */}
-            <div className="sm:hidden relative overflow-hidden w-full px-3">
-              <div className="flex transition-transform duration-300" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                <div className="flex-shrink-0 w-full">
-                  <div className="mx-auto max-w-[95%]">
-                    <MainArticle
-                      date={featuredMain.date}
-                      title={featuredMain.title}
-                      image_url={featuredMain.image}
-                      href={featuredMain.href}
-                    />
-                  </div>
-                </div>
-                <div className="flex-shrink-0 w-full">
-                  <div className="mx-auto max-w-[95%]">
-                    <SideArticle
-                      title={featuredSide1.title}
-                      date={featuredSide1.date}
-                      image_url={featuredSide1.image}
-                      href={featuredSide1.href}
-                    />
-                  </div>
-                </div>
-                <div className="flex-shrink-0 w-full">
-                  <div className="mx-auto max-w-[95%]">
-                    <SideArticle
-                      title={featuredSide2.title}
-                      date={featuredSide2.date}
-                      image_url={featuredSide2.image}
-                      href={featuredSide2.href}
-                    />
-                  </div>
-                </div>
+            {/* Mobile view - Show only current article with swipe */}
+            <div className="sm:hidden">
+              <div 
+                ref={slideContainerRef}
+                className="mx-auto max-w-[95%] overflow-hidden"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                {articles[currentIndex].component}
               </div>
-              <button
-                onClick={handlePrev}
-                disabled={currentIndex === 0}
-                className={`absolute left-0 top-1/2 transform -translate-y-1/2 text-black p-2 z-10 text-2xl font-bold ${currentIndex === 0 ? 'opacity-30' : 'opacity-100'}`}
-                aria-label="Previous slide"
-              >
-                ←
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={currentIndex === 2}
-                className={`absolute right-0 top-1/2 transform -translate-y-1/2 text-black p-2 z-10 text-2xl font-bold ${currentIndex === 2 ? 'opacity-30' : 'opacity-100'}`}
-                aria-label="Next slide"
-              >
-                →
-              </button>
+              
+              {/* Dots navigation */}
+              <div className="flex justify-center mt-4 space-x-3">
+                {articles.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleDotClick(index)}
+                    className={`h-2 w-2 rounded-full transition-all ${
+                      currentIndex === index ? 'bg-black w-4' : 'bg-gray-300'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Original grid layout at sm and above */}
