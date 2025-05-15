@@ -24,8 +24,8 @@ export default function Home() {
                 <Link href="/infrastructure/ecot" className="underline underline-offset-2">Embodied Reasoning <span>↗</span></Link>
               </p>
               <h1 className="text-[calc(1.8rem)] sm:text-[calc(2.2rem)] md:text-[calc(2.5rem)] pt-3 md:pt-4 leading-[1.2] my-3 md:my-4 w-full transition-all duration-300 ease-in-out">
-                CODA DELIVERS 
-                <span className="hidden sm:inline"><br /></span> DATA INFRASTRUCTURE 
+                CODA DELIVERS DATA 
+                <br /> INFRASTRUCTURE 
                 <br /> FOR AI ROBOTICS
               </h1>
               <div className="flex flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
@@ -75,7 +75,7 @@ export default function Home() {
         </section>
 
         {/* Highlights Section with image */}
-        <section className="mt-10 px-6 md:px-10 lg:px-20 flex flex-col md:flex-row">
+        <section className="mt-8 md:mt-10 px-3 sm:px-6 md:px-10 lg:px-20 flex flex-col md:flex-row">
           {/* Left Image */}
           <div className="hidden md:block w-full md:w-auto md:flex-shrink-0 md:pr-6 md:ml-16">
             <img
@@ -85,11 +85,11 @@ export default function Home() {
             />
           </div>
           {/* Highlights Content */}
-          <div className=" -ml-6 md:ml-[2rem] mt-6 md:mt-12 w-full md:flex-1">
-            <h1 className="md:pl-6">Highlights</h1>
+          <div className="pl-4 sm:pl-0 -ml-3 sm:ml-0 md:ml-[2rem] mt-4 md:mt-12 w-full md:flex-1">
+            <h1 className="text-[28px] md:text-[35px] md:pl-6">Highlights</h1>
 
             {/* Static Highlights based on the image */}
-            <ul className="mt-6 space-y-6 md:pl-6 max-w-md">
+            <ul className="mt-4 md:mt-6 space-y-4 md:space-y-6 md:pl-6 max-w-md">
               <li className="border-b pb-4 w-[95%]">
                 <div className="pb-[4px]">
                   <Link href="/why-coda" className="block w-full text-[18px]">
