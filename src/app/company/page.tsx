@@ -59,16 +59,16 @@ export default function CompanyPage() {
         <div className="flex min-h-screen">
             <SideNav />
             
-            <main className="flex-1 pl-16 sm:pl-32">
+            <main className="flex-1 pl-3 sm:pl-32">
                 <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
                     <div className="relative px-0 sm:px-6 md:px-8 lg:px-50">
                         {/* Mission Section */}
                         <div className="mb-16">
-                            <p className="text-[15px] mt-6 ml-1 sm:ml-0">
+                            <p className="text-[15px] mt-6">
                                 <Link href="/why-coda" className="underline underline-offset-2">Why Build CODA <span>↗</span></Link>
                             </p>
-                            <h1 className="text-[calc(2.2rem)] sm:text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out ml-1 sm:ml-0">MISSION</h1>
-                            <h2 className="coda-font text-[16px] sm:text-[20px] mb-8 mt-8 ml-1 sm:ml-0" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}>CODA was founded on the belief that robotic foundation models are missing two key principles behind NLP and vision breakthroughs: positive transfer from scale and scalable evaluations. We're building durable infrastructure to enable roboticists to achieve similar breakthroughs.</h2>
+                            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">MISSION</h1>
+                            <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}>CODA was founded on the belief that robotic foundation models are missing two key principles behind NLP and vision breakthroughs: positive transfer from scale and scalable evaluations. We're building durable infrastructure to enable roboticists to achieve similar breakthroughs.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
@@ -89,8 +89,8 @@ export default function CompanyPage() {
 
                         {/* Vision Section */}
                         <div className="mb-16">
-                            <h1 className="text-[calc(2.2rem)] sm:text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out ml-1 sm:ml-0">VISION</h1>
-                            <h2 className="coda-font text-[16px] sm:text-[20px] mb-8 mt-8 ml-1 sm:ml-0" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}> We're building data engines, tooling, and evaluation systems to improve the generalization of robotic foundation models with the long-term goal of contributing towards achieving the Physical Turing Test.</h2>
+                            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">VISION</h1>
+                            <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}> We're building data engines, tooling, and evaluation systems to improve the generalization of robotic foundation models with the long-term goal of contributing towards achieving the Physical Turing Test.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
@@ -111,8 +111,8 @@ export default function CompanyPage() {
 
                         {/* Culture Section */}
                         <div className="mb-16">
-                            <h1 className="text-[calc(2.2rem)] sm:text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out ml-1 sm:ml-0">CULTURE</h1>
-                            <h2 className="coda-font text-[16px] sm:text-[20px] mb-8 mt-8 ml-1 sm:ml-0" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}>Extremely high sense of urgency, ownership, and agency.</h2>
+                            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">CULTURE</h1>
+                            <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}>Extremely high sense of urgency, ownership, and agency.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
@@ -132,8 +132,8 @@ export default function CompanyPage() {
                         </div>
 
                         {/* Core Values Section */}
-                        <div className="mb-20 ml-1 sm:ml-0">
-                            <h1 className="text-[calc(2.2rem)] sm:text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">CORE VALUES</h1>
+                        <div className="mb-20">
+                            <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">CORE VALUES</h1>
                             
                             <div className="border-t border-b border-gray-200 py-8 mb-4 cursor-pointer" 
                                 style={{ maxWidth: '800px' }}
