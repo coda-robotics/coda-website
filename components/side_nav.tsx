@@ -15,7 +15,7 @@ export default function SideNav() {
   const path_name = usePathname();
 
   return (
-    <nav className="fixed left-8 pt-8">
+    <nav className="fixed left-2 sm:left-8 pt-8">
       <ul className="space-y-4">
         {nav_items
           .filter(item => !item.hidden)

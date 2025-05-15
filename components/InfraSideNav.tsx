@@ -13,7 +13,7 @@ export default function SideNav() {
   const path_name = usePathname();
 
   return (
-    <nav className="side-nav">
+    <nav className="side-nav pl-2 sm:pl-4">
       <ul>
         {nav_items
           .filter(item => !item.hidden)
