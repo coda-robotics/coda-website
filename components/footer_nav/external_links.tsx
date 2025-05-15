@@ -5,7 +5,7 @@ import React from 'react';
 export default function ExternalLinks() {
   return (
     <>
-      <div className="flex flex-col space-y-4 mb-6 sm:mb-0">
+      <div className="flex flex-col space-y-4 mb-6 sm:mb-0 ml-1 sm:ml-0">
         <Link href="/infrastructure" className="hover:underline underline-offset-4 text-gray-600">
           INFRASTRUCTURE 
         </Link>
@@ -16,7 +16,7 @@ export default function ExternalLinks() {
           COMPANY
         </Link>
       </div>
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-4 ml-1 sm:ml-0">
         <Link href="https://www.linkedin.com/in/juliansaks/" target="_blank" className="hover:underline underline-offset-4 text-gray-600">
           LINKEDIN
         </Link>

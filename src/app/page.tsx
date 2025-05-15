@@ -13,29 +13,31 @@ export default function Home() {
       {/* Header without navbar */}
 
       {/* Main Section */}
-      <main className="px-6 lg:px-28 py-5">
+      <main className="px-4 sm:px-6 lg:px-28 py-5">
         {/* Hero Section */}
         <section className="relative flex items-center overflow-hidden">
           <div className="max-w-[48rem] w-full flex items-center relative mx-auto">
             {/* Text Column: shrinks responsively */}
             <div className="w-full sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 z-1">
-              <p className="text-[15px]">
+              <p className="text-[14px] md:text-[15px]">
                 Announcing{' '}
                 <Link href="/infrastructure/ecot" className="underline underline-offset-2">Embodied Reasoning <span>↗</span></Link>
               </p>
-              <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">
-                CODA DELIVERS <br /> DATA INFRASTRUCTURE <br /> FOR AI ROBOTICS
+              <h1 className="text-[calc(1.8rem)] sm:text-[calc(2.2rem)] md:text-[calc(2.5rem)] pt-3 md:pt-4 leading-[1.2] my-3 md:my-4 w-full transition-all duration-300 ease-in-out">
+                CODA DELIVERS 
+                <span className="hidden sm:inline"><br /></span> DATA INFRASTRUCTURE 
+                <br /> FOR AI ROBOTICS
               </h1>
-              <div className="flex flex-wrap gap-x-8 my-8 font-inter">
+              <div className="flex flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
                 <Link
                   href="/infrastructure"
-                  className="text-black text-[20px] underline underline-offset-4 decoration-[1.5px]"
+                  className="text-black text-[18px] md:text-[20px] underline underline-offset-4 decoration-[1.5px]"
                 >
                   Infrastructure
                 </Link>
                 <Link
                   href="/careers"
-                  className="text-black text-[20px] underline underline-offset-4 decoration-[1.5px]"
+                  className="text-black text-[18px] md:text-[20px] underline underline-offset-4 decoration-[1.5px]"
                 >
                   Join Us
                 </Link>
