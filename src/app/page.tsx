@@ -1,3 +1,5 @@
+'use client';
+
 import '../styles/globals.css';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -24,8 +26,8 @@ export default function Home() {
                 <Link href="/infrastructure/ecot" className="underline underline-offset-2">Embodied Reasoning <span>↗</span></Link>
               </p>
               <h1 className="text-[calc(1.8rem)] sm:text-[calc(2.2rem)] md:text-[calc(2.5rem)] pt-3 md:pt-4 leading-[1.2] my-3 md:my-4 w-full transition-all duration-300 ease-in-out">
-                CODA DELIVERS DATA 
-                <br /> INFRASTRUCTURE 
+                CODA DELIVERS  
+                <br /> DATA INFRASTRUCTURE 
                 <br /> FOR AI ROBOTICS
               </h1>
               <div className="flex flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
@@ -73,6 +75,76 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* TODO: add this back in once have all the notebooks done (x3 of them & ideally x6) */}
+        {/* Build with Coda Section - Commented out for later use */}
+        {/*
+        <section className="mt-16 mb-16">
+          <div className="py-16">
+            <h2 className="text-center text-[28px] md:text-[35px] mb-12">
+              Improve any robotic foundation model with Coda
+            </h2>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {[
+                  { 
+                    title: "OpenVLA", 
+                    desc: "Fine-tune a vision-language model on your robotics data",
+                    link: "/notebooks/openvla"
+                  },
+                  { 
+                    title: "ACT", 
+                    desc: "Fine-tune an action transformer for embodied tasks",
+                    link: "/notebooks/act"
+                  },
+                  { 
+                    title: "Pi-0", 
+                    desc: "Improve reasoning capabilities for planning agents",
+                    link: "/notebooks/pi-0"
+                  },
+                  { 
+                    title: "Gr00t N1", 
+                    desc: "Adapt embodied LLMs for your specific hardware",
+                    link: "/notebooks/gr00t"
+                  },
+                  { 
+                    title: "RDT-1B", 
+                    desc: "Fine-tune diffusion models for robotic applications",
+                    link: "/notebooks/rdt"
+                  },
+                  { 
+                    title: "RT-2", 
+                    desc: "Adapt robotic transformers to new environments",
+                    link: "/notebooks/rt2"
+                  },
+                ].map((item, index) => (
+                  <div 
+                    key={index} 
+                    className="rounded-lg border border-gray-300 bg-transparent hover:shadow-md transition-shadow duration-300 h-[400px] relative"
+                  >
+                    <div className="p-8 flex flex-col h-full">
+                      <div className="mb-auto">
+                        <h3 className="text-2xl font-medium mb-4">{item.title}</h3>
+                        <p className="text-base leading-relaxed">{item.desc}</p>
+                      </div>
+                      
+                      <div className="mt-6 pb-6">
+                        <Link href={item.link} className="text-base font-medium underline underline-offset-4 decoration-1 flex items-center">
+                          Run notebook
+                          <svg className="ml-1 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd" />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+        */}
 
         {/* Highlights Section with image */}
         <section className="mt-8 md:mt-10 px-3 sm:px-6 md:px-10 lg:px-20 flex flex-col md:flex-row">

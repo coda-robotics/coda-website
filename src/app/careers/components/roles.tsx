@@ -1,32 +1,142 @@
 import Link from "next/link";
+import { useEffect } from "react";
 
-export default function Roles() {
+export interface RolesProps {
+  departmentFilter?: string;
+  locationFilter?: string;
+  typeFilter?: string;
+  onFilteredCountChange?: (count: number) => void;
+}
+
+export default function Roles({ 
+  departmentFilter = 'All', 
+  locationFilter = 'All', 
+  typeFilter = 'All',
+  onFilteredCountChange 
+}: RolesProps) {
+  // Extended roles with more information
   const roles = [
-    { title: "RESEARCH ENGINEER, RL", link: "/hiring" },
-    { title: "DATA ENGINEER, INFRASTRUCTURE", link: "/hiring" },
-    { title: "ML ENGINEER, INFRASTRUCTURE", link: "/hiring" },
+    // {
+    //   id: 1,
+    //   title: "Cloud Quant",
+    //   department: "Engineering",
+    //   location: "New York",
+    //   type: "Full time",
+    //   link: "/hiring"
+    // },
+    {
+      id: 2,
+      title: "Member of Technical Staff - Physics Simulation",
+      department: "Engineering",
+      location: "San Francisco",
+      type: "Full time",
+      link: "/hiring"
+    },
+    {
+      id: 3,
+      title: "Member of Technical Staff - Data Engines",
+      department: "Engineering",
+      location: "San Francisco",
+      type: "Full time",
+      link: "/hiring"
+    },
+    {
+      id: 4,
+      title: "Research Engineer, Online RL",
+      department: "Research",
+      location: "San Francisco",
+      type: "Full time",
+      link: "/hiring"
+    },
+    {
+      id: 5,
+      title: "Data Engineer, Infrastructure",
+      department: "Data",
+      location: "San Francisco",
+      type: "Full time",
+      link: "/hiring"
+    },
+    {
+      id: 6,
+      title: "Member of Technical Staff - Robotic World Models",
+      department: "Engineering",
+      location: "San Francisco",
+      type: "Full time",
+      link: "/hiring"
+    },
+    {
+      id: 7,
+      title: "Chief Content Officer",
+      department: "Media",
+      location: "Remote",
+      type: "Full time",
+      link: "/hiring"
+    }
+    // {
+    //   id: 8,
+    //   title: "Technical Writer",
+    //   department: "Documentation",
+    //   location: "Remote",
+    //   type: "Contract",
+    //   link: "/hiring"
+    // }
   ];
 
+  // Apply filters
+  const filteredRoles = roles.filter(role => {
+    const matchesDepartment = departmentFilter === 'All' || role.department === departmentFilter;
+    const matchesLocation = locationFilter === 'All' || role.location.includes(locationFilter);
+    const matchesType = typeFilter === 'All' || role.type === typeFilter;
+    return matchesDepartment && matchesLocation && matchesType;
+  });
+
+  // Update parent component with filtered count
+  useEffect(() => {
+    if (onFilteredCountChange) {
+      onFilteredCountChange(filteredRoles.length);
+    }
+  }, [filteredRoles.length, onFilteredCountChange]);
+
+  // Get unique departments from filtered roles and sort them
+  const departments = [...new Set(filteredRoles.map(role => role.department))].sort();
+
+  // If no roles match the filters
+  if (filteredRoles.length === 0) {
+    return (
+      <div className="text-center py-10">
+        <p className="text-gray-600">No positions match your current filters. Please try different criteria.</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-2xl mx-auto mt-21 text-[15px]">
-      {roles.map((role, idx) => (
-        <div key={role.title} className="flex items-center justify-between py-6 border-b border-black">
-          <span className="coda-font text-[17 px] 2">{role.title}</span>
-          <Link href={role.link} className="coda-font text-[14px]">
-            Apply Now
-          </Link>
-        </div>
-      ))}
-      <Link href="/hiring">
-        <button className="mt-15 bg-black rounded hover:bg-white hover:text-black text-white border mb-4 hover:border-black" style={{
-          height: '34px',
-          width: '101px',
-          fontSize: '14px',
-          letterSpacing: '0px',
-        }}>
-          See More
-        </button>
-      </Link>
+    <div className="w-full">
+      {departments.map(department => {
+        // Get roles for this department
+        const departmentRoles = filteredRoles.filter(role => role.department === department);
+        
+        // Skip empty departments
+        if (departmentRoles.length === 0) return null;
+        
+        return (
+          <div key={department} className="mb-8">
+            <h2 className="text-2xl font-medium mb-6 coda-font">{department}</h2>
+            
+            {departmentRoles.map(role => (
+              <div key={role.id} className="border-b border-gray-200 py-5">
+                <div className="flex flex-col">
+                  <Link href={role.link} className="text-lg font-medium hover:underline">
+                    {role.title}
+                  </Link>
+                  <div className="text-sm text-gray-600 mt-1">
+                    {department} • {role.location} • {role.type}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+      })}
     </div>
   );
 }

@@ -16,6 +16,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import StayUpdated from '@components/footer_nav/stay_update';
 import ExternalLinks from '@components/footer_nav/external_links';
+import ApplicationModal from '@components/ApplicationModal';
 
 // Import video assets
 
@@ -565,6 +566,9 @@ const Reason = () => {
   // State for tracking the show reasoning modal
   const [showReasoningModal, setShowReasoningModal] = useState(false);
 
+  // Add state for application modal
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
+
   return (
     <div className="min-h-screen">
 
@@ -599,7 +603,8 @@ const Reason = () => {
           
           <div className="mb-10">
             <button 
-              className="bg-black hover:bg-white px-5 py-2 text-white hover:text-black text-sm border border-black transition-colors"
+              onClick={() => setShowApplicationModal(true)}
+              className="bg-black hover:bg-white px-5 py-2 text-white hover:text-black text-sm border border-black transition-colors cursor-pointer"
               style={{ 
                 borderRadius: '4px',
                 boxShadow: '1px 1px 0px rgba(0,0,0,0.5)'
@@ -1255,7 +1260,12 @@ const Reason = () => {
       </div>
       
 
-      {/* Render the modal */}
+      {/* Render the application modal */}
+      {showApplicationModal && (
+        <ApplicationModal onClose={() => setShowApplicationModal(false)} />
+      )}
+
+      {/* Render the video modal */}
       <VideoModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 

@@ -16,9 +16,9 @@ export default function WhyCodaPage() {
         <div className="flex min-h-screen">
             <SideNav />
             
-            <main className="flex-1 pl-4 sm:pl-20 md:pl-24 lg:pl-32">
+            <main className="flex-1 pl-4 sm:pl-20 md:pl-24 lg:pl-32 xl:pl-40">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="relative px-0 sm:px-4 md:px-8 lg:px-32">
+                    <div className="relative px-0 sm:px-6 md:px-8 lg:px-40">
                         {/* Main Heading */}
                         <div className="mb-10 sm:mb-20">
                             <h1 className="coda-font text-[32px] sm:text-[40px] mb-6 sm:mb-8 mt-6 sm:mt-8 px-0">Why Build Coda Robotics?</h1>
@@ -91,7 +91,7 @@ export default function WhyCodaPage() {
                         </div>
 
                         {/* CODA Logo */}
-                        <div className="w-full max-w-[800px] md:max-w-[780px] mx-0 px-0 mb-10 sm:mb-16">
+                        <div className="w-full max-w-[800px] md:max-w-[780px] mx-auto px-0 mb-10 sm:mb-16 flex justify-center">
                             <img
                                 src="/coda3d.png" 
                                 alt="CODA Logo"
