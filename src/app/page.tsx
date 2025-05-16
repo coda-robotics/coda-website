@@ -93,7 +93,7 @@ export default function Home() {
               <li className="border-b pb-4 w-[95%]">
                 <div className="pb-[4px]">
                   <Link href="/why-coda" className="block w-full text-[18px]">
-                    Why Build CODA?
+                    Why Build Coda Robotics?
                   </Link>
                 </div>
                 <p className="text-gray-600 text-sm pb-[2px]">

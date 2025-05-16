@@ -27,7 +27,7 @@ export default function Careers_Section() {
               We are an ambitious group of researchers and engineers working to deliver durable data infrastructure to power the future of embodied intelligence.
             </p>
             <p>
-              We’re hiring cross-domain high agency researchers & engineers who want to be a part of the future of embodied AI, at CODA HQ in San Francisco, CA.
+              We’re hiring cross-domain high agency researchers & engineers who want to be a part of the future of embodied AI, at Coda HQ in San Francisco, CA.
             </p>
             <p>
               The opportune moment to build the next generation of robotics is now. Join us!

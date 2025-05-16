@@ -75,7 +75,7 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
             fill
             className="object-contain transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="absolute left-4 bottom-4 text-black">
+          <div className="absolute left-4 bottom-[24%] text-black z-10">
             <time className="coda-font text-[clamp(5px,2vw,14px)]">{featuredSide1.date}</time>
             <h3 className="mt-1 max-w-[75%] coda-font text-[clamp(5px,5vw,22px)] leading-none">
               {featuredSide1.title}

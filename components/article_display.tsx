@@ -15,7 +15,7 @@ export default function ArticleDisplay({ title, date, content, image_url }: Arti
             <header className="mb-8">
                 <h1 className="text-4xl font-bold mb-4 coda-font">{title}</h1>
                 <div className="text-gray-600 mb-6">
-                    <span>CODA Lab</span>
+                    <span>Coda Robotics Lab</span>
                     <span className="mx-2">•</span>
                     <span>{date}</span>
                 </div>

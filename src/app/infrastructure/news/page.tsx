@@ -107,7 +107,7 @@ function NewsPage() {
                                         {featuredArticle.title}
                                     </h2>
                                     <div className="text-gray-600 mb-4">
-                                        <span>CODA Lab</span>
+                                        <span>Coda Robotics Lab</span>
                                         <span className="mx-2">•</span>
                                         <span>{featuredArticle.date}</span>
                                     </div>
@@ -139,7 +139,7 @@ function NewsPage() {
                                             {article.title}
                                         </h3>
                                         <div className="text-gray-600 text-sm mb-3">
-                                            <span>CODA Lab</span>
+                                            <span>Coda Robotics Lab</span>
                                             <span className="mx-2">•</span>
                                             <span>{article.date}</span>
                                         </div>

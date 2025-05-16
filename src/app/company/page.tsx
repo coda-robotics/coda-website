@@ -65,10 +65,10 @@ export default function CompanyPage() {
                         {/* Mission Section */}
                         <div className="mb-16">
                             <p className="text-[15px] mt-6">
-                                <Link href="/why-coda" className="underline underline-offset-2">Why Build CODA <span>↗</span></Link>
+                                <Link href="/why-coda" className="underline underline-offset-2">Why Build Coda Robotics <span>↗</span></Link>
                             </p>
                             <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">MISSION</h1>
-                            <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}>CODA was founded on the belief that robotic foundation models are missing two key principles behind NLP and vision breakthroughs: positive transfer from scale and scalable evaluations. We're building durable infrastructure to enable roboticists to achieve similar breakthroughs.</h2>
+                            <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}>Coda Robotics was founded on the belief that robotic foundation models are missing two key principles behind NLP and vision breakthroughs: positive transfer from scale and scalable evaluations. We're building durable infrastructure to enable roboticists to achieve similar breakthroughs.</h2>
                             <div
                                 style={{
                                 fontFamily: 'Inter, sans-serif',
