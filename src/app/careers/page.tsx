@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Roles from "./components/roles";
 
 // Import the RolesProps type to ensure consistency
 import type { RolesProps } from "./components/roles";
 
-export default function Careers_Section() {
+function CareersContent() {
   const searchParams = useSearchParams();
   
   // Get department from URL if available
@@ -125,5 +125,13 @@ export default function Careers_Section() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function Careers_Section() {
+  return (
+    <Suspense fallback={<div className="max-w-[65rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">Loading careers...</div>}>
+      <CareersContent />
+    </Suspense>
   );
 }
