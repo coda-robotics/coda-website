@@ -638,7 +638,7 @@ const Reason = () => {
 
             {/* Model Performance Comparison Chart Section */}
             <div className="mt-12 mb-8">
-              <h3 className=" text-xl font-medium mb-4">VLA Performance Improvements</h3>
+              <h3 className=" text-xl font-medium mb-4">Robot Reasoning Improves Policies</h3>
               
               {/* "R" Suffix Explanation Box */}
               <div className="flex mb-6">

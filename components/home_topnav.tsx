@@ -122,32 +122,38 @@ export function TopNav() {
         {activeDropdown === 'infrastructure' && (
           <div className="pb-4">
             <div className="px-4 sm:px-8 mt-2">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:divide-x divide-gray-300 md:bg-transparent bg-gray-100 rounded-lg">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:divide-x divide-gray-300 md:bg-transparent bg-gray-100 rounded-lg">
                 {/* Embodied Reasoning */}
                 <Link 
                   href="/infrastructure/ecot" 
                   className="block p-6 rounded-l-lg hover:bg-gray-200"
                 >
                   <div className="font-medium text-gray-800 mb-2">Embodied Reasoning</div>
-                  <p className="text-sm text-gray-600">Allow your foundation model to iteratively reason over complex tasks</p>
+                  <p className="text-sm text-gray-600">Improve your robot polciies by adding reasoning to your datasets</p>
                 </Link>
-                
-                {/* VLA Arena */}
+                {/* SMCP */}
                 <Link 
-                  href="/vla_arena" 
+                  href="#" 
                   className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
                 >
-                  <div className="font-medium text-gray-800 mb-2">VLA Arena</div>
-                  <p className="text-sm text-gray-600">Easily setup head-to-head model evaluations in an in-browser physics simulation</p>
+                  <div className="font-medium text-gray-800 mb-2">SMCP</div>
+                  <p className="text-sm text-gray-600">Co-design your physics simulation environments 20x faster using our MCP</p>
                 </Link>
-                
                 {/* Digital Cousins */}
                 <Link 
                   href="/digital_cousins" 
-                  className="block p-6 rounded-r-lg hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
+                  className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
                 >
                   <div className="font-medium text-gray-800 mb-2">Digital Cousins</div>
-                  <p className="text-sm text-gray-600">Scale your data to unlocl positive transfer from scale</p>
+                  <p className="text-sm text-gray-600">Scale your teleoperation data with increased diversity</p>
+                </Link>
+                {/* VLA Arena */}
+                <Link 
+                  href="/vla_arena" 
+                  className="block p-6 rounded-r-lg hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
+                >
+                  <div className="font-medium text-gray-800 mb-2">VLA Arena</div>
+                  <p className="text-sm text-gray-600">Evaluate robot policies head-to-head in an in-browser physics simulation</p>
                 </Link>
               </div>
             </div>
@@ -218,7 +224,7 @@ export function TopNav() {
                   href="/company" 
                   className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
                 >
-                  <div className="font-medium text-gray-800 mb-2">Mission, Values, Culture, Core Values</div>
+                  <div className="font-medium text-gray-800 mb-2">Mission, Vision, Culture, Core Values</div>
                   <p className="text-sm text-gray-600">Understand our way of approaching hard problems</p>
                 </Link>
                 

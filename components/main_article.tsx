@@ -8,16 +8,18 @@ interface MainArticle {
   title: string;
   image_url: string | StaticImageData;
   href: string;
+  description?: string;
 }
 
-export default function Main_Article({ date, title, image_url, href }: MainArticle) {
+export default function Main_Article({ date, title, image_url, href, description }: MainArticle) {
   return (
     <Link href={href} className="block group">
       <div
         className="
           relative
           w-full
-          sm:max-w-[450px]
+          sm:max-w-[540px]
+          sm:aspect-[1/1.3]
           aspect-square
           overflow-hidden
           bg-gray-100
@@ -28,15 +30,21 @@ export default function Main_Article({ date, title, image_url, href }: MainArtic
           src={image_url}
           alt={title}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-[5px] hover:rounded-[5px]"
+          className="object-cover rounded-[5px]"
           priority
         />
-        <div className="absolute left-4 bottom-4 text-black">
-          <time className="coda-font text-[clamp(12px,2vw,16px)]">{date}</time>
-          <h3 className="mt-1 max-w-[75%] coda-font text-[clamp(10px,5vw,30px)] leading-none">
+        <div className="absolute left-4 bottom-10 text-white">
+          <time className="text-[clamp(5px,2vw,14px)] font-normal">{date}</time>
+          <h3 className="mt-1 max-w-full whitespace-nowrap font-normal text-[clamp(5px,5vw,22px)] leading-none text-white">
             {title}
           </h3>
+          {description && (
+            <p className="mt-1 text-white text-[clamp(8px,2vw,16px)] font-normal whitespace-normal">
+              {description}
+            </p>
+          )}
         </div>
+        <span className="absolute left-4 bottom-3 text-white text-base select-none">↗</span>
       </div>
     </Link>
   );
