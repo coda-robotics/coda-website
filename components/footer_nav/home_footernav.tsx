@@ -18,9 +18,11 @@ export function FooterNav() {
     return null;
   }
   
+  const isContentPage = pathname === '/careers' || pathname === '/company';
+
   return (
-    <footer className="text-black px-3 sm:px-15 pt-10 mb-14">
-     <div className="max-w-[62rem] w-full mx-auto px-4 sm:px-6 lg:px-28">
+    <footer className={`text-black px-3 sm:px-15 pt-10 mb-14 ${isContentPage ? 'max-w-[65rem] mx-auto px-4 sm:px-6 lg:px-8' : ''}`}>
+     <div className={`w-full mx-auto ${isContentPage ? 'px-0' : 'max-w-[62rem] px-4 sm:px-6 lg:px-28'}`}>
         <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-40">
           {/* Email subscription section */}
           <div className="w-full md:w-1/2 flex md:justify-end">

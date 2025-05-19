@@ -133,7 +133,7 @@ export function TopNav() {
                 </Link>
                 {/* SMCP */}
                 <Link 
-                  href="#" 
+                  href="/smcp" 
                   className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
                 >
                   <div className="font-medium text-gray-800 mb-2">SMCP</div>
@@ -145,7 +145,7 @@ export function TopNav() {
                   className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
                 >
                   <div className="font-medium text-gray-800 mb-2">Digital Cousins</div>
-                  <p className="text-sm text-gray-600">Scale your teleoperation data with increased diversity</p>
+                  <p className="text-sm text-gray-600">Scale your teleoperation data at the lowest costs</p>
                 </Link>
                 {/* VLA Arena */}
                 <Link 

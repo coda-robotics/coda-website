@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import SideNav from '@components/side_nav';
 import { useState } from 'react';
 
 export default function WhyCodaPage() {
@@ -13,10 +12,8 @@ export default function WhyCodaPage() {
     };
 
     return (
-        <div className="flex min-h-screen">
-            <SideNav />
-            
-            <main className="flex-1 pl-4 sm:pl-20 md:pl-24 lg:pl-32 xl:pl-40">
+        <div className="min-h-screen">
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="relative px-0 sm:px-6 md:px-8 lg:px-40">
                         {/* Main Heading */}

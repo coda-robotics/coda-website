@@ -58,6 +58,9 @@ export default function Home() {
                 <a href="https://www.linkedin.com/in/juliansaks/" target="_blank" rel="noopener noreferrer">
                   <img src="/linkedinlogo.png" alt="LinkedIn logo" className="w-6 h-6" />
                 </a>
+                <a href="https://huggingface.co/Coda-Robotics" target="_blank" rel="noopener noreferrer">
+                  <img src="/hf.png" alt="Hugging Face logo" className="w-6 h-6" />
+                </a>
               </div>
             </div>
 
