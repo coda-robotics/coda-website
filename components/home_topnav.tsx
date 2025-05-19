@@ -137,7 +137,7 @@ export function TopNav() {
                   className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
                 >
                   <div className="font-medium text-gray-800 mb-2">SMCP</div>
-                  <p className="text-sm text-gray-600">Co-design your physics simulation environments 20x faster using our MCP</p>
+                  <p className="text-sm text-gray-600">Co-design your environments 20x faster using our simulation MCP</p>
                 </Link>
                 {/* Digital Cousins */}
                 <Link 
@@ -153,7 +153,7 @@ export function TopNav() {
                   className="block p-6 rounded-r-lg hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
                 >
                   <div className="font-medium text-gray-800 mb-2">VLA Arena</div>
-                  <p className="text-sm text-gray-600">Evaluate robot policies head-to-head in an in-browser physics simulation</p>
+                  <p className="text-sm text-gray-600">Evaluate VLAs head-to-head in an in-browser physics simulation</p>
                 </Link>
               </div>
             </div>
@@ -216,7 +216,7 @@ export function TopNav() {
                   className="block p-6 rounded-l-lg hover:bg-gray-200"
                 >
                   <div className="font-medium text-gray-800 mb-2">Why Build Coda Robotics</div>
-                  <p className="text-sm text-gray-600">Read why we're doubling down on infrastructure for AI Robotics</p>
+                  <p className="text-sm text-gray-600">Understand why we're doubling down on infrastructure for AI Robotics</p>
                 </Link>
                 
                 {/* Mission, Values, Culture, Core Values (previously Team) */}

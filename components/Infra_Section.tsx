@@ -107,9 +107,9 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
       component: <SideArticle
         title="SMCP"
         date={''}
-        image_url={'/article_images/vla-arena.png'}
+        image_url={'/article_images/SMCP.png'}
         href={'#'}
-        description="Co-design your physics simulation environments 20x faster using our MCP"
+        description="Co-design your environments 20x faster using our simulation MCP"
       />
     },
     {
@@ -119,7 +119,7 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
       component: <SideArticle
         title={featuredSide2.title}
         date={featuredSide2.date}
-        image_url={'/article_images/embodied-reasoning.png'}
+        image_url={'/article_images/Digital Cousins.png'}
         href={featuredSide2.href}
         description="Scale your teleoperation data with increased diversity"
       />
@@ -133,7 +133,7 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
         date={featuredSide1.date}
         image_url={'/article_images/vla-arena.png'}
         href={featuredSide1.href}
-        description="Evaluate robot policies head-to-head in an in-browser physics simulation"
+        description="Evaluate VLAs head-to-head in an in-browser physics simulation"
       />
     }
   ];
