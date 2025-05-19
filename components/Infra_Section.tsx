@@ -4,7 +4,6 @@ import '@/styles/globals.css'
 import { useState, useEffect, useRef } from 'react';
 import MainArticle from '@components/main_article';
 import SideArticle from '@components/side_article';
-import SideNav from '@components/side_nav';
 import StayUpdated from '@components/footer_nav/stay_update';
 import ExternalLinks from '@components/footer_nav/external_links';
 import Image from 'next/image';
@@ -26,6 +25,7 @@ interface Infra_SectionProps {
 
 export default function Infra_Section({ featuredMain, featuredSide1, featuredSide2 }: Infra_SectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedFilter, setSelectedFilter] = useState('All');
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const slideContainerRef = useRef<HTMLDivElement>(null);
@@ -86,103 +86,148 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
     );
   };
 
-  // Array of articles for easier rendering on mobile
-  const articles = [
+  // List of all articles with new filter categories
+  const allArticles = [
     {
-      component: 
-        <MainArticle
-          date={featuredMain.date}
-          title={featuredMain.title}
-          image_url={featuredMain.image}
-          href={featuredMain.href}
-        />
+      type: 'main',
+      title: featuredMain.title,
+      filter: 'Data Engines',
+      component: <MainArticle
+        date={featuredMain.date}
+        title={featuredMain.title}
+        image_url={'/article_images/embodied-reasoning.png'}
+        href={featuredMain.href}
+        description="Improve your robot polciies by adding reasoning to your datasets"
+      />
     },
     {
-      component: currentIndex === 1 ? 
-        <CustomVLAComponent /> :
-        <SideArticle
-          title={featuredSide1.title}
-          date={featuredSide1.date}
-          image_url={featuredSide1.image}
-          href={featuredSide1.href}
-        />
+      type: 'tooling',
+      title: 'SMCP',
+      filter: 'Tooling',
+      component: <SideArticle
+        title="SMCP"
+        date={''}
+        image_url={'/article_images/SMCP.png'}
+        href={'#'}
+        description="Co-design your environments 20x faster using our simulation MCP"
+      />
     },
     {
-      component: 
-        <SideArticle
-          title={featuredSide2.title}
-          date={featuredSide2.date}
-          image_url={featuredSide2.image}
-          href={featuredSide2.href}
-        />
+      type: 'side2',
+      title: featuredSide2.title,
+      filter: 'Data Engines',
+      component: <SideArticle
+        title={featuredSide2.title}
+        date={featuredSide2.date}
+        image_url={'/article_images/Digital Cousins.png'}
+        href={featuredSide2.href}
+        description="Scale your teleoperation data with increased diversity"
+      />
+    },
+    {
+      type: 'side1',
+      title: featuredSide1.title,
+      filter: 'Evaluations',
+      component: <SideArticle
+        title={featuredSide1.title}
+        date={featuredSide1.date}
+        image_url={'/article_images/vla-arena.png'}
+        href={featuredSide1.href}
+        description="Evaluate VLAs head-to-head in an in-browser physics simulation"
+      />
     }
   ];
 
+  // Filtered articles for desktop
+  const filteredArticles = selectedFilter === 'All'
+    ? allArticles
+    : allArticles.filter(article => article.filter === selectedFilter);
+
+  // Pagination for mobile carousel
+  const articlesPerPage = 3;
+  const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+  const [carouselPage, setCarouselPage] = useState(0);
+  const pagedArticles = filteredArticles.slice(carouselPage * articlesPerPage, (carouselPage + 1) * articlesPerPage);
+
   return (
     <div className="flex min-h-fit">
-      <SideNav />
-      
-      <main className="flex-1 pl-3 sm:pl-32">
-        <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 mb-20">
-          <div className="relative px-3 sm:px-6 md:px-8 lg:px-50">
+      <main className="flex-1">
+        <section className="max-w-[65rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="relative">
             <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out text-left">
               INFRASTRUCTURE
             </h1>
 
+            {/* Filter pill buttons */}
+            <div className="mb-8 flex flex-wrap gap-4">
+              {[
+                { label: 'All', value: 'All' },
+                { label: 'Data Engines', value: 'Data Engines' },
+                { label: 'Evaluations', value: 'Evaluations' },
+                { label: 'Tooling', value: 'Tooling' },
+              ].map(option => (
+                <button
+                  key={option.value}
+                  onClick={() => setSelectedFilter(option.value)}
+                  className={`px-5 py-2 rounded-lg border transition-colors duration-200 focus:outline-none font-normal text-base
+                    ${selectedFilter === option.value
+                      ? 'border-black bg-white text-black'
+                      : 'border-gray-400 bg-white text-black hover:bg-gray-100'}
+                  `}
+                  style={{ minWidth: 'fit-content' }}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+
             {/* Mobile view - Show only current article with swipe */}
             <div className="sm:hidden">
-              <div 
-                ref={slideContainerRef}
-                className="mx-auto max-w-[95%] overflow-hidden"
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-              >
-                {articles[currentIndex].component}
-              </div>
-              
-              {/* Dots navigation */}
-              <div className="flex justify-center mt-4 space-x-3">
-                {articles.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleDotClick(index)}
-                    className={`h-2 w-2 rounded-full transition-all ${
-                      currentIndex === index ? 'bg-black w-4' : 'bg-gray-300'
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
+              {filteredArticles.length === 0 ? (
+                <div className="text-center py-10 text-gray-600">
+                  We're busy cooking something up! 
+                </div>
+              ) : (
+                <>
+                  <div className="mx-auto max-w-[95%] overflow-hidden">
+                    {pagedArticles.map((article, idx) => (
+                      <div key={idx}>{article.component}</div>
+                    ))}
+                  </div>
+                  {/* Page number navigation */}
+                  {totalPages > 1 && (
+                    <div className="flex justify-center mt-4 space-x-2">
+                      {Array.from({ length: totalPages }).map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCarouselPage(idx)}
+                          className={`px-2 py-1 rounded-full border ${carouselPage === idx ? 'bg-black text-white border-black' : 'bg-white text-black border-gray-400'}`}
+                        >
+                          {idx + 1}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
             </div>
 
             {/* Original grid layout at sm and above */}
-            <div className="hidden sm:grid grid-cols-[3fr_2fr] gap-6">
-              <MainArticle
-                date={featuredMain.date}
-                title={featuredMain.title}
-                image_url={featuredMain.image}
-                href={featuredMain.href}
-              />
-              <div className="space-y-7">
-                <SideArticle
-                  title={featuredSide1.title}
-                  date={featuredSide1.date}
-                  image_url={featuredSide1.image}
-                  href={featuredSide1.href}
-                />
-                <SideArticle
-                  title={featuredSide2.title}
-                  date={featuredSide2.date}
-                  image_url={featuredSide2.image}
-                  href={featuredSide2.href}
-                />
-              </div>
+            <div className="hidden sm:grid grid-cols-3 gap-6">
+              {filteredArticles.length === 0 ? (
+                <div className="col-span-3 text-center py-10 text-gray-600">
+                  We're busy cooking something up! 
+                </div>
+              ) : (
+                filteredArticles.map((article, idx) => (
+                  <div key={idx}>{article.component}</div>
+                ))
+              )}
             </div>
           </div>
           
           {/* Footer section - aligned with content above */}
-          <div className="relative px-3 sm:px-6 md:px-8 lg:px-50 mt-20">
+          <div className="relative mt-20">
             <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-20">
               {/* Email subscription section */}
               <div className="w-full md:w-1/2">
@@ -195,7 +240,7 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
               </nav>
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );
