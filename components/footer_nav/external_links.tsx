@@ -9,14 +9,17 @@ export default function ExternalLinks() {
         <Link href="/infrastructure" className="hover:underline underline-offset-4 text-gray-600">
           INFRASTRUCTURE 
         </Link>
-        <Link href="/careers" className="hover:underline underline-offset-4 text-gray-600">
-          CAREERS
+        <Link href="https://huggingface.co/Coda-Robotics" target="_blank" className="hover:underline underline-offset-4 text-gray-600">
+          DATASETS
         </Link>
         <Link href="/company" className="hover:underline underline-offset-4 text-gray-600">
           COMPANY
         </Link>
       </div>
       <div className="flex flex-col space-y-4 ml-1 sm:ml-0">
+        <Link href="/careers" className="hover:underline underline-offset-4 text-gray-600">
+          CAREERS
+        </Link>
         <Link href="https://www.linkedin.com/in/juliansaks/" target="_blank" className="hover:underline underline-offset-4 text-gray-600">
           LINKEDIN
         </Link>

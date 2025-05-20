@@ -13,6 +13,9 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/coda3d.png" type="image/png" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <AnnouncementBar />
         <Suspense fallback={<div className="w-full pt-4 sm:pt-6 px-4 h-[60px]">Loading...</div>}>
