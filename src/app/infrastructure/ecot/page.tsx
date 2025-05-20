@@ -615,12 +615,11 @@ const Reason = () => {
           </div>
           
           <div className="space-y-6  text-base">
-            <p>
-            Introducing <strong>Embodied Reasoning</strong>, a dataset kit that enhances Vision-Language-Action (VLA) 
-            models with reasoning capabilities. While VLAs already leverage vision-language models (VLMs) 
-            for improved generalization, naive chain-of-thought techniques often fail in physical domains due to the 
-            embodiment gap. Our dataset kit bridges this gap by enabling robots to reason through complex tasks, 
-            considering plans, subtasks, and spatial relationships before action execution. Our kit, applicable to both open-source and proprietary datasets, has achieved <strong>SOTA results </strong>
+            {/*  to change to Bridge-v2 */}
+            <p className="text-[18px]">
+            Introducing <strong>Embodied Reasoning</strong>, a data engine that adds reasoning to robotic datasets. Training on reasoning data 
+            allows the model to iteratively reason about intermediate representations over complex tasks before choosing actions. This improves the generalization and performance of vision-language-action (VLA) models. 
+            Our engine, applicable to both open-source and proprietary datasets, has achieved <strong>SOTA results </strong>
             on <a href="https://vlabench.github.io/" className="underline hover:no-underline">VLA Bench</a> with significant policy improvements.
             </p>
             

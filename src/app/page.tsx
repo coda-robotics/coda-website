@@ -44,12 +44,10 @@ export default function Home() {
                   Join Us
                 </Link>
               </div>
-              <p className="text-[18px] mb-10 leading-[2] w-full sm:w-[540px] transition-all duration-300 ease-in-out">
-                Build better robotic foundation models faster. 
+              <p className="text-[22px] mb-10 leading-[2] w-full sm:w-[540px] transition-all duration-300 ease-in-out">
+                Data infrastructure to build better
                 <br />
-                CODA builds data infrastructure to power the
-                <br />
-                next generation of generalist embodied agents.
+                robotic foundation models faster.
               </p>
               <div className="flex space-x-4">
                 <a href="https://x.com/juliansaks" target="_blank" rel="noopener noreferrer">
@@ -189,12 +187,12 @@ export default function Home() {
               
               <li className="border-b pb-4 w-[95%]">
                 <div className="pb-[4px]">
-                  <Link href="/vla_arena" className="block w-full text-[18px]">
-                    VLA Arena
+                  <Link href="/robotic_world_models" className="block w-full text-[18px]">
+                    Robotic World Models
                   </Link>
                 </div>
                 <p className="text-gray-600 text-sm pb-[2px]">
-                  Evaluate VLA models head-to-head 
+                  Scale your teleoperation data at the lowest costs
                 </p>
               </li>
             </ul>

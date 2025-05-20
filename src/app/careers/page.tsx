@@ -83,7 +83,7 @@ function CareersContent() {
                 <option value="All">Department</option>
                 <option value="Engineering">Engineering</option>
                 <option value="Research">Research</option>
-                <option value="Data">Data</option>
+                <option value="Product">Product</option>
                 <option value="Media">Media</option>
               </select>
             </div>

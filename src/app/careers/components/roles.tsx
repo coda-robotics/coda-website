@@ -25,8 +25,16 @@ export default function Roles({
     //   link: "/hiring"
     // },
     {
+      id: 1,
+      title: "Department Lead - Robotic World Models",
+      department: "Engineering",
+      location: "San Francisco",
+      type: "Full time",
+      link: "/hiring"
+    },
+    {
       id: 2,
-      title: "Member of Technical Staff - Physics Simulation",
+      title: "Department Lead - Embodied Reasoning",
       department: "Engineering",
       location: "San Francisco",
       type: "Full time",
@@ -34,7 +42,7 @@ export default function Roles({
     },
     {
       id: 3,
-      title: "Member of Technical Staff - Data Engines",
+      title: "Department Lead - Data Weighting",
       department: "Engineering",
       location: "San Francisco",
       type: "Full time",
@@ -42,33 +50,41 @@ export default function Roles({
     },
     {
       id: 4,
-      title: "Research Engineer, Online RL",
-      department: "Research",
-      location: "San Francisco",
-      type: "Full time",
-      link: "/hiring"
-    },
-    {
-      id: 5,
-      title: "Data Engineer, Infrastructure",
-      department: "Data",
-      location: "San Francisco",
-      type: "Full time",
-      link: "/hiring"
-    },
-    {
-      id: 6,
-      title: "Member of Technical Staff - Robotic World Models",
+      title: "Department Lead - Evaluations",
       department: "Engineering",
       location: "San Francisco",
       type: "Full time",
       link: "/hiring"
     },
     {
-      id: 7,
-      title: "Chief Content Officer",
+      id: 5,
+      title: "Infrastructure Engineer",
+      department: "Engineering",
+      location: "San Francisco",
+      type: "Full time",
+      link: "/hiring"
+    },
+    {
+      id: 6,
+      title: "Chief Media Officer",
       department: "Media",
-      location: "Remote",
+      location: "San Francisco",
+      type: "Full time",
+      link: "/hiring"
+    }, 
+    {
+      id: 7,
+      title: "Chief Product Officer",
+      department: "Product",
+      location: "San Francisco",
+      type: "Full time",
+      link: "/hiring"
+    },
+    {
+      id: 8,
+      title: "Research Lead - Online RL",
+      department: "Research",
+      location: "San Francisco",
       type: "Full time",
       link: "/hiring"
     }
