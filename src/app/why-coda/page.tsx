@@ -100,7 +100,7 @@ export default function WhyCodaPage() {
                         <div className="mb-10 sm:mb-20 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0" style={{ fontFamily: 'Inter, sans-serif' }}>
                             <div className="mb-6 sm:mb-10">
                                 <p className="text-base sm:text-lg mb-5 sm:mb-6">
-                                Given the current robotics data pyramid, we see a clear need to build scalable data engines that support positive transfer. These engines will focus on two priorities: enhancing data quality and increasing quantity, while maintaining high diversity. Explore our Data Engines here. In parallel, we're investing much of our resources to build durable tooling at the data layer to manage the larger datasets we expect in the future.
+                                Given the current robotics data pyramid, we see a clear need to build scalable data engines that support positive transfer. These engines will focus on two priorities: enhancing data quality and increasing quantity, while maintaining high diversity. Explore our data engines <Link href="/infrastructure" className="text-blue-600 hover:underline">here</Link>. In parallel, we're investing much of our resources to build durable tooling at the data layer to manage the larger datasets we expect in the future.
                                 </p>
 
                                 <p className="text-base sm:text-lg mb-5">

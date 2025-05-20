@@ -1,5 +1,5 @@
 ---
-title: "Digital Cousins"
+title: "Robotic World Models"
 # date: "May 1st, 2025"
 shortDescription: "Expanding synthetic data pipelines for VLA training"
 link: "digital_cousins"

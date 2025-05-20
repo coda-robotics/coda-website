@@ -139,12 +139,12 @@ export function TopNav() {
                   <div className="font-medium text-gray-800 mb-2">SMCP</div>
                   <p className="text-sm text-gray-600">Co-design your environments 20x faster using our simulation MCP</p>
                 </Link>
-                {/* Digital Cousins */}
+                {/* Robotic World Models */}
                 <Link 
                   href="/digital_cousins" 
                   className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
                 >
-                  <div className="font-medium text-gray-800 mb-2">Digital Cousins</div>
+                  <div className="font-medium text-gray-800 mb-2">Robotic World Models</div>
                   <p className="text-sm text-gray-600">Scale your teleoperation data at the lowest costs</p>
                 </Link>
                 {/* VLA Arena */}

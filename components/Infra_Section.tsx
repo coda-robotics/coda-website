@@ -117,10 +117,10 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
       title: featuredSide2.title,
       filter: 'Data Engines',
       component: <SideArticle
-        title={featuredSide2.title}
-        date={featuredSide2.date}
-        image_url={'/article_images/Digital Cousins.png'}
-        href={featuredSide2.href}
+        title="Robotic World Models"
+        date={''}
+        image_url={'/article_images/Robotic World Models.png'}
+        href={'/robotic_world_models'}
         description="Scale your teleoperation data at the lowest costs"
       />
     },

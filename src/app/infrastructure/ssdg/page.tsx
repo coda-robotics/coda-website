@@ -599,7 +599,7 @@ const Reason = () => {
           {/* Heading with consistent spacing */}
           <div className="mb-12 mt-8">
             <h1 className="bw-gradual-heading research-heading">
-              <span>Digital Cousins</span>
+              <span>Robotic World Models</span>
             </h1>
           </div>
           
