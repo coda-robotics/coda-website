@@ -1,10 +1,93 @@
 'use client';
 
+import { useEffect } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import posthog from 'posthog-js';
 import '../styles/globals.css';
 import Head from 'next/head';
 import Link from 'next/link';
 
+// Track page view
+function TrackPageView() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (pathname) {
+      let url = window.origin + pathname;
+      const search = searchParams.toString();
+      if (search) {
+        url += '?' + search;
+      }
+      posthog.capture('$pageview', {
+        $current_url: url,
+        page_title: document.title,
+        page_path: pathname,
+      });
+      
+      // Track main page view as a custom event
+      if (pathname === '/') {
+        posthog.capture('home_page_viewed', {
+          referrer: document.referrer,
+          url: window.location.href,
+        });
+      }
+    }
+  }, [pathname, searchParams]);
+
+  return null;
+}
+
+// Track button clicks
+type TrackedButtonProps = {
+  children: React.ReactNode;
+  eventName: string;
+  eventProperties?: Record<string, any>;
+  onClick?: () => void;
+  className?: string;
+};
+
+const TrackedButton = ({
+  children,
+  eventName,
+  eventProperties = {},
+  onClick,
+  className = '',
+  ...props
+}: TrackedButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    posthog.capture(eventName, {
+      ...eventProperties,
+      element: (e.target as HTMLElement).textContent,
+      timestamp: new Date().toISOString(),
+    });
+    onClick?.(e);
+  };
+
+  return (
+    <button className={className} onClick={handleClick} {...props}>
+      {children}
+    </button>
+  );
+};
+
 export default function Home() {
+  // Track CTA button click
+  const handleCtaClick = () => {
+    posthog.capture('cta_button_clicked', {
+      button_text: 'Get Started',
+      location: 'hero_section',
+    });
+  };
+
+  // Track navigation link clicks
+  const trackNavClick = (linkName: string) => {
+    posthog.capture('navigation_link_clicked', {
+      link_name: linkName,
+      page_url: window.location.pathname,
+    });
+  };
+
   return (
     <div className="text-black font-inter">
       <Head>
