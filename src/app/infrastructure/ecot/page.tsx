@@ -11,7 +11,8 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend
+  Legend,
+  Cell
 } from "recharts";
 import { motion, AnimatePresence } from 'framer-motion';
 import StayUpdated from '@components/footer_nav/stay_update';
@@ -295,31 +296,14 @@ const Reason = () => {
   // Performance comparison data for various models
   const modelPerformanceData = [
     {
-      task: "Select Book",
-      openVLA: 0.28,
-      openVLAR: 0.37,
-      rt2: 0.26,
-      rt2R: 0.37,
-      octo: 0.21,
-      octoR: 0.28
+      model: "OpenVLA",
+      value: 0.38,
+      color: "#A3CFFA"
     },
     {
-      task: "Add Condiment",
-      openVLA: 0.22,
-      openVLAR: 0.29,
-      rt2: 0.31,
-      rt2R: 0.40,
-      octo: 0.19,
-      octoR: 0.25
-    },
-    {
-      task: "Select Drink",
-      openVLA: 0.23,
-      openVLAR: 0.30,
-      rt2: 0.38,
-      rt2R: 0.50,
-      octo: 0.19,
-      octoR: 0.25
+      model: "OpenVLA Reasoning",
+      value: 0.65,
+      color: "#36b4ff"
     }
   ];
 
@@ -648,118 +632,77 @@ const Reason = () => {
                     boxShadow: '1px 1px 0px rgba(0,0,0,0.5)'
                   }}
                 >
-                  VLAs trained on reasoning datasets achieve <strong>30% higher accuracy</strong> 
+                  VLAs trained on reasoning datasets achieve <strong>27% higher accuracy</strong> 
                 </div>
               </div>
               
               <div className="bg-cream/30 border border-gray-200 rounded-lg p-2 sm:p-6">
-                <div className="h-[360px] sm:h-[400px] w-full">
+                <div className="h-[200px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
+                      layout="vertical"
                       data={modelPerformanceData}
-                      margin={{ top: 5, right: 10, left: 0, bottom: 60 }}
-                      barGap={1}
-                      barCategoryGap={10}
+                      margin={{ top: 20, right: 30, left: -30, bottom: 30 }}
+                      barSize={60}
                     >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#eaeaea" vertical={false} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#eaeaea" horizontal={true} vertical={false} />
                       <XAxis 
-                        dataKey="task" 
-                        tick={{ fill: '#888', fontFamily: 'monospace', fontSize: 10 }}
-                        tickLine={false}
-                        axisLine={{ stroke: '#e0e0e0' }}
-                        height={80}
-                        interval={0}
-                        dy={20}
-                        label={{ 
-                          value: '',
-                          position: 'insideBottom', 
-                          offset: -10
-                        }}
-                      />
-                      <YAxis 
-                        domain={[0, 0.6]} 
-                        ticks={[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]}
-                        tickFormatter={(value) => `${(value * 100).toFixed(0)}`}
+                        type="number"
+                        domain={[0, 0.7]}
+                        ticks={[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]}
+                        tickFormatter={(value) => `${(value * 100).toFixed(0)}%`}
                         tick={{ fill: '#888', fontFamily: 'monospace', fontSize: 10 }}
                         axisLine={{ stroke: '#e0e0e0' }}
                         tickLine={{ stroke: '#e0e0e0' }}
-                        width={30}
                         label={{ 
-                          value: 'Success Rate (%)', 
-                          angle: -90, 
-                          position: 'insideLeft',
+                          value: 'Success Rate', 
+                          position: 'insideBottom',
+                          offset: -5,
                           style: { textAnchor: 'middle', fill: '#888', fontSize: 11, fontFamily: 'monospace' }
                         }}
                       />
-                      <Tooltip content={<CustomTooltip />} />
-                      
-                      {/* OpenVLA bars - Green color scheme */}
-                      <Bar 
-                        dataKey="openVLA" 
-                        name="OpenVLA" 
-                        fill="#4CAF50"
-                        stroke="#000" 
-                        strokeWidth={1}
-                        radius={[0, 0, 0, 0]}
-                      />
-                      <Bar 
-                        dataKey="openVLAR" 
-                        name="OpenVLA-ER" 
-                        fill="#8BC34A"
-                        stroke="#000" 
-                        strokeWidth={1}
-                        radius={[0, 0, 0, 0]}
-                      />
-                      
-                      {/* RDT-1B bars - Blue color scheme */}
-                      <Bar 
-                        dataKey="rt2" 
-                        name="RDT-1B" 
-                        fill="#2196F3"
-                        stroke="#000" 
-                        strokeWidth={1}
-                        radius={[0, 0, 0, 0]}
-                      />
-                      <Bar 
-                        dataKey="rt2R" 
-                        name="RDT-1B-ER" 
-                        fill="#90CAF9"
-                        stroke="#000" 
-                        strokeWidth={1}
-                        radius={[0, 0, 0, 0]}
-                      />
-                      
-                      {/* Octo bars - Gray color scheme */}
-                      <Bar 
-                        dataKey="octo" 
-                        name="Octo" 
-                        fill="#607D8B"
-                        stroke="#000" 
-                        strokeWidth={1}
-                        radius={[0, 0, 0, 0]}
-                      />
-                      <Bar 
-                        dataKey="octoR" 
-                        name="Octo-ER" 
-                        fill="#B0BEC5"
-                        stroke="#000" 
-                        strokeWidth={1}
-                        radius={[0, 0, 0, 0]}
-                      />
-
-                      <Legend
-                        verticalAlign="bottom"
-                        align="center"
-                        layout="horizontal"
-                        wrapperStyle={{
-                          paddingTop: '10px',
-                          fontFamily: 'monospace',
-                          fontSize: '10px',
-                          paddingBottom: '0px'
+                      <YAxis 
+                        dataKey="model"
+                        type="category"
+                        tick={{ 
+                          fill: '#888', 
+                          fontFamily: 'monospace', 
+                          fontSize: 11,
+                          textAnchor: 'end'
                         }}
-                        iconType="square"
-                        iconSize={8}
+                        axisLine={false}
+                        tickLine={false}
+                        width={120}
                       />
+                      <Tooltip 
+                        content={({ active, payload }) => {
+                          if (active && payload && payload.length && payload[0].payload) {
+                            const data = payload[0].payload as { model: string; value: number };
+                            const isReasoning = data.model === "OpenVLA Reasoning";
+                            return (
+                              <div className="bg-white p-2 border border-gray-300 rounded shadow-sm">
+                                <p className="font-medium">{data.model}</p>
+                                <p>
+                                  {(data.value * 100).toFixed(1)}%
+                                  {isReasoning && <span className="font-bold"> (+27%)</span>}
+                                </p>
+                              </div>
+                            );
+                          }
+                          return null;
+                        }}
+                      />
+                      <Bar 
+                        dataKey="value"
+                        fill="#4CAF50"
+                        stroke="#000"
+                        strokeWidth={1}
+                        radius={[0, 4, 4, 0]}
+                      >
+                        {modelPerformanceData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.color} />
+                        ))}
+                      </Bar>
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
