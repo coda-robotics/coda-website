@@ -130,7 +130,7 @@ export default function CompanyPage() {
                             </div>
                             <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
                                 <Image
-                                    src={"/data_weighting.png"}
+                                    src={"/vision.png"}
                                     alt="VISION"
                                     fill
                                     className="object-cover rounded-[5px]"
@@ -146,7 +146,7 @@ export default function CompanyPage() {
                             <div>
                                 <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
                                     <Image
-                                        src={"/article_images/Robotic World Models.png"}
+                                        src={"/culture.png"}
                                         alt="CULTURE"
                                         fill
                                         className="object-cover rounded-[5px]"
