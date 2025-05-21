@@ -3,6 +3,52 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { StaticImageData } from 'next/image';
+
+interface CompanyMainArticleProps {
+  date: string;
+  title: string;
+  image_url: string | StaticImageData;
+  href: string;
+  description?: string;
+}
+
+function CompanyMainArticle({ date, title, image_url, href, description }: CompanyMainArticleProps) {
+  return (
+    <Link href={href} className="block group">
+      <div
+        className="
+          relative
+          w-full
+          sm:max-w-[540px]
+          sm:aspect-[1/1.3]
+          aspect-square
+          overflow-hidden
+          bg-gray-100
+          rounded-[5px]
+        "
+      >
+        <Image
+          src={image_url}
+          alt={title}
+          fill
+          className="object-cover rounded-[5px]"
+          priority
+        />
+        <div className="absolute left-4 right-4 bottom-8 text-white">
+          <h3 className="text-[32px] font-normal leading-tight text-white mb-3">
+            {title}
+          </h3>
+          {description && (
+            <p className="text-white text-[16px] leading-normal font-normal">
+              {description}
+            </p>
+          )}
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 const teamMembers = [
     {
@@ -60,11 +106,62 @@ export default function CompanyPage() {
                 <div className="relative">
                     {/* Mission Section */}
                     <div className="mb-16">
-                        <p className="text-[15px] mt-6">
+                        <p className="text-[15px] mt-6 mb-12">
                             <Link href="/why-coda" className="underline underline-offset-2">Why Build Coda Robotics <span>↗</span></Link>
                         </p>
-                        <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">MISSION</h1>
-                        <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}>Coda Robotics was founded on the belief that robotic foundation models are missing two key principles behind NLP and vision breakthroughs: positive transfer from scale and scalable evaluations. We're building durable infrastructure to enable roboticists to achieve similar breakthroughs.</h2>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 items-stretch">
+                            <div className="h-full">
+                                <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
+                                    <Image
+                                        src={"/Mission.png"}
+                                        alt="MISSION"
+                                        fill
+                                        className="object-cover rounded-[5px]"
+                                        priority
+                                    />
+                                    <div className="absolute left-4 right-4 bottom-16 text-white">
+                                        <h3 className="text-[32px] font-normal leading-tight text-white mb-3">MISSION</h3>
+                                        <p className="text-white text-[16px] leading-normal font-normal">
+                                        Coda Robotics was founded on the belief that robotic foundation models need to adopt key principles behind the advancements of NLP and vision models: positive transfer from scale and scalable evaluations. 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
+                                <Image
+                                    src={"/data_weighting.png"}
+                                    alt="VISION"
+                                    fill
+                                    className="object-cover rounded-[5px]"
+                                    priority
+                                />
+                                <div className="absolute left-4 right-4 bottom-16 text-white">
+                                    <h3 className="text-[32px] font-normal leading-tight text-white mb-3">VISION</h3>
+                                    <p className="text-white text-[16px] leading-normal font-normal">
+                                        We're building data engines, tooling, and evaluation systems to improve the generalization of robotic foundation models with the long-term goal of training models capable of achieving the Physical Turing Test.
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
+                                    <Image
+                                        src={"/article_images/Robotic World Models.png"}
+                                        alt="CULTURE"
+                                        fill
+                                        className="object-cover rounded-[5px]"
+                                        priority
+                                    />
+                                    <div className="absolute left-4 right-4 bottom-16 text-white">
+                                        <h3 className="text-[32px] font-normal leading-tight text-white mb-3">CULTURE</h3>
+                                        <p className="text-white text-[16px] leading-normal font-normal">
+                                            Extremely high sense of urgency, ownership, and agency. Learn to move fast and learn faster, find meaning in tackling important challenges, and embrace limitless possibilities.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div
                             style={{
                             fontFamily: 'Inter, sans-serif',
@@ -85,8 +182,6 @@ export default function CompanyPage() {
 
                     {/* Vision Section */}
                     <div className="mb-16">
-                        <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">VISION</h1>
-                        <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}> We're building data engines, tooling, and evaluation systems to improve the generalization of robotic foundation models with the long-term goal of contributing towards achieving the Physical Turing Test.</h2>
                         <div
                             style={{
                             fontFamily: 'Inter, sans-serif',
@@ -107,8 +202,6 @@ export default function CompanyPage() {
 
                     {/* Culture Section */}
                     <div className="mb-16">
-                        <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">CULTURE</h1>
-                        <h2 className="coda-font text-[20px] mb-8 mt-8" style={{ maxWidth: '1200px', margin: '0 auto 0 0' }}>Extremely high sense of urgency, ownership, and agency.</h2>
                         <div
                             style={{
                             fontFamily: 'Inter, sans-serif',
@@ -128,91 +221,7 @@ export default function CompanyPage() {
                     </div>
 
                     {/* Core Values Section */}
-                    <div className="mb-20">
-                        <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full transition-all duration-300 ease-in-out">CORE VALUES</h1>
-                        
-                        <div className="border-t border-b border-gray-200 py-8 mb-4 cursor-pointer" 
-                            style={{ maxWidth: '800px' }}
-                            onClick={() => toggleSection(1)}
-                        >
-                            <div className="flex items-center w-full">
-                            <div className="flex items-center flex-1">
-                                <span className="text-xl font-bold mr-4">01</span>
-                                <span className="coda-font text-[20px] sm:text-[25px]">Move Fast & Learn Faster</span>
-                            </div>
-                            <span 
-                                className="text-2xl font-bold"
-                                aria-label="Toggle section"
-                            >
-                                {expandedSection === 1 ? '−' : '+'}
-                            </span>
-                            </div>
-                            
-                            {expandedSection === 1 && (
-                            <div className="mt-6 ml-10 pr-4">
-                                <p className="text-lg">
-                                Adaptation is key to success and a high learning rate is even more crucial. We value both. 
-                                </p>
-                            </div>
-                            )}
-                        </div>
-                        
-                        {/* Second core value */}
-                        <div className="border-t border-b border-gray-200 py-8 mb-4 cursor-pointer" 
-                            style={{ maxWidth: '800px' }}
-                            onClick={() => toggleSection(2)}
-                        >
-                            <div className="flex items-center w-full">
-                            <div className="flex items-center flex-1">
-                                <span className="text-xl font-bold mr-4">02</span>
-                                <span className="coda-font text-[20px] sm:text-[25px]">Tackle Meaningful Challenges</span>
-                            </div>
-                            <span 
-                                className="text-2xl font-bold"
-                                aria-label="Toggle section"
-                            >
-                                {expandedSection === 2 ? '−' : '+'}
-                            </span>
-                            </div>
-                            
-                            {expandedSection === 2 && (
-                            <div className="mt-6 ml-10 pr-4">
-                                <p className="text-lg">
-                                Find happiness by solving hard and relevant problems at scale.
-                                </p>
-                            </div>
-                            )}
-                        </div>
-                        
-                        {/* Third core value */}
-                        <div className="border-t border-b border-gray-200 py-8 mb-4 cursor-pointer" 
-                            style={{ maxWidth: '800px' }}
-                            onClick={() => toggleSection(3)}
-                        >
-                            <div className="flex items-center w-full">
-                            <div className="flex items-center flex-1">
-                                <span className="text-xl font-bold mr-4">03</span>
-                                <span className="coda-font text-[20px] sm:text-[25px]">Embrace Limitless Possibilities</span>
-                            </div>
-                            <span 
-                                className="text-2xl font-bold"
-                                aria-label="Toggle section"
-                            >
-                                {expandedSection === 3 ? '−' : '+'}
-                            </span>
-                            </div>
-                            
-                            {expandedSection === 3 && (
-                            <div className="mt-6 ml-10 pr-4">
-                                <p className="text-lg">
-                                Be aggresively optimistic and adopt a champion mindset.
-                                </p>
-                            </div>
-                            )}
-                        </div>
-                        
-                        <hr className="border-t border-gray-300 my-10" style={{ maxWidth: '800px' }} />
-                    </div>
+                    
 
                     {/* Join Us Section - Kept from original company page */}
                     {/* <div className="mb-20">
