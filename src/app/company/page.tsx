@@ -111,14 +111,14 @@ export default function CompanyPage() {
                         </p> 
                     */}
 
-                        <h1 className="text-[calc(2.5rem)] pt-8 leading-[1.2] mb-2 w-full text-left uppercase">
-                            Mission, Vision, & Culture
+                        <h1 className="text-[calc(2.5rem)] pt-8 leading-[1.2] mb-8 w-full text-left uppercase">
+                            Mission, Vision & Culture
                         </h1>
-                        <p className="text-[15px] mt-0 mb-12">
+                        {/* <p className="text-[15px] mt-0 mb-12">
                             <Link href="/why-coda" className="underline underline-offset-2">Why Build Coda Robotics <span>↗</span></Link>
-                        </p> 
+                        </p>  */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 items-stretch">
-                            <Link href = "/company/mission">
+                            <Link href="/why-coda">
                                 <div className="h-full">
                                     <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
                                         <Image
@@ -138,7 +138,7 @@ export default function CompanyPage() {
                                     </div>
                                 </div>
                             </Link>
-                            <Link href = 'company/vision'>
+                            <Link href="/infrastructure#infrastructure">
                                 <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
                                     <Image
                                         src={"/vision.png"}
@@ -156,7 +156,7 @@ export default function CompanyPage() {
                                     </div>
                                 </div>
                             </Link>
-                            <Link href = 'company/culture'>
+                            <Link href="/careers">
                                 <div>
                                     <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
                                         <Image
