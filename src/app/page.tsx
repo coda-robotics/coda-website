@@ -100,7 +100,7 @@ export default function Home() {
       {/* Main Section */}
       <main className="px-4 sm:px-6 lg:px-28 py-5">
         {/* Hero Section */}
-        <section className="relative flex items-center overflow-hidden mt-8">
+        <section className="relative flex items-center overflow-hidden mt-14">
           <div className="max-w-[48rem] w-full flex items-center relative mx-auto overflow-show">
             {/* Text Column: shrinks responsively */}
             <div className="w-full sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 z-1 md:pl-0 pl-6">
@@ -160,92 +160,32 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TODO: add this back in once have all the notebooks done (x3 of them & ideally x6) */}
-        {/* Build with Coda Section - Commented out for later use */}
-        {/*
-        <section className="mt-16 mb-16">
-          <div className="py-16">
-            <h2 className="text-center text-[28px] md:text-[35px] mb-12">
-              Improve any robotic foundation model with Coda
-            </h2>
-            
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {[
-                  { 
-                    title: "OpenVLA", 
-                    desc: "Fine-tune a vision-language model on your robotics data",
-                    link: "/notebooks/openvla"
-                  },
-                  { 
-                    title: "ACT", 
-                    desc: "Fine-tune an action transformer for embodied tasks",
-                    link: "/notebooks/act"
-                  },
-                  { 
-                    title: "Pi-0", 
-                    desc: "Improve reasoning capabilities for planning agents",
-                    link: "/notebooks/pi-0"
-                  },
-                  { 
-                    title: "Gr00t N1", 
-                    desc: "Adapt embodied LLMs for your specific hardware",
-                    link: "/notebooks/gr00t"
-                  },
-                  { 
-                    title: "RDT-1B", 
-                    desc: "Fine-tune diffusion models for robotic applications",
-                    link: "/notebooks/rdt"
-                  },
-                  { 
-                    title: "RT-2", 
-                    desc: "Adapt robotic transformers to new environments",
-                    link: "/notebooks/rt2"
-                  },
-                ].map((item, index) => (
-                  <div 
-                    key={index} 
-                    className="rounded-lg border border-gray-300 bg-transparent hover:shadow-md transition-shadow duration-300 h-[400px] relative"
-                  >
-                    <div className="p-8 flex flex-col h-full">
-                      <div className="mb-auto">
-                        <h3 className="text-2xl font-medium mb-4">{item.title}</h3>
-                        <p className="text-base leading-relaxed">{item.desc}</p>
-                      </div>
-                      
-                      <div className="mt-6 pb-6">
-                        <Link href={item.link} className="text-base font-medium underline underline-offset-4 decoration-1 flex items-center">
-                          Run notebook
-                          <svg className="ml-1 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd" />
-                          </svg>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-        */}
-
         {/* Highlights Section with image */}
-        <section className="mt-8 md:mt-20 px-4 sm:px-6 lg:px-20">
+        <section className="mt-8 md:mt-36 px-4 sm:px-6 lg:px-20">
           <div className="max-w-[48rem] w-full mx-auto flex flex-col md:flex-row">
             {/* Left Image */}
-            <div className="hidden md:block md:pr-6 flex-shrink-0">
-              <img
-                src="/coda3d.png"
-                alt="Coda 3D"
-                className="w-[400px] h-auto"
-              />
+            <div className="hidden md:block md:pr-6 flex-shrink-0 md:w-[400px] lg:w-fit">
+              <div className="aspect-square">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="object-cover mt-[-6rem] ml-[-3rem] w-[500px] h-[500px]"
+                  style={{ 
+                    backgroundColor: 'transparent',
+                    objectPosition: 'center center'
+                  }}
+                >
+                  <source src="/codalogo.webm" type="video/webm" />
+                </video>
+              </div>
             </div>
 
             {/* Highlights Content */}
-            <div className="mt-4 md:mt-0 md:ml-6 flex-1">
+            <div className="mt-4 md:mt-0 md:ml-0 flex-1">
               <h1 className="text-[28px] md:text-[35px]">Highlights</h1>
-
               <ul className="mt-4 md:mt-6 space-y-4 md:space-y-6 max-w-md">
                 <li className="border-b pb-4">
                   <div className="pb-[4px]">

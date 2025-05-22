@@ -11,7 +11,7 @@ export default function TestVideoPage() {
         loop
         muted
         playsInline
-        className="max-w-xs rounded-lg shadow-lg"
+        className="max-w-xs"
         style={{ backgroundColor: 'transparent' }} // optional, if you want transparency effect
       >
         <source src="/codalogo.webm" type="video/webm" />
