@@ -12,7 +12,10 @@ module.exports = {
           '70': '70px', 
           '132': '132px',
           '134': '134px' 
-        }
+        },
+        screens: {
+          'mdmain': '902px',
+        },
       },
     },
     plugins: [

@@ -106,60 +106,76 @@ export default function CompanyPage() {
                 <div className="relative">
                     {/* Mission Section */}
                     <div className="mb-16">
-                        <p className="text-[15px] mt-6 mb-12">
+                    {/* <p className="text-[15px] mt-6 mb-12">
                             <Link href="/why-coda" className="underline underline-offset-2">Why Build Coda Robotics <span>↗</span></Link>
-                        </p>
-                        
+                        </p> 
+                    */}
+
+                        <h1 className="text-[calc(2.5rem)] pt-8 leading-[1.2] mb-2 w-full text-left uppercase">
+                            Mission, Vision, & Culture
+                        </h1>
+                        <p className="text-[15px] mt-0 mb-12">
+                            <Link href="/why-coda" className="underline underline-offset-2">Why Build Coda Robotics <span>↗</span></Link>
+                        </p> 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 items-stretch">
-                            <div className="h-full">
+                            <Link href = "/company/mission">
+                                <div className="h-full">
+                                    <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
+                                        <Image
+                                            src={"/Mission.png"}
+                                            alt="MISSION"
+                                            fill
+                                            className="object-cover rounded-[5px]"
+                                            priority
+                                        />
+                                        <div className="absolute left-4 right-4 bottom-6 text-white">
+                                            <h3 className="text-[32px] font-normal leading-tight text-white mb-3">MISSION</h3>
+                                            <p className="text-white text-[16px] leading-normal font-normal">
+                                            Coda Robotics was founded on the belief that robotic foundation models need to adopt key principles behind the advancements of NLP and vision models: positive transfer from scale and scalable evaluations. 
+                                            </p>
+                                            <p className = 'mt-4'>↗</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                            <Link href = 'company/vision'>
                                 <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
                                     <Image
-                                        src={"/Mission.png"}
-                                        alt="MISSION"
+                                        src={"/vision.png"}
+                                        alt="VISION"
                                         fill
                                         className="object-cover rounded-[5px]"
                                         priority
                                     />
-                                    <div className="absolute left-4 right-4 bottom-16 text-white">
-                                        <h3 className="text-[32px] font-normal leading-tight text-white mb-3">MISSION</h3>
+                                    <div className="absolute left-4 right-4 bottom-6 text-white">
+                                        <h3 className="text-[32px] font-normal leading-tight text-white mb-3">VISION</h3>
                                         <p className="text-white text-[16px] leading-normal font-normal">
-                                        Coda Robotics was founded on the belief that robotic foundation models need to adopt key principles behind the advancements of NLP and vision models: positive transfer from scale and scalable evaluations. 
+                                            We're building data engines, tooling, and evaluation systems to improve the generalization of robotic foundation models with the long-term goal of training models capable of achieving the Physical Turing Test.
                                         </p>
+                                        <p className = 'mt-4'>↗</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
-                                <Image
-                                    src={"/vision.png"}
-                                    alt="VISION"
-                                    fill
-                                    className="object-cover rounded-[5px]"
-                                    priority
-                                />
-                                <div className="absolute left-4 right-4 bottom-16 text-white">
-                                    <h3 className="text-[32px] font-normal leading-tight text-white mb-3">VISION</h3>
-                                    <p className="text-white text-[16px] leading-normal font-normal">
-                                        We're building data engines, tooling, and evaluation systems to improve the generalization of robotic foundation models with the long-term goal of training models capable of achieving the Physical Turing Test.
-                                    </p>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
-                                    <Image
-                                        src={"/culture.png"}
-                                        alt="CULTURE"
-                                        fill
-                                        className="object-cover rounded-[5px]"
-                                        priority
-                                    />
-                                    <div className="absolute left-4 right-4 bottom-16 text-white">
-                                        <h3 className="text-[32px] font-normal leading-tight text-white mb-3">CULTURE</h3>
-                                        <p className="text-white text-[16px] leading-normal font-normal">
-                                            Extremely high sense of urgency, ownership, and agency. Learn to move fast and learn faster, find meaning in tackling important challenges, and embrace limitless possibilities.
-                                        </p>
+                            </Link>
+                            <Link href = 'company/culture'>
+                                <div>
+                                    <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
+                                        <Image
+                                            src={"/culture.png"}
+                                            alt="CULTURE"
+                                            fill
+                                            className="object-cover rounded-[5px]"
+                                            priority
+                                        />
+                                        <div className="absolute left-4 right-4 bottom-6 text-white">
+                                            <h3 className="text-[32px] font-normal leading-tight text-white mb-3">CULTURE</h3>
+                                            <p className="text-white text-[16px] leading-normal font-normal">
+                                                Extremely high sense of urgency, ownership, and agency. Learn to move fast and learn faster, find meaning in tackling important challenges, and embrace limitless possibilities.
+                                            </p>
+                                            <p className = 'mt-4'>↗</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link> 
                         </div>
 
                         <div

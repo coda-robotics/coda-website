@@ -1,3 +1,19 @@
+## TODO 
+
+( 05/22/2025 )
+
+- [X] On the main page, move the logo and the highlights to the right to properly center
+- [X] Each blog on the infrastructure page needs to have some vertical spacing when it's horizontally shrunk.
+
+Notes:
+
+- I feel like the image on the main page has to go, it doesn't look right -- but will need to come up with an alternative way of structuring the main page
+  - I can find something and send it back to julian
+- Mission, Values, and Culture don't seem to be presented properly, the link on top of the sections also feels out of place, feel like it looks a litle too small over their sections. Each section should also be a bit more explanatory.
+  - I can write a draft and send it back to Julian.
+- Are we going to provide an ashby page?
+
+
 ### Modifications
 
 - Added Graphs / Charts / etc similar to pi_clone website.

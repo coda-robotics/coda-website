@@ -11,7 +11,7 @@
   "dependencies": {
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.3.2",
-    "@supabase/supabase-js": "^2.49.4",
+    "@supabase/supabase-js": "^2.49.8",
     "framer-motion": "^12.10.4",
     "gray-matter": "^4.0.3",
     "next": "^15.3.1",

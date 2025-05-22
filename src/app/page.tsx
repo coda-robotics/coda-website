@@ -100,10 +100,10 @@ export default function Home() {
       {/* Main Section */}
       <main className="px-4 sm:px-6 lg:px-28 py-5">
         {/* Hero Section */}
-        <section className="relative flex items-center overflow-hidden">
-          <div className="max-w-[48rem] w-full flex items-center relative mx-auto">
+        <section className="relative flex items-center overflow-hidden mt-8">
+          <div className="max-w-[48rem] w-full flex items-center relative mx-auto overflow-show">
             {/* Text Column: shrinks responsively */}
-            <div className="w-full sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 z-1">
+            <div className="w-full sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 z-1 md:pl-0 pl-6">
               <p className="text-[14px] md:text-[15px]">
                 Announcing{' '}
                 <Link href="/infrastructure/ecot" className="underline underline-offset-2">Embodied Reasoning <span>↗</span></Link>
@@ -147,14 +147,14 @@ export default function Home() {
 
             {/* Hero Image: shifts left responsively, hides below md */}
             <div
-              className="absolute top-0 right-0 hidden md:block md:w-1/2 lg:w-1/2 xl:w-1/3 2xl:w-1/3 transition-transform duration-300 ease-in-out
+              className="absolute bottom-0 right-0 hidden md:block md:w-1/2 lg:w-1/2 xl:w-1/3 2xl:w-1/3 transition-transform duration-300 ease-in-out
               md:translate-x-0 lg:-translate-x-12 xl:-translate-x-24 
               md:opacity-100"
             >
               <img
                 src="/homeimg.png"
                 alt="Hero"
-                className="w-[500px] h-[500px] max-w-[700px]"
+                className="w-[450px] h-[450px] max-w-[700px]"
               />
             </div>
           </div>
@@ -231,54 +231,54 @@ export default function Home() {
         */}
 
         {/* Highlights Section with image */}
-        <section className="mt-8 md:mt-10 px-3 sm:px-6 md:px-10 lg:px-20 flex flex-col md:flex-row">
-          {/* Left Image */}
-          <div className="hidden md:block w-full md:w-auto md:flex-shrink-0 md:pr-6 md:ml-16">
-            <img
-              src="/coda3d.png"
-              alt="Coda 3D"
-              className="w-full md:w-105 h-auto"
-            />
-          </div>
-          {/* Highlights Content */}
-          <div className="pl-4 sm:pl-0 -ml-3 sm:ml-0 md:ml-[2rem] mt-4 md:mt-12 w-full md:flex-1">
-            <h1 className="text-[28px] md:text-[35px] md:pl-6">Highlights</h1>
+        <section className="mt-8 md:mt-20 px-4 sm:px-6 lg:px-20">
+          <div className="max-w-[48rem] w-full mx-auto flex flex-col md:flex-row">
+            {/* Left Image */}
+            <div className="hidden md:block md:pr-6 flex-shrink-0">
+              <img
+                src="/coda3d.png"
+                alt="Coda 3D"
+                className="w-[400px] h-auto"
+              />
+            </div>
 
-            {/* Static Highlights based on the image */}
-            <ul className="mt-4 md:mt-6 space-y-4 md:space-y-6 md:pl-6 max-w-md">
-              <li className="border-b pb-4 w-[95%]">
-                <div className="pb-[4px]">
-                  <Link href="/why-coda" className="block w-full text-[18px]">
-                    Why Build Coda Robotics?
-                  </Link>
-                </div>
-                <p className="text-gray-600 text-sm pb-[2px]">
-                  Why data infrastructure is key to advance embodied AI
-                </p>
-              </li>
-              
-              <li className="border-b pb-4 w-[95%]">
-                <div className="pb-[4px]">
-                  <Link href="/infrastructure/ecot" className="block w-full text-[18px]">
-                    Embodied Reasoning
-                  </Link>
-                </div>
-                <p className="text-gray-600 text-sm pb-[2px]">
-                 Achieve +30% policy improvements with embodied reasoning
-                </p>
-              </li>
-              
-              <li className="border-b pb-4 w-[95%]">
-                <div className="pb-[4px]">
-                  <Link href="/robotic_world_models" className="block w-full text-[18px]">
-                    Robotic World Models
-                  </Link>
-                </div>
-                <p className="text-gray-600 text-sm pb-[2px]">
-                  Scale your teleoperation data at the lowest costs
-                </p>
-              </li>
-            </ul>
+            {/* Highlights Content */}
+            <div className="mt-4 md:mt-0 md:ml-6 flex-1">
+              <h1 className="text-[28px] md:text-[35px]">Highlights</h1>
+
+              <ul className="mt-4 md:mt-6 space-y-4 md:space-y-6 max-w-md">
+                <li className="border-b pb-4">
+                  <div className="pb-[4px]">
+                    <Link href="/why-coda" className="block text-[18px]">
+                      Why Build Coda Robotics?
+                    </Link>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    Why data infrastructure is key to advance embodied AI
+                  </p>
+                </li>
+                <li className="border-b pb-4">
+                  <div className="pb-[4px]">
+                    <Link href="/infrastructure/ecot" className="block text-[18px]">
+                      Embodied Reasoning
+                    </Link>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    Achieve +30% policy improvements with embodied reasoning
+                  </p>
+                </li>
+                <li className="border-b pb-4">
+                  <div className="pb-[4px]">
+                    <Link href="/robotic_world_models" className="block text-[18px]">
+                      Robotic World Models
+                    </Link>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    Scale your teleoperation data at the lowest costs
+                  </p>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
       </main>
