@@ -145,7 +145,7 @@ export function TopNav() {
                   className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
                 >
                   <div className="font-medium text-gray-800 mb-2">Embodied Reasoning</div>
-                  <p className="text-sm text-gray-600">Improve your robot polciies by adding reasoning to your datasets</p>
+                  <p className="text-sm text-gray-600">Improve your robot policies by adding reasoning to your datasets</p>
                 </Link>
                 {/* VLA Arena */}
                 <Link 

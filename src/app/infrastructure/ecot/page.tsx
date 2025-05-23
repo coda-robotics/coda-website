@@ -298,12 +298,12 @@ const Reason = () => {
     {
       model: "OpenVLA",
       value: 0.38,
-      color: "#A3CFFA"
+      color: "#dfdfe0"
     },
     {
       model: "OpenVLA Reasoning",
       value: 0.65,
-      color: "#36b4ff"
+      color: "#4169E1" //royal blue
     }
   ];
 
@@ -643,7 +643,8 @@ const Reason = () => {
                       layout="vertical"
                       data={modelPerformanceData}
                       margin={{ top: 20, right: 30, left: -30, bottom: 30 }}
-                      barSize={60}
+                      barSize={40}
+                      barGap={10}
                     >
                       <CartesianGrid strokeDasharray="3 3" stroke="#eaeaea" horizontal={true} vertical={false} />
                       <XAxis 
@@ -657,7 +658,7 @@ const Reason = () => {
                         label={{ 
                           value: 'Success Rate', 
                           position: 'insideBottom',
-                          offset: -5,
+                          offset: -15,
                           style: { textAnchor: 'middle', fill: '#888', fontSize: 11, fontFamily: 'monospace' }
                         }}
                       />
@@ -668,11 +669,12 @@ const Reason = () => {
                           fill: '#888', 
                           fontFamily: 'monospace', 
                           fontSize: 11,
-                          textAnchor: 'end'
+                          textAnchor: 'start',
+                          dx: -65
                         }}
                         axisLine={false}
                         tickLine={false}
-                        width={120}
+                        width={140}
                       />
                       <Tooltip 
                         content={({ active, payload }) => {
