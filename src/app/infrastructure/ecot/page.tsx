@@ -602,9 +602,9 @@ const Reason = () => {
             {/*  to change to Bridge-v2 */}
             <p className="text-[18px]">
             Introducing <strong>Embodied Reasoning</strong>, a data engine that adds reasoning to robotic datasets. Training on reasoning data 
-            allows the model to iteratively reason about intermediate representations over complex tasks before choosing actions. This improves the generalization and performance of vision-language-action (VLA) models. 
-            Our engine, applicable to both open-source and proprietary datasets, has achieved <strong>SOTA results </strong>
-            on <a href="https://vlabench.github.io/" className="underline hover:no-underline">VLA Bench</a> with significant policy improvements.
+            allows the model to iteratively reason about intermediate representations over complex tasks before predicting actions. 
+            Our reasoning engine, applicable to both open-source and proprietary datasets, <strong> improved the base OpenVLA model by 27% </strong>
+            on the <a href="https://rail-berkeley.github.io/bridgedata/" className="underline hover:no-underline">Bridge-v2</a> dataset.
             </p>
             
             {/* <p>
