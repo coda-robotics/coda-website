@@ -102,7 +102,6 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
           <h1 className="text-[calc(2.5rem)] pt-4 leading-[1.2] my-4 w-full text-left">
             INFRASTRUCTURE
           </h1>
-
           {/* Filter buttons */}
           <div className="mb-8 flex flex-wrap gap-4">
             {['All', 'Data Engines', 'Evaluations'].map((option) => (
@@ -120,7 +119,6 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
               </button>
             ))}
           </div>
-
           {/* Mobile view with vertical spacing */}
           <div className="sm:hidden">
             {filteredArticles.length === 0 ? (
@@ -134,8 +132,8 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
                     <div key={idx} className="w-full">
                       {article.component}
                     </div>
-                  ))}
-                </div>
+                  ))} 
+                </div> 
                 {/* Pagination dots */}
                 {totalPages > 1 && (
                   <div className="flex justify-center mt-4 space-x-2">
@@ -157,9 +155,8 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
               </>
             )}
           </div>
-
           {/* Desktop grid layout */}
-          <div className="hidden sm:grid grid-cols-3 gap-6">
+          <div className="hidden sm:grid grid-cols-4 gap-6">
             {filteredArticles.length === 0 ? (
               <div className="col-span-3 text-center py-10 text-gray-600">
                 We're busy cooking something up!

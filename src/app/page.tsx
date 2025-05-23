@@ -1,13 +1,15 @@
 'use client';
 
-import { useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import posthog from 'posthog-js';
+import { motion, Variants } from 'framer-motion';
 import '../styles/globals.css';
 import Head from 'next/head';
 import Link from 'next/link';
 
-// Track page view
+// Page view tracking (unchanged)
 function TrackPageView() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -16,16 +18,14 @@ function TrackPageView() {
     if (pathname) {
       let url = window.origin + pathname;
       const search = searchParams.toString();
-      if (search) {
-        url += '?' + search;
-      }
+      if (search) url += '?' + search;
+
       posthog.capture('$pageview', {
         $current_url: url,
         page_title: document.title,
         page_path: pathname,
       });
-      
-      // Track main page view as a custom event
+
       if (pathname === '/') {
         posthog.capture('home_page_viewed', {
           referrer: document.referrer,
@@ -38,7 +38,7 @@ function TrackPageView() {
   return null;
 }
 
-// Track button clicks
+// TrackedButton component (unchanged)
 type TrackedButtonProps = {
   children: React.ReactNode;
   eventName: string;
@@ -46,7 +46,6 @@ type TrackedButtonProps = {
   onClick?: () => void;
   className?: string;
 };
-
 const TrackedButton = ({
   children,
   eventName,
@@ -55,7 +54,9 @@ const TrackedButton = ({
   className = '',
   ...props
 }: TrackedButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e:
+
+ React.MouseEvent<HTMLButtonElement>) => {
     posthog.capture(eventName, {
       ...eventProperties,
       element: (e.target as HTMLElement).textContent,
@@ -63,7 +64,6 @@ const TrackedButton = ({
     });
     onClick?.(e);
   };
-
   return (
     <button className={className} onClick={handleClick} {...props}>
       {children}
@@ -72,48 +72,125 @@ const TrackedButton = ({
 };
 
 export default function Home() {
-  // Track CTA button click
-  const handleCtaClick = () => {
-    posthog.capture('cta_button_clicked', {
-      button_text: 'Get Started',
-      location: 'hero_section',
-    });
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [currentPhrase, setCurrentPhrase] = useState(0);
+  const phrases = ['DATA INFRASTRUCTURE', 'WORLD MODELS', 'DATA WEIGHTING', 'EMBODIED REASONING', 'EVALUATIONS'];
+
+  // Video playback rate (unchanged)
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.playbackRate = 1.75;
+  }, []);
+
+  // Phrase animation (unchanged)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhrase((prev) => (prev + 1) % phrases.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Pyramid animation variants (unchanged)
+  const floatTop: Variants = {
+    animate: {
+      x: [0, 8, 0, -8, 0],
+      y: [0, -6, 0, 6, 0],
+      scale: [1, 1.04, 1, 1.04, 1],
+      transition: { duration: 7, repeat: Infinity, ease: 'easeInOut' },
+    },
   };
 
-  // Track navigation link clicks
-  const trackNavClick = (linkName: string) => {
-    posthog.capture('navigation_link_clicked', {
-      link_name: linkName,
-      page_url: window.location.pathname,
-    });
+  const floatMid: Variants = {
+    animate: {
+      x: [0, -12, 0, 12, 0],
+      y: [0, 10, 0, -10, 0],
+      scale: [1, 1.06, 1, 1.06, 1],
+      transition: { duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 1 },
+    },
+  };
+
+  const floatBottom: Variants = {
+    animate: {
+      x: [0, 6, 0, -6, 0],
+      y: [0, 8, 0, -8, 0],
+      scale: [1, 1.05, 1, 1.05, 1],
+      transition: { duration: 8.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+    },
   };
 
   return (
     <div className="text-black font-inter">
+      <TrackPageView />
+
       <Head>
         <title>CODA</title>
         <meta name="description" content="CODA delivers data infrastructure for AI robotics." />
       </Head>
 
-      {/* Header without navbar */}
-
-      {/* Main Section */}
       <main className="px-4 sm:px-6 lg:px-28 py-5">
-        {/* Hero Section */}
-        <section className="relative flex items-center overflow-hidden mt-14">
-          <div className="max-w-[48rem] w-full flex items-center relative mx-auto overflow-show">
-            {/* Text Column: shrinks responsively */}
-            <div className="w-full sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 z-1 md:pl-0 pl-6">
+        {/* Hero Section (unchanged) */}
+        <section className="relative flex justify-center items-center text-center mt-8 px-4">
+          <div className="relative w-full max-w-[48rem] mx-auto">
+            <motion.div
+              className="absolute top-0 left-1/2 transform -translate-x-[17rem] -translate-y-[2.5rem] z-0"
+              variants={floatTop}
+              animate="animate"
+            >
+              <Image
+                src="/toppyramid.png"
+                alt="Top Pyramid"
+                width={400}
+                height={400}
+                className="w-[50px] md:w-[150px] h-auto"
+              />
+            </motion.div>
+            <motion.div
+              className="absolute top-1/3 left-1/2 transform translate-x-[10rem] -translate-y-[12rem] z-0"
+              variants={floatMid}
+              animate="animate"
+            >
+              <Image
+                src="/midpyramid.png"
+                alt="Middle Pyramid"
+                width={500}
+                height={500}
+                className="w-[200px] md:w-[300px] h-auto"
+              />
+            </motion.div>
+            <motion.div
+              className="absolute bottom-0 left-1/2 transform -translate-x-[25rem] -translate-y-[13rem] z-0"
+              variants={floatBottom}
+              animate="animate"
+            >
+              <Image
+                src="/bottompyramid.png"
+                alt="Bottom Pyramid"
+                width={600}
+                height={600}
+                className="w-[120px] md:w-[220px] h-auto"
+              />
+            </motion.div>
+            <div className="relative z-10 px-4">
               <p className="text-[14px] md:text-[15px]">
                 Announcing{' '}
-                <Link href="/infrastructure/ecot" className="underline underline-offset-2">Embodied Reasoning <span>↗</span></Link>
+                <Link href="/infrastructure/ecot" className="underline underline-offset-2">
+                  Embodied Reasoning <span>↗</span>
+                </Link>
               </p>
-              <h1 className="text-[calc(1.8rem)] sm:text-[calc(2.2rem)] md:text-[calc(2.5rem)] pt-3 md:pt-4 leading-[1.2] my-3 md:my-4 w-full transition-all duration-300 ease-in-out">
-                CODA DELIVERS  
-                <br /> DATA INFRASTRUCTURE 
+              <h1 className="text-[calc(1.8rem)] sm:text-[calc(2.2rem)] md:text-[calc(2.5rem)] pt-3 md:pt-4 leading-[1.2] my-3 md:my-4 transition-all duration-300 ease-in-out h1-custom-2">
+                CODA DELIVERS
+                <br />
+                <motion.span
+                  key={phrases[currentPhrase]}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                >
+                  {phrases[currentPhrase]}
+                </motion.span>
                 <br /> FOR AI ROBOTICS
               </h1>
-              <div className="flex flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
+              <div className="flex justify-center flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
                 <Link
                   href="/infrastructure"
                   className="text-black text-[18px] md:text-[20px] underline underline-offset-4 decoration-[1.5px]"
@@ -127,63 +204,108 @@ export default function Home() {
                   Join Us
                 </Link>
               </div>
-              <p className="text-[22px] mb-10 leading-[2] w-full sm:w-[540px] transition-all duration-300 ease-in-out">
-                Data infrastructure to build better
-                <br />
-                robotic foundation models faster.
+              <p className="text-[15px] mb-10 leading-[2] max-w-[540px] mx-auto transition-all duration-300 ease-in-out">
+                Coda delivers high-quality, large-scale data pipelines to power robotic neural networks.
+                We specialize in collecting, labeling, and structuring the complex datasets needed for
+                intelligent machines to learn and operate in the real world. From perception to
+                decision-making, we accelerate robotics innovation by providing the data infrastructure AI systems need to continuously evolve.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex justify-center space-x-4">
                 <a href="https://x.com/juliansaks" target="_blank" rel="noopener noreferrer">
-                  <img src="/xlogo.png" alt="X logo" className="w-6 h-6" />
+                  <Image src="/xlogo.png" alt="X logo" width={24} height={24} />
                 </a>
                 <a href="https://www.linkedin.com/in/juliansaks/" target="_blank" rel="noopener noreferrer">
-                  <img src="/linkedinlogo.png" alt="LinkedIn logo" className="w-6 h-6" />
+                  <Image src="/linkedinlogo.png" alt="LinkedIn logo" width={24} height={24} />
                 </a>
                 <a href="https://huggingface.co/Coda-Robotics" target="_blank" rel="noopener noreferrer">
-                  <img src="/hf.png" alt="Hugging Face logo" className="w-6 h-6" />
+                  <Image src="/hf.png" alt="Hugging Face logo" width={24} height={24} />
                 </a>
               </div>
-            </div>
-
-            {/* Hero Image: shifts left responsively, hides below md */}
-            <div
-              className="absolute bottom-0 right-0 hidden md:block md:w-1/2 lg:w-1/2 xl:w-1/3 2xl:w-1/3 transition-transform duration-300 ease-in-out
-              md:translate-x-0 lg:-translate-x-12 xl:-translate-x-24 
-              md:opacity-100"
-            >
-              <img
-                src="/homeimg.png"
-                alt="Hero"
-                className="w-[450px] h-[450px] max-w-[700px]"
-              />
             </div>
           </div>
         </section>
 
-        {/* Highlights Section with image */}
+        {/* Commented out Flywheel Section */}
+        {/*
+        <div className="relative">
+          <section className="grid grid-cols-2 sm:grid-cols-2 px-[18rem] gap-y-16 mt-[8rem] mb-[8rem]">
+            <div className="relative w-full h-[200px]">
+              <Image
+                src="/dataweighting.png"
+                alt="data weighting"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative w-full h-[200px]">
+              <Image
+                src="/embodiedreasoning.png"
+                alt="embodied reasoning"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative w-full h-[200px]">
+              <Image
+                src="/worldmodels.png"
+                alt="world models"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative w-full h-[200px]">
+              <Image
+                src="/vlaarena.png"
+                alt="vla arena"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </section>
+          
+          {arrows.map((arrow, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: currentArrow === index ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute"
+              style={{ top: arrow.top, left: arrow.left }}
+            >
+              <Image
+                src="/arrow.png"
+                alt={arrow.alt}
+                width={24}
+                height={24}
+                className={arrow.rotation}
+              />
+            </motion.div>
+          ))}
+        </div>
+        */}
+
+        {/* Highlights Section (unchanged) */}
         <section className="mt-8 md:mt-36 px-4 sm:px-6 lg:px-20">
           <div className="max-w-[48rem] w-full mx-auto flex flex-col md:flex-row">
-            {/* Left Image */}
             <div className="hidden md:block md:pr-6 flex-shrink-0 md:w-[400px] lg:w-fit">
               <div className="aspect-square">
                 <video
+                  ref={videoRef}
                   autoPlay
                   loop
                   muted
                   playsInline
                   onContextMenu={(e) => e.preventDefault()}
                   className="object-cover mt-[-6rem] ml-[-3rem] w-[500px] h-[500px]"
-                  style={{ 
+                  style={{
                     backgroundColor: 'transparent',
-                    objectPosition: 'center center'
+                    objectPosition: 'center center',
                   }}
                 >
                   <source src="/codalogo.webm" type="video/webm" />
                 </video>
               </div>
             </div>
-
-            {/* Highlights Content */}
             <div className="mt-4 md:mt-0 md:ml-0 flex-1">
               <h1 className="text-[28px] md:text-[35px]">Highlights</h1>
               <ul className="mt-4 md:mt-6 space-y-4 md:space-y-6 max-w-md">
@@ -222,8 +344,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      {/* Footer with imported FooterNav */}
     </div>
   );
 }

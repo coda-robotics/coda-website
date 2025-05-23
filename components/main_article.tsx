@@ -33,18 +33,18 @@ export default function Main_Article({ date, title, image_url, href, description
           className="object-cover rounded-[5px]"
           priority
         />
-        <div className="absolute left-4 bottom-10 text-white">
-          <time className="text-[clamp(5px,2vw,14px)] font-normal">{date}</time>
-          <h3 className="mt-1 max-w-full whitespace-nowrap font-normal text-[clamp(5px,5vw,22px)] leading-none text-white">
+        <div className="absolute left-2 sm:left-4 bottom-4 sm:bottom-10 text-white">
+          <time className="text-[clamp(10px,2vw,14px)] font-normal">{date}</time>
+          <h3 className="mt-1 mb-4 max-w-full font-normal text-[clamp(12px,4vw,20px)] leading-tight text-white line-clamp-2">
             {title}
           </h3>
           {description && (
-            <p className="mt-1 text-white text-[clamp(8px,2vw,16px)] font-normal whitespace-normal">
+            <p className="block sm:hidden md:block mt-1 mb-2 text-white text-[clamp(10px,3vw,14px)] font-normal line-clamp-3">
               {description}
             </p>
           )}
         </div>
-        <span className="absolute left-4 bottom-3 text-white text-base select-none">↗</span>
+        <span className="absolute left-2 sm:left-4 bottom-1 sm:bottom-3 text-white text-base select-none">↗</span>
       </div>
     </Link>
   );
