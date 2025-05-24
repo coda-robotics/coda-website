@@ -256,7 +256,7 @@ export default function Home() {
                         backfaceVisibility: 'hidden',
                         transformOrigin: 'bottom center',
                       } as React.CSSProperties}
-                      className="inline-block"
+                      className="inline-block whitespace-nowrap"
                     >
                       {phrases[currentPhrase]}
                     </motion.span>
