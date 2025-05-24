@@ -219,13 +219,13 @@ export default function Home() {
             </motion.div>
             {/* Rest of the section (text, links, etc.) */}
             <div className="relative z-10 px-4">
-              <p className="text-[14px] md:text-[15px]">
+              <p className="text-[14px] md:text-[15px] mb-8">
                 Announcing{' '}
                 <Link href="/infrastructure/ecot" className="underline underline-offset-2">
                   Embodied Reasoning <span>↗</span>
                 </Link>
               </p>
-              <p
+              <span
                 className="
                   text-[clamp(30px,4vw,45px)]
                   pt-3 md:pt-4
@@ -263,7 +263,7 @@ export default function Home() {
                   </AnimatePresence>
                 </div>
                 <br /> FOR AI ROBOTICS
-              </p>
+              </span>
               <div className="flex justify-center flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
                 <Link
                   href="/infrastructure"
