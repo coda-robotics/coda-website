@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, Suspense } from 'react';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import posthog from 'posthog-js';
@@ -142,7 +142,9 @@ export default function Home() {
 
   return (
     <div className="text-black font-inter">
-      <TrackPageView />
+      <Suspense fallback={null}>
+        <TrackPageView />
+      </Suspense>
       <Head>
         <title>CODA</title>
         <meta name="description" content="CODA delivers data infrastructure for AI robotics." />
