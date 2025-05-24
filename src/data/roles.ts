@@ -15,28 +15,26 @@ export interface Role {
 export const roles: Role[] = [
   {
     id: 1,
-    title: "Department Lead - Robotic World Models",
-    slug: "department-lead-robotic-world-models",
+    title: "Department Lead - World Models",
+    slug: "department-lead-world-models",
     department: "Engineering",
     location: "San Francisco",
     type: "Full time",
-    description: "Lead the development of robotic world models to enhance autonomous systems at Coda Robotics.",
+    description: "Coda Robotics is developing infrastructure to power the next generation of robotic foundation models. Data is crucial to improving these models, yet robotic data is scarce and expensive to collect. World models pose a promosing avenue to generate 'dreams' of robot trajectories which can be collected for training. You will become a part of Coda's founding team and lead the development and deployment of Coda Robotics' world models.",
     responsibilities: [
-      "Lead a team of researchers and engineers",
-      "Develop novel algorithms for robotic perception",
-      "Collaborate with cross-functional teams",
-      "Publish research findings"
+      "Lead a team of researchers and engineers.",
+      "Develop more efficient ways to generate high quality dreams of robot trajectories.",
+      "Define and own the technical roadmap for your assigned subsystem.",
+      "Drive rapid iteration, testing, and integration cycles to validate performance and de-risk development.",
+      "Own all key decisions, from architecture to tradeoffs in performance, cost, weight, and reliability.",
+      "Collaborate closely with other department leads.",
+      "Champion a high-accountability, high-velocity culture that values results, responsibility, and bold technical ambition."
     ],
     requirements: [
-      "PhD in Robotics or related field",
-      "5+ years of experience in robotic systems",
-      "Strong leadership skills"
+      "Strong experience in world models / video generation models ",
+      "Strong experience in post-training video generation models",
     ],
-    niceToHave: [
-      "Experience with ROS",
-      "Publications in top-tier conferences"
-    ],
-    compensation: "Base salary range: $180,000 - $250,000 per year, plus equity and benefits"
+    compensation: "Base salary range: $100,000 - $120,000 per year, plus strong equity and benefits"
   },
   {
     id: 2,
@@ -45,18 +43,25 @@ export const roles: Role[] = [
     department: "Engineering",
     location: "San Francisco",
     type: "Full time",
-    description: "Oversee the embodied reasoning department to advance AI capabilities.",
+    description: "Coda Robotics is developing infrastructure to power the next generation of robotic foundation models. Once we have overcome the scarcity of robotic data, we will need systems to improve the quality of the data we collect. Adding embodied reasoning to the training datasets allows the robotic foundation model to iteratively reason over complex tasks before predicting the action. With reasoning, the policy is 27% more accurate. You will become a part of Coda's founding team and lead the development and deployment of Coda Robotics' embodied reasoning data engine.",
     responsibilities: [
-      "Manage research projects in embodied AI",
-      "Develop reasoning models for autonomous systems",
-      "Mentor junior researchers"
+      "Lead a team of researchers and engineers.",
+      "Add Human-in-the-loop feedback to improve reasoning annotations in the training datasets.",
+      "Explore test-time compute.",
+      "Explore reasoning dropout during inference and other ways to lower inference latency.",
+      "Develop efficient training strategies.",
+      "Define and own the technical roadmap for your assigned subsystem.",
+      "Drive rapid iteration, testing, and integration cycles to validate performance and de-risk development.",
+      "Own all key decisions, from architecture to tradeoffs in performance, cost, weight, and reliability.",
+      "Collaborate closely with other department leads.",
+      "Champion a high-accountability, high-velocity culture that values results, responsibility, and bold technical ambition."
     ],
     requirements: [
-      "PhD in AI or related field",
-      "Experience in machine learning",
-      "Strong publication record"
+      "Reasoning related research / experience",
+      "Experience developing vision models: DINO-Grounding, SAM 3, OWLv2, ...",
+      "Experience developing reasoning techniques: CoT, in-context learning, ..."
     ],
-    compensation: "Base salary range: $180,000 - $250,000 per year, plus equity and benefits"
+    compensation: "Base salary range: $100,000 - $120,000 per year, plus strong equity and benefits"
   },
   {
     id: 3,
@@ -65,121 +70,65 @@ export const roles: Role[] = [
     department: "Engineering",
     location: "San Francisco",
     type: "Full time",
-    description: "Lead efforts in optimizing data weighting strategies for machine learning models.",
+    description: "Coda Robotics is developing infrastructure to power the next generation of robotic foundation models. Once we have overcome the scarcity of robotic data, we will need systems to weight the generated data and filter out the unwanted data. These types of systems will lead to more efficient trainning - lower compute and storage costs. You will become a part of Coda's founding team and lead the development and deployment of Coda Robotics' data weighting engine.",
     responsibilities: [
-      "Design data weighting algorithms",
-      "Collaborate with data scientists",
-      "Ensure model performance and scalability"
+      "Lead a team of researchers and engineers.",
+      "Design, build, and deploy more efficient data weighting systems at scale.",
+      "Define and own the technical roadmap for your assigned subsystem.",
+      "Drive rapid iteration, testing, and integration cycles to validate performance and de-risk development.",
+      "Own all key decisions, from architecture to tradeoffs in performance, cost, weight, and reliability.",
+      "Collaborate closely with other department leads.",
+      "Champion a high-accountability, high-velocity culture that values results, responsibility, and bold technical ambition."
     ],
     requirements: [
-      "PhD in Data Science or related field",
-      "Experience with ML optimization",
-      "Strong analytical skills"
+      "Experience in data weighting and filtering",
+      "Experience with world models / video generation models"
     ],
-    compensation: "Base salary range: $180,000 - $250,000 per year, plus equity and benefits"
+    compensation: "Base salary range: $100,000 - $120,000 per year, plus strong equity and benefits"
   },
   {
     id: 4,
-    title: "Department Lead - Evaluations",
-    slug: "department-lead-evaluations",
-    department: "Engineering",
-    location: "San Francisco",
-    type: "Full time",
-    description: "Oversee evaluation frameworks for robotic systems.",
-    responsibilities: [
-      "Develop evaluation metrics",
-      "Conduct performance assessments",
-      "Lead a team of evaluators"
-    ],
-    requirements: [
-      "PhD in Engineering or related field",
-      "Experience in system evaluation",
-      "Leadership experience"
-    ],
-    compensation: "Base salary range: $180,000 - $250,000 per year, plus equity and benefits"
-  },
-  {
-    id: 5,
-    title: "Infrastructure Engineer",
-    slug: "infrastructure-engineer",
-    department: "Engineering",
-    location: "San Francisco",
-    type: "Full time",
-    description: "Build and maintain the infrastructure supporting our robotic systems.",
-    responsibilities: [
-      "Design scalable infrastructure",
-      "Optimize system performance",
-      "Collaborate with engineering teams"
-    ],
-    requirements: [
-      "BS/MS in Computer Science or related field",
-      "Experience with cloud infrastructure",
-      "Proficiency in Python and DevOps tools"
-    ],
-    compensation: "Base salary range: $140,000 - $200,000 per year, plus equity and benefits"
-  },
-  {
-    id: 6,
     title: "Chief Media Officer",
     slug: "chief-media-officer",
     department: "Media",
     location: "San Francisco",
     type: "Full time",
-    description: "Lead media strategy to promote Coda Robotics’ vision and achievements.",
+    description: "Coda Robotics is developing infrastructure to power the next generation of robotic foundation models. You will become a part of Coda's founding team and lead Coda Robotics' media strategies.",
     responsibilities: [
-      "Develop media campaigns",
-      "Manage public relations",
-      "Oversee content creation"
+      "Strategize and setup intense and focused media campaign.",
+      "Develop high quality video production.",
+      "Develop PR strategies.",
+      "Own all key decisions.",
+      "Collaborate closely with other department leads.",
+      "Champion a high-accountability, high-velocity culture that values results and responsibility."
     ],
     requirements: [
-      "10+ years in media or PR",
-      "Strong leadership skills",
-      "Experience in tech industry"
+      "Experience in PR",
+      "Experience in video production",
+      "Large social media presence"
     ],
-    compensation: "Base salary range: $200,000 - $300,000 per year, plus equity and benefits"
+    compensation: "Base salary range: $80,000 - $90,000 per year, plus equity and benefits"
   },
   {
-    id: 7,
+    id: 5,
     title: "Chief Product Officer",
     slug: "chief-product-officer",
     department: "Product",
     location: "San Francisco",
     type: "Full time",
-    description: "Drive the product vision and strategy for Coda Robotics.",
+    description: "Coda Robotics is developing infrastructure to power the next generation of robotic foundation models. Delivering the highest quality products is crucial to achieve strong adoption. You will become a part of Coda's founding team and lead Coda Robotics' product development.",
     responsibilities: [
-      "Define product roadmap",
-      "Lead product development teams",
-      "Align products with market needs"
+      "Lead the product design.",
+      "Align products with market needs.",
+      "Own all key decisions.",
+      "Collaborate closely with other department leads.",
+      "Champion a high-accountability, high-velocity culture that values results and responsibility."
     ],
     requirements: [
-      "10+ years in product management",
-      "Experience in tech startups",
+      "Strong design skills",
+      "Experience leading product design in tech startups",
       "Strong strategic thinking"
     ],
-    compensation: "Base salary range: $220,000 - $320,000 per year, plus equity and benefits"
-  },
-  {
-    id: 8,
-    title: "Research Lead - Online RL",
-    slug: "research-lead-online-rl",
-    department: "Research",
-    location: "San Francisco",
-    type: "Full time",
-    description: "Lead research in online reinforcement learning for robotics.",
-    responsibilities: [
-      "Conduct RL research",
-      "Develop innovative algorithms",
-      "Publish findings"
-    ],
-    requirements: [
-      "PhD in RL or related field",
-      "Strong research background",
-      "Experience with Python"
-    ],
-    niceToHave: [
-      "Experience with online learning",
-      "Publications in RL conferences"
-    ],
-    compensation: "Base salary range: $160,000 - $230,000 per year, plus equity and benefits"
+    compensation: "Base salary range: $80,000 - $90,000 per year, plus equity and benefits"
   }
 ];
