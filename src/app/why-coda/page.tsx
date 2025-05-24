@@ -1,5 +1,6 @@
 'use client';
 
+import {useRef, useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -10,6 +11,11 @@ export default function WhyCodaPage() {
     const toggleSection = (sectionId: number) => {
         setExpandedSection(expandedSection === sectionId ? null : sectionId);
     };
+
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+    useEffect(() => {
+        if (videoRef.current) videoRef.current.playbackRate = 1.75;
+    }, []);
 
     return (
         <div className="min-h-screen">
@@ -43,7 +49,7 @@ export default function WhyCodaPage() {
                         </div>
 
                         {/* Data Collection Methods */}
-                        <div className="mb-10 sm:mb-20">
+                        <div className="mb-0 sm:-mb-[3rem]">
                             <div className="border-t border-b border-gray-200 py-6 sm:py-8 mb-4 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0">
                                 <div className="flex items-center w-full">
                                     <div className="flex items-center flex-1">
@@ -88,14 +94,23 @@ export default function WhyCodaPage() {
                         </div>
 
                         {/* CODA Logo */}
-                        <div className="w-full max-w-[800px] md:max-w-[780px] mx-auto px-0 mb-10 sm:mb-16 flex justify-center">
-                            <img
-                                src="/coda3d.png" 
-                                alt="CODA Logo"
-                                className="h-[300px] sm:h-[450px] w-auto"
-                            />
+                        <div className = 'h-[500px]'>
+                            <video
+                            ref={videoRef}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            onContextMenu={(e) => e.preventDefault()}
+                            className="ml-[6rem] w-[500px] h-[500px]"
+                            style={{
+                                backgroundColor: 'transparent',
+                                objectPosition: 'center center',
+                            }}
+                            >
+                            <source src="/codalogo.webm" type="video/webm" />
+                        </video>
                         </div>
-
                         {/* Conclusion */}
                         <div className="mb-10 sm:mb-20 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0" style={{ fontFamily: 'Inter, sans-serif' }}>
                             <div className="mb-6 sm:mb-10">

@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/coda3d.png" type="image/png" />
+        <link rel="icon" href="/codaheadlogo.png" type="image/png" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <PostHogProvider>

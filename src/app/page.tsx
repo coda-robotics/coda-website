@@ -159,7 +159,7 @@ export default function Home() {
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.3 }}
+              transition={{ delay: 0.5, duration: .8 }}
             >
               <motion.div
                 className="absolute top-0 left-1/2 transform -translate-x-[10rem] sm:-translate-x-[10rem] md:-translate-x-[17rem] -translate-y-[4rem] z-0"
@@ -180,7 +180,7 @@ export default function Home() {
               className="absolute top-1/3 left-1/2 transform translate-x-[8rem] sm:translate-x-[10rem]  md:translate-x-[10rem] sm:-translate-y-[13rem] -translate-y-[8rem] z-0"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.3 }}
+              transition={{ delay: 0.5, duration: .8 }}
             >
               <motion.div
                 variants={floatMid}
@@ -201,7 +201,7 @@ export default function Home() {
               className="absolute bottom-0 left-1/2 transform -translate-x-[18rem] sm:-translate-x-[15rem] md:-translate-x-[25rem] -translate-y-[15rem] sm:-translate-y-[13rem] md:-translate-y-[13rem] z-0"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.3 }}
+              transition={{ delay: 0.5, duration: .8 }}
             >
               <motion.div
                 variants={floatBottom}
@@ -225,7 +225,15 @@ export default function Home() {
                   Embodied Reasoning <span>↗</span>
                 </Link>
               </p>
-              <h1 className="text-[calc(1.8rem)] sm:text-[calc(2.2rem)] md:text-[calc(2.5rem)] pt-3 md:pt-4 leading-[1.2] my-3 md:my-4 transition-all duration-1000 ease-in-out h1-customthird">
+              <p
+                className="
+                  text-[clamp(30px,4vw,45px)]
+                  pt-3 md:pt-4
+                  leading-[1.2]
+                  my-3 md:my-4
+                  transition-all duration-200 ease-in-out
+                "
+              >
                 CODA DELIVERS
                 <br />
                 <div
@@ -255,7 +263,7 @@ export default function Home() {
                   </AnimatePresence>
                 </div>
                 <br /> FOR AI ROBOTICS
-              </h1>
+              </p>
               <div className="flex justify-center flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
                 <Link
                   href="/infrastructure"
