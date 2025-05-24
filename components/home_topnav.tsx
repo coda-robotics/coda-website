@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export function TopNav() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isIphone, setIsIphone] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -31,6 +32,12 @@ export function TopNav() {
       }
     }
   }, [pathname, searchParams]);
+
+  useEffect(() => {
+    if (typeof navigator !== 'undefined' && /iPhone/.test(navigator.userAgent)) {
+      setIsIphone(true);
+    }
+  }, []);
 
   if (pathname.startsWith('/posts/')) {
     return null;
@@ -63,7 +70,7 @@ export function TopNav() {
       <div className="bg-[#F5F5F5] bg-opacity-20 rounded-2xl shadow-sm mx-auto max-w-[95%] sm:max-w-[90%] lg:max-w-[1200px] transition-all duration-300"
            onMouseLeave={handleMouseLeave}>
         <header>
-          <div className="flex flex-row items-center justify-between px-4 sm:px-8 py-3 mx-auto">
+          <div className="flex flex-row items-center justify-between px-4 sm:px-8 py-3 mx-auto relative">
             {/* Left side - CODA logo */}
             <div className="w-[120px] sm:w-[200px]">
               <Link href="/" className="flex items-center">
@@ -78,22 +85,24 @@ export function TopNav() {
               </Link>
             </div>
 
-            {/* Hamburger button for mobile */}
-            <button
-              className="sm:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              <div className="space-y-1">
-                <span className="block w-6 h-0.5 bg-gray-600"></span>
-                <span className="block w-6 h-0.5 bg-gray-600"></span>
-                <span className="block w-6 h-0.5 bg-gray-600"></span>
-              </div>
-            </button>
+            {/* Hamburger button for mobile (render only if not iPhone) */}
+            {!isIphone && (
+              <button
+                className="sm:hidden"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
+              >
+                <div className="space-y-1">
+                  <span className="block w-6 h-0.5 bg-gray-600"></span>
+                  <span className="block w-6 h-0.5 bg-gray-600"></span>
+                  <span className="block w-6 h-0.5 bg-gray-600"></span>
+                </div>
+              </button>
+            )}
 
             {/* Regular navigation for larger screens */}
-            <nav className="hidden sm:flex items-center space-x-2 md:space-x-8">
+            <nav className={`${isIphone ? "flex" : "hidden sm:flex absolute left-1/2 transform -translate-x-1/2"} items-center space-x-2 md:space-x-8`}>
               <div className="relative">
                 <Link
                   href="/company"
@@ -112,12 +121,6 @@ export function TopNav() {
                   Infrastructure
                 </Link>
               </div>
-              <Link
-                href="/infrastructure/news"
-                className="hidden text-gray-700 hover:text-gray-900 text-sm font-medium"
-              >
-                News
-              </Link>
               <div className="relative">
                 <Link
                   href="/careers"

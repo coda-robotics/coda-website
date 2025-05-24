@@ -46,6 +46,7 @@ type TrackedButtonProps = {
   onClick?: () => void;
   className?: string;
 };
+
 const TrackedButton = ({
   children,
   eventName,
@@ -94,8 +95,8 @@ export default function Home() {
   // Pyramid animation variants
   const floatTop: Variants = {
     animate: {
-      x: [0, 8, 0, -8, 0],
-      y: [0, -6, 0, 6, 0],
+      x: [0, 18, 0, -18, 0],
+      y: [0, -16, 0, 16, 0],
       scale: [1, 1.04, 1, 1.04, 1],
       transition: { duration: 20, repeat: Infinity, ease: 'easeInOut' },
     },
@@ -103,8 +104,8 @@ export default function Home() {
 
   const floatMid: Variants = {
     animate: {
-      x: [0, -12, 0, 12, 0],
-      y: [0, 10, 0, -10, 0],
+      x: [0, -20, 0, 20, 0],
+      y: [0, 20, 0, -20, 0],
       scale: [1, 1.06, 1, 1.06, 1],
       transition: { duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 1 },
     },
@@ -112,8 +113,8 @@ export default function Home() {
 
   const floatBottom: Variants = {
     animate: {
-      x: [0, 6, 0, -6, 0],
-      y: [0, 8, 0, -8, 0],
+      x: [0, 16, 0, -16, 0],
+      y: [0, 18, 0, -18, 0],
       scale: [1, 1.05, 1, 1.05, 1],
       transition: { duration: 23.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
     },
@@ -161,7 +162,7 @@ export default function Home() {
               transition={{ delay: 0.5, duration: 0.3 }}
             >
               <motion.div
-                className="absolute top-0 left-1/2 transform -translate-x-[17rem] -translate-y-[2.5rem] z-0"
+                className="absolute top-0 left-1/2 transform -translate-x-[10rem] sm:-translate-x-[10rem] md:-translate-x-[17rem] -translate-y-[4rem] z-0"
                 variants={floatTop}
                 animate="animate"
               >
@@ -174,8 +175,9 @@ export default function Home() {
                 />
               </motion.div>
             </motion.div>
+            {/* Mid Pyramid */}
             <motion.div
-              className="absolute top-1/3 left-1/2 transform translate-x-[10rem] -translate-y-[12rem] z-0"
+              className="absolute top-1/3 left-1/2 transform translate-x-[8rem] sm:translate-x-[10rem]  md:translate-x-[10rem] sm:-translate-y-[13rem] -translate-y-[8rem] z-0"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.3 }}
@@ -196,7 +198,7 @@ export default function Home() {
             </motion.div>
             {/* Bottom Pyramid */}
             <motion.div
-              className="absolute bottom-0 left-1/2 transform -translate-x-[25rem] -translate-y-[13rem] z-0"
+              className="absolute bottom-0 left-1/2 transform -translate-x-[18rem] sm:-translate-x-[15rem] md:-translate-x-[25rem] -translate-y-[15rem] sm:-translate-y-[13rem] md:-translate-y-[13rem] z-0"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.3 }}
