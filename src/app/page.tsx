@@ -4,12 +4,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import posthog from 'posthog-js';
-import { motion, Variants } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import '../styles/globals.css';
 import Head from 'next/head';
 import Link from 'next/link';
 
-// Page view tracking (unchanged)
+// Page view tracking
 function TrackPageView() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -38,7 +38,7 @@ function TrackPageView() {
   return null;
 }
 
-// TrackedButton component (unchanged)
+// TrackedButton component
 type TrackedButtonProps = {
   children: React.ReactNode;
   eventName: string;
@@ -54,9 +54,7 @@ const TrackedButton = ({
   className = '',
   ...props
 }: TrackedButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  const handleClick = (e:
-
- React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     posthog.capture(eventName, {
       ...eventProperties,
       element: (e.target as HTMLElement).textContent,
@@ -72,30 +70,34 @@ const TrackedButton = ({
 };
 
 export default function Home() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [currentPhrase, setCurrentPhrase] = useState(0);
-  const phrases = ['DATA INFRASTRUCTURE', 'WORLD MODELS', 'DATA WEIGHTING', 'EMBODIED REASONING', 'EVALUATIONS'];
+  const SWAP_INTERVAL = 5000; // 3s between phrase changes
+  const ANIM_DURATION = 1.2; // 1.2s instead of 0.6s
+  const DEPTH = 40; // Define DEPTH value
 
-  // Video playback rate (unchanged)
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const phrases = ['DATA INFRASTRUCTURE', 'WORLD MODELS', 'DATA WEIGHTING', 'EMBODIED REASONING', 'EVALUATIONS'];
+  const [currentPhrase, setCurrentPhrase] = useState(0);
+
+  // Video playback rate
   useEffect(() => {
     if (videoRef.current) videoRef.current.playbackRate = 1.75;
   }, []);
 
-  // Phrase animation (unchanged)
+  // Phrase animation
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPhrase((prev) => (prev + 1) % phrases.length);
-    }, 2000);
+    }, SWAP_INTERVAL);
     return () => clearInterval(interval);
-  }, []);
+  }, [SWAP_INTERVAL]);
 
-  // Pyramid animation variants (unchanged)
+  // Pyramid animation variants
   const floatTop: Variants = {
     animate: {
       x: [0, 8, 0, -8, 0],
       y: [0, -6, 0, 6, 0],
       scale: [1, 1.04, 1, 1.04, 1],
-      transition: { duration: 7, repeat: Infinity, ease: 'easeInOut' },
+      transition: { duration: 20, repeat: Infinity, ease: 'easeInOut' },
     },
   };
 
@@ -104,7 +106,7 @@ export default function Home() {
       x: [0, -12, 0, 12, 0],
       y: [0, 10, 0, -10, 0],
       scale: [1, 1.06, 1, 1.06, 1],
-      transition: { duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 1 },
+      transition: { duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 1 },
     },
   };
 
@@ -113,62 +115,105 @@ export default function Home() {
       x: [0, 6, 0, -6, 0],
       y: [0, 8, 0, -8, 0],
       scale: [1, 1.05, 1, 1.05, 1],
-      transition: { duration: 8.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+      transition: { duration: 23.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+    },
+  };
+
+  const cubeVariants: Variants = {
+    initial: {
+      rotateX: -90,
+      translateZ: DEPTH,
+      opacity: 0,
+      transition: { duration: ANIM_DURATION, ease: 'easeInOut' },
+    },
+    animate: {
+      rotateX: 0,
+      translateZ: 0,
+      opacity: 1,
+      transition: { duration: ANIM_DURATION, ease: 'easeInOut' },
+    },
+    exit: {
+      rotateX: 90,
+      translateZ: DEPTH,
+      opacity: 0,
+      transition: { duration: ANIM_DURATION, ease: 'easeInOut' },
     },
   };
 
   return (
     <div className="text-black font-inter">
       <TrackPageView />
-
       <Head>
         <title>CODA</title>
         <meta name="description" content="CODA delivers data infrastructure for AI robotics." />
       </Head>
 
-      <main className="px-4 sm:px-6 lg:px-28 py-5">
-        {/* Hero Section (unchanged) */}
+      <main className="px-4 sm:px-6 lg:px-28 py-10">
+        {/* Hero Section */}
         <section className="relative flex justify-center items-center text-center mt-8 px-4">
           <div className="relative w-full max-w-[48rem] mx-auto">
+            {/* Top Pyramid */}
             <motion.div
-              className="absolute top-0 left-1/2 transform -translate-x-[17rem] -translate-y-[2.5rem] z-0"
-              variants={floatTop}
-              animate="animate"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.3 }}
             >
-              <Image
-                src="/toppyramid.png"
-                alt="Top Pyramid"
-                width={400}
-                height={400}
-                className="w-[50px] md:w-[150px] h-auto"
-              />
+              <motion.div
+                className="absolute top-0 left-1/2 transform -translate-x-[17rem] -translate-y-[2.5rem] z-0"
+                variants={floatTop}
+                animate="animate"
+              >
+                <Image
+                  src="/toppyramid.png"
+                  alt="Top Pyramid"
+                  width={400}
+                  height={400}
+                  className="w-[50px] md:w-[150px] h-auto"
+                />
+              </motion.div>
             </motion.div>
             <motion.div
               className="absolute top-1/3 left-1/2 transform translate-x-[10rem] -translate-y-[12rem] z-0"
-              variants={floatMid}
-              animate="animate"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.3 }}
             >
-              <Image
-                src="/midpyramid.png"
-                alt="Middle Pyramid"
-                width={500}
-                height={500}
-                className="w-[200px] md:w-[300px] h-auto"
-              />
+              <motion.div
+                variants={floatMid}
+                animate="animate"
+                transition={{ delay: 0.9 }}
+              >
+                <Image
+                  src="/midpyramid.png"
+                  alt="Middle Pyramid"
+                  width={500}
+                  height={500}
+                  className="w-[200px] md:w-[300px] h-auto"
+                />
+              </motion.div>
             </motion.div>
+            {/* Bottom Pyramid */}
             <motion.div
               className="absolute bottom-0 left-1/2 transform -translate-x-[25rem] -translate-y-[13rem] z-0"
-              variants={floatBottom}
-              animate="animate"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.3 }}
             >
-              <Image
-                src="/bottompyramid.png"
-                alt="Bottom Pyramid"
-                width={600}
-                height={600}
-                className="w-[120px] md:w-[220px] h-auto"
-              />
+              <motion.div
+                variants={floatBottom}
+                animate="animate"
+                transition={{ delay: 1.0 }}
+              >
+                <Image
+                  src="/bottompyramid.png"
+                  alt="Bottom Pyramid"
+                  width={600}
+                  height={600}
+                  className="w-[120px] md:w-[220px] h-auto"
+                />
+              </motion.div>
             </motion.div>
+            {/* Rest of the section (text, links, etc.) */}
             <div className="relative z-10 px-4">
               <p className="text-[14px] md:text-[15px]">
                 Announcing{' '}
@@ -176,18 +221,35 @@ export default function Home() {
                   Embodied Reasoning <span>↗</span>
                 </Link>
               </p>
-              <h1 className="text-[calc(1.8rem)] sm:text-[calc(2.2rem)] md:text-[calc(2.5rem)] pt-3 md:pt-4 leading-[1.2] my-3 md:my-4 transition-all duration-300 ease-in-out h1-custom-2">
+              <h1 className="text-[calc(1.8rem)] sm:text-[calc(2.2rem)] md:text-[calc(2.5rem)] pt-3 md:pt-4 leading-[1.2] my-3 md:my-4 transition-all duration-1000 ease-in-out h1-customthird">
                 CODA DELIVERS
                 <br />
-                <motion.span
-                  key={phrases[currentPhrase]}
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -50, opacity: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                <div
+                  className="inline-block overflow-show"
+                  style={{
+                    perspective: 800,
+                    display: 'inline-block',
+                    verticalAlign: 'bottom',
+                  }}
                 >
-                  {phrases[currentPhrase]}
-                </motion.span>
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.span
+                      key={phrases[currentPhrase]}
+                      variants={cubeVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      style={{
+                        transformStyle: 'preserve-3d',
+                        backfaceVisibility: 'hidden',
+                        transformOrigin: 'bottom center',
+                      } as React.CSSProperties}
+                      className="inline-block"
+                    >
+                      {phrases[currentPhrase]}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
                 <br /> FOR AI ROBOTICS
               </h1>
               <div className="flex justify-center flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
@@ -204,7 +266,7 @@ export default function Home() {
                   Join Us
                 </Link>
               </div>
-              <p className="text-[15px] mb-10 leading-[2] max-w-[540px] mx-auto transition-all duration-300 ease-in-out">
+              <p className="text-[15px] mb-10 leading-[2] max-w-[540px] mx-auto transition-all duration-300 ease-in-out overflow-show">
                 Coda delivers high-quality, large-scale data pipelines to power robotic neural networks.
                 We specialize in collecting, labeling, and structuring the complex datasets needed for
                 intelligent machines to learn and operate in the real world. From perception to
@@ -284,7 +346,7 @@ export default function Home() {
         </div>
         */}
 
-        {/* Highlights Section (unchanged) */}
+        {/* Highlights Section */}
         <section className="mt-8 md:mt-36 px-4 sm:px-6 lg:px-20">
           <div className="max-w-[48rem] w-full mx-auto flex flex-col md:flex-row">
             <div className="hidden md:block md:pr-6 flex-shrink-0 md:w-[400px] lg:w-fit">

@@ -1,28 +1,37 @@
-// components/topnav.js
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useState, useEffect } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function TopNav() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
-  
+
+  // Prevent body scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isMobileMenuOpen]);
+
   // On mount, check if we have a department filter in URL
   useEffect(() => {
     if (pathname === '/careers') {
       const department = searchParams.get('department');
       if (department) {
-        // If we navigated from the dropdown, the department filter will be in the URL
         // The careers page will handle applying the filter automatically
       }
     }
   }, [pathname, searchParams]);
-  
+
   if (pathname.startsWith('/posts/')) {
     return null;
   }
@@ -34,7 +43,7 @@ export function TopNav() {
   const handleMouseLeave = () => {
     setActiveDropdown(null);
   };
-  
+
   // Handler for department selection
   const handleDepartmentClick = (department: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -48,15 +57,15 @@ export function TopNav() {
     window.location.href = 'mailto:founders@codarobotics.ai';
     setActiveDropdown(null); // Close dropdown after click
   };
-  
+
   return (
     <div className="w-full pt-4 sm:pt-6 px-4 relative z-50">
-      <div className={`bg-[#F5F5F5] rounded-2xl shadow-sm mx-auto max-w-[95%] sm:max-w-[90%] lg:max-w-[1200px] transition-all duration-300`}
+      <div className="bg-[#F5F5F5] bg-opacity-20 rounded-2xl shadow-sm mx-auto max-w-[95%] sm:max-w-[90%] lg:max-w-[1200px] transition-all duration-300"
            onMouseLeave={handleMouseLeave}>
         <header>
-          <div className="flex flex-row sm:justify-between md:justify-center items-center px-4 sm:px-8 py-3 mx-auto">
+          <div className="flex flex-row items-center justify-between px-4 sm:px-8 py-3 mx-auto">
             {/* Left side - CODA logo */}
-            <div className="w-[120px] sm:w-[200px] md:flex-1">
+            <div className="w-[120px] sm:w-[200px]">
               <Link href="/" className="flex items-center">
                 <Image
                   src="/coda.svg"
@@ -69,22 +78,33 @@ export function TopNav() {
               </Link>
             </div>
 
-            {/* Center navigation items - centered on desktop, left-aligned on mobile */}
-            <nav className="flex items-center space-x-2 md:space-x-8 ml-auto sm:ml-0 md:flex-0">
-              {/* Company link with dropdown */}
+            {/* Hamburger button for mobile */}
+            <button
+              className="sm:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <div className="space-y-1">
+                <span className="block w-6 h-0.5 bg-gray-600"></span>
+                <span className="block w-6 h-0.5 bg-gray-600"></span>
+                <span className="block w-6 h-0.5 bg-gray-600"></span>
+              </div>
+            </button>
+
+            {/* Regular navigation for larger screens */}
+            <nav className="hidden sm:flex items-center space-x-2 md:space-x-8">
               <div className="relative">
-                <Link 
-                  href="/company" 
+                <Link
+                  href="/company"
                   className="text-gray-700 hover:text-gray-900 text-sm font-medium"
                   onMouseEnter={() => handleMouseEnter('company')}
                 >
                   Company
                 </Link>
               </div>
-              
-              {/* Infrastructure dropdown trigger */}
               <div className="relative">
-                <Link 
+                <Link
                   href="/infrastructure"
                   className="text-gray-700 hover:text-gray-900 text-sm font-medium"
                   onMouseEnter={() => handleMouseEnter('infrastructure')}
@@ -92,19 +112,15 @@ export function TopNav() {
                   Infrastructure
                 </Link>
               </div>
-              
-              {/* News link hidden with display-none but kept in DOM */}
-              <Link 
-                href="/infrastructure/news" 
+              <Link
+                href="/infrastructure/news"
                 className="hidden text-gray-700 hover:text-gray-900 text-sm font-medium"
               >
                 News
               </Link>
-              
-              {/* Careers link with dropdown */}
               <div className="relative">
-                <Link 
-                  href="/careers" 
+                <Link
+                  href="/careers"
                   className="text-gray-700 hover:text-gray-900 text-sm font-medium"
                   onMouseEnter={() => handleMouseEnter('careers')}
                 >
@@ -112,135 +128,158 @@ export function TopNav() {
                 </Link>
               </div>
             </nav>
-
-            {/* Right side - empty div for desktop balance */}
-            <div className="hidden sm:block md:flex-1"></div>
           </div>
         </header>
-        
-        {/* Infrastructure dropdown content */}
+
+        {/* Dropdown content for larger screens */}
         {activeDropdown === 'infrastructure' && (
           <div className="pb-4">
             <div className="px-4 sm:px-8 mt-2">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:divide-x divide-gray-300 md:bg-transparent bg-gray-100 rounded-lg">
-                {/* Robotic World Models */}
-                <Link 
-                  href="/robotic_world_models" 
-                  className="block p-6 rounded-l-lg hover:bg-gray-200"
-                >
+              <div className="grid grid-cols-1 md:grid-cols-4 md:divide-x divide-gray-300 md:bg-transparent bg-gray-100 rounded-lg">
+                <Link href="/robotic_world_models" className="block p-6 rounded-l-lg hover:bg-gray-200">
                   <div className="font-medium text-gray-800 mb-2">Robotic World Models</div>
-                  <p className="text-sm text-gray-600">Scale your teleoperation data at the lowest costs</p>
+                  <p className="text-sm text-black">Scale your teleoperation data at the lowest costs</p>
                 </Link>
-                {/* Data Weighting */}
-                <Link 
-                  href="/data_weighting" 
-                  className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
-                >
+                <Link href="/data_weighting" className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300">
                   <div className="font-medium text-gray-800 mb-2">Data Weighting</div>
-                  <p className="text-sm text-gray-600">Autonomously select the best data generated by the world model</p>
+                  <p className="text-sm text-black">Autonomously select the best data generated by the world model</p>
                 </Link>
-                {/* Embodied Reasoning */}
-                <Link 
-                  href="/infrastructure/ecot" 
-                  className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
-                >
+                <Link href="/infrastructure/ecot" className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300">
                   <div className="font-medium text-gray-800 mb-2">Embodied Reasoning</div>
-                  <p className="text-sm text-gray-600">Improve your robot policies by adding reasoning to your datasets</p>
+                  <p className="text-sm text-black">Improve your robot policies by adding reasoning to your datasets</p>
                 </Link>
-                {/* VLA Arena */}
-                <Link 
-                  href="/vla_arena" 
-                  className="block p-6 rounded-r-lg hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
-                >
+                <Link href="/vla_arena" className="block p-6 rounded-r-lg hover:bg-gray-200 md:border-t-0 border-t border-gray-300">
                   <div className="font-medium text-gray-800 mb-2">VLA Arena</div>
-                  <p className="text-sm text-gray-600">Evaluate VLAs head-to-head in an in-browser physics simulation</p>
+                  <p className="text-sm text-black">Evaluate VLAs head-to-head in an in-browser physics simulation</p>
                 </Link>
               </div>
             </div>
           </div>
         )}
 
-        {/* Careers dropdown content */}
         {activeDropdown === 'careers' && (
           <div className="pb-4">
             <div className="px-4 sm:px-8 mt-2">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:divide-x divide-gray-300 md:bg-transparent bg-gray-100 rounded-lg">
-                {/* Engineering */}
-                <div 
-                  onClick={(e) => handleDepartmentClick('Engineering', e)}
-                  className="block p-6 rounded-l-lg hover:bg-gray-200 cursor-pointer"
-                >
+                <div onClick={(e) => handleDepartmentClick('Engineering', e)} className="block p-6 rounded-l-lg hover:bg-gray-200 cursor-pointer">
                   <div className="font-medium text-gray-800 mb-2">Engineering</div>
-                  <p className="text-sm text-gray-600">Build the infrastructure to advance robotics</p>
+                  <p className="text-sm text-black">Build the infrastructure to advance robotics</p>
                 </div>
-                
-                {/* Research */}
-                <div 
-                  onClick={(e) => handleDepartmentClick('Research', e)}
-                  className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300 cursor-pointer"
-                >
+                <div onClick={(e) => handleDepartmentClick('Research', e)} className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300 cursor-pointer">
                   <div className="font-medium text-gray-800 mb-2">Research</div>
-                  <p className="text-sm text-gray-600">Hard solve problems by pushing our knowledge of what is currently capable</p>
+                  <p className="text-sm text-black">Hard solve problems by pushing our knowledge of what is currently capable</p>
                 </div>
-                
-                {/* Product */}
-                <div 
-                  onClick={(e) => handleDepartmentClick('Product', e)}
-                  className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300 cursor-pointer"
-                >
+                <div onClick={(e) => handleDepartmentClick('Product', e)} className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300 cursor-pointer">
                   <div className="font-medium text-gray-800 mb-2">Product</div>
-                  <p className="text-sm text-gray-600">Provide the best experience for roboticists worldwide</p>
+                  <p className="text-sm text-black">Provide the best experience for roboticists worldwide</p>
                 </div>
-                
-                {/* Media */}
-                <div 
-                  onClick={(e) => handleDepartmentClick('Media', e)}
-                  className="block p-6 rounded-r-lg hover:bg-gray-200 md:border-t-0 border-t border-gray-300 cursor-pointer"
-                >
+                <div onClick={(e) => handleDepartmentClick('Media', e)} className="block p-6 rounded-r-lg hover:bg-gray-200 md:border-t-0 border-t border-gray-300 cursor-pointer">
                   <div className="font-medium text-gray-800 mb-2">Media</div>
-                  <p className="text-sm text-gray-600">Share Coda's story with the world</p>
+                  <p className="text-sm text-black">Share Coda's story with the world</p>
                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* Company dropdown - updated with requested changes */}
         {activeDropdown === 'company' && (
           <div className="pb-4">
             <div className="px-4 sm:px-8 mt-2">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:divide-x divide-gray-300 md:bg-transparent bg-gray-100 rounded-lg">
-                {/* Why Build Coda Robotics (previously About) */}
-                <Link 
-                  href="/why-coda" 
-                  className="block p-6 rounded-l-lg hover:bg-gray-200"
-                >
+                <Link href="/why-coda" className="block p-6 rounded-l-lg hover:bg-gray-200">
                   <div className="font-medium text-gray-800 mb-2">Why Build Coda Robotics</div>
-                  <p className="text-sm text-gray-600">Understand why we're doubling down on infrastructure for AI Robotics</p>
+                  <p className="text-sm text-black">Understand why we're doubling down on infrastructure for AI Robotics</p>
                 </Link>
-                
-                {/* Mission, Values, Culture, Core Values (previously Team) */}
-                <Link 
-                  href="/company" 
-                  className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300"
-                >
+                <Link href="/company" className="block p-6 hover:bg-gray-200 md:border-t-0 border-t border-gray-300">
                   <div className="font-medium text-gray-800 mb-2">Mission, Vision, Culture, Core Values</div>
-                  <p className="text-sm text-gray-600">Understand our way of approaching hard problems</p>
+                  <p className="text-sm text-black">Understand our way of approaching hard problems</p>
                 </Link>
-                
-                {/* Contact - email to founders@codarobotics.ai */}
-                <div 
-                  onClick={handleContactClick}
-                  className="block p-6 rounded-r-lg hover:bg-gray-200 md:border-t-0 border-t border-gray-300 cursor-pointer"
-                >
+                <div onClick={handleContactClick} className="block p-6 rounded-r-lg hover:bg-gray-200 md:border-t-0 border-t border-gray-300 cursor-pointer">
                   <div className="font-medium text-gray-800 mb-2">Contact</div>
-                  <p className="text-sm text-gray-600">Get in touch with our founding team</p>
+                  <p className="text-sm text-black">Get in touch with our founding team</p>
                 </div>
               </div>
             </div>
           </div>
         )}
       </div>
+
+      {/* Full-screen mobile navigation */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-white/60 backdrop-blur-sm z-50 flex flex-col items-center justify-center"
+          >
+            <button
+              className="absolute top-4 right-4 text-black"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              Close
+            </button>
+            <nav className="flex flex-col space-y-4 text-center">
+              <div className = 'mb-10'>
+                <Link href="/company" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-[23px] mb-[10px]">
+                  Company
+                </Link>
+                <div className="mt-2 space-y-2">
+                  <Link href="/why-coda" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Why Build Coda Robotics
+                  </Link>
+                  <Link href="/company" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Mission, Vision, Culture, Core Values
+                  </Link>
+                  <a href="mailto:founders@codarobotics.ai" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Contact
+                  </a>
+                </div>
+              </div>
+              <div className = 'mb-10'>
+                <Link href="/infrastructure" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-[23px] mb-[10px]">
+                  Infrastructure
+                </Link>
+                <div className="mt-2 space-y-2">
+                  <Link href="/robotic_world_models" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Robotic World Models
+                  </Link>
+                  <Link href="/data_weighting" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Data Weighting
+                  </Link>
+                  <Link href="/infrastructure/ecot" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Embodied Reasoning
+                  </Link>
+                  <Link href="/vla_arena" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    VLA Arena
+                  </Link>
+                </div>
+              </div>
+              <div>
+                <Link href="/careers" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-[23px] mb-[10px]">
+                  Careers
+                </Link>
+                <div className="mt-2 space-y-2">
+                  <Link href="/careers?department=Engineering" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Engineering
+                  </Link>
+                  <Link href="/careers?department=Research" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Research
+                  </Link>
+                  <Link href="/careers?department=Product" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Product
+                  </Link>
+                  <Link href="/careers?department=Media" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
+                    Media
+                  </Link>
+                </div>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
