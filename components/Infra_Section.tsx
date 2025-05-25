@@ -1,7 +1,7 @@
 'use client';
 
-import '@/styles/globals.css'
-import { useState, useRef } from 'react';
+import '@/styles/globals.css';
+import { useState, useRef, useEffect } from 'react';
 import MainArticle from '@components/main_article';
 import SideArticle from '@components/side_article';
 import StayUpdated from '@components/footer_nav/stay_update';
@@ -23,6 +23,7 @@ interface Infra_SectionProps {
 
 export default function Infra_Section({ featuredMain, featuredSide1, featuredSide2 }: Infra_SectionProps) {
   const [selectedFilter, setSelectedFilter] = useState('All');
+  const [carouselPage, setCarouselPage] = useState(0);
 
   // List of all articles with categories
   const allArticles = [
@@ -86,14 +87,18 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
       ? allArticles
       : allArticles.filter((article) => article.filter === selectedFilter);
 
-  // Pagination for mobile layout
+  // Pagination for both mobile and desktop
   const articlesPerPage = 3;
   const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
-  const [carouselPage, setCarouselPage] = useState(0);
   const pagedArticles = filteredArticles.slice(
     carouselPage * articlesPerPage,
     (carouselPage + 1) * articlesPerPage
   );
+
+  // Reset carouselPage when filter changes
+  useEffect(() => {
+    setCarouselPage(0);
+  }, [selectedFilter]);
 
   return (
     <div className="flex min-h-fit">
@@ -126,14 +131,14 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
                 We're busy cooking something up!
               </div>
             ) : (
-              <> 
+              <>
                 <div className="mx-auto max-w-[95%] flex flex-col space-y-6">
                   {pagedArticles.map((article, idx) => (
                     <div key={idx} className="w-full">
                       {article.component}
                     </div>
-                  ))} 
-                </div> 
+                  ))}
+                </div>
                 {/* Pagination dots */}
                 {totalPages > 1 && (
                   <div className="flex justify-center mt-4 space-x-2">
@@ -155,19 +160,42 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
               </>
             )}
           </div>
-          {/* Desktop grid layout */}
-          <div className="hidden sm:grid grid-cols-4 gap-6">
+          {/* Desktop view with carousel */}
+          <div className="hidden sm:block relative">
             {filteredArticles.length === 0 ? (
-              <div className="col-span-3 text-center py-10 text-gray-600">
+              <div className="text-center py-10 text-gray-600">
                 We're busy cooking something up!
               </div>
             ) : (
-              filteredArticles.map((article, idx) => (
-                <div key={idx}>{article.component}</div>
-              ))
+              <>
+                <div className="grid grid-cols-3 gap-6">
+                  {pagedArticles.map((article, idx) => (
+                    <div key={idx}>{article.component}</div>
+                  ))}
+                </div>
+                {totalPages > 1 && (
+                  <>
+                    {carouselPage > 0 && (
+                      <button
+                        onClick={() => setCarouselPage((prev) => prev - 1)}
+                        className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
+                      >
+                        ←
+                      </button>
+                    )}
+                    {carouselPage < totalPages - 1 && (
+                      <button
+                        onClick={() => setCarouselPage((prev) => prev + 1)}
+                        className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
+                      >
+                        →
+                      </button>
+                    )}
+                  </>
+                )}
+              </>
             )}
           </div>
-
           {/* Footer */}
           <div className="relative mt-20">
             <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-20">
