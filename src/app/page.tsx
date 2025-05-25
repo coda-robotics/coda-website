@@ -227,7 +227,7 @@ export default function Home() {
               </p>
               <span
                 className="
-                  text-[clamp(30px,4vw,45px)]
+                  text-[clamp(30px,4vw,55px)]
                   pt-3 md:pt-4
                   leading-[1.2]
                   my-3 md:my-4

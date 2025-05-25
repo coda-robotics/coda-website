@@ -146,7 +146,7 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
                       <button
                         key={idx}
                         onClick={() => setCarouselPage(idx)}
-                        className={`px-2 py-1 rounded-full border ${
+                        className={`px-2 py-1 rounded-full ${
                           carouselPage === idx
                             ? 'bg-black text-white border-black'
                             : 'bg-white text-black border-gray-400'
@@ -178,7 +178,7 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
                     {carouselPage > 0 && (
                       <button
                         onClick={() => setCarouselPage((prev) => prev - 1)}
-                        className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
+                        className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 p-2 rounded-full hover:bg-gray-100"
                       >
                         ←
                       </button>
@@ -186,7 +186,7 @@ export default function Infra_Section({ featuredMain, featuredSide1, featuredSid
                     {carouselPage < totalPages - 1 && (
                       <button
                         onClick={() => setCarouselPage((prev) => prev + 1)}
-                        className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
+                        className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 p-2 rounded-full hover:bg-gray-100"
                       >
                         →
                       </button>

@@ -4,24 +4,12 @@ import { useState, useEffect } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export function TopNav() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isIphone, setIsIphone] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  // Prevent body scrolling when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isMobileMenuOpen]);
 
   // On mount, check if we have a department filter in URL
   useEffect(() => {
@@ -32,12 +20,6 @@ export function TopNav() {
       }
     }
   }, [pathname, searchParams]);
-
-  useEffect(() => {
-    if (typeof navigator !== 'undefined' && /iPhone/.test(navigator.userAgent)) {
-      setIsIphone(true);
-    }
-  }, []);
 
   if (pathname.startsWith('/posts/')) {
     return null;
@@ -85,28 +67,12 @@ export function TopNav() {
               </Link>
             </div>
 
-            {/* Hamburger button for mobile (render only if not iPhone) */}
-            {!isIphone && (
-              <button
-                className="sm:hidden"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Toggle menu"
-                aria-expanded={isMobileMenuOpen}
-              >
-                <div className="space-y-1">
-                  <span className="block w-6 h-0.5 bg-gray-600"></span>
-                  <span className="block w-6 h-0.5 bg-gray-600"></span>
-                  <span className="block w-6 h-0.5 bg-gray-600"></span>
-                </div>
-              </button>
-            )}
-
-            {/* Regular navigation for larger screens */}
-            <nav className={`${isIphone ? "flex" : "hidden sm:flex absolute left-1/2 transform -translate-x-1/2"} items-center space-x-2 md:space-x-8`}>
+            {/* Regular navigation - always visible, smaller on small screens */}
+            <nav className="flex sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2 items-center space-x-2 sm:space-x-4 md:space-x-8">
               <div className="relative">
                 <Link
                   href="/company"
-                  className="text-gray-700 hover:text-gray-900 text-sm font-medium"
+                  className="text-gray-700 hover:text-gray-900 text-xs sm:text-sm font-medium"
                   onMouseEnter={() => handleMouseEnter('company')}
                 >
                   Company
@@ -115,7 +81,7 @@ export function TopNav() {
               <div className="relative">
                 <Link
                   href="/infrastructure"
-                  className="text-gray-700 hover:text-gray-900 text-sm font-medium"
+                  className="text-gray-700 hover:text-gray-900 text-xs sm:text-sm font-medium"
                   onMouseEnter={() => handleMouseEnter('infrastructure')}
                 >
                   Infrastructure
@@ -124,7 +90,7 @@ export function TopNav() {
               <div className="relative">
                 <Link
                   href="/careers"
-                  className="text-gray-700 hover:text-gray-900 text-sm font-medium"
+                  className="text-gray-700 hover:text-gray-900 text-xs sm:text-sm font-medium"
                   onMouseEnter={() => handleMouseEnter('careers')}
                 >
                   Careers
@@ -206,83 +172,6 @@ export function TopNav() {
           </div>
         )}
       </div>
-
-      {/* Full-screen mobile navigation */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.3 } }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-white/60 backdrop-blur-sm z-50 flex flex-col items-center justify-center"
-          >
-            <button
-              className="absolute top-4 right-4 text-black"
-              onClick={() => setIsMobileMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              Close
-            </button>
-            <nav className="flex flex-col space-y-4 text-center">
-              <div className = 'mb-10'>
-                <Link href="/company" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-[23px] mb-[10px]">
-                  Company
-                </Link>
-                <div className="mt-2 space-y-2">
-                  <Link href="/why-coda" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Why Build Coda Robotics
-                  </Link>
-                  <Link href="/company" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Mission, Vision, Culture, Core Values
-                  </Link>
-                  <a href="mailto:founders@codarobotics.ai" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Contact
-                  </a>
-                </div>
-              </div>
-              <div className = 'mb-10'>
-                <Link href="/infrastructure" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-[23px] mb-[10px]">
-                  Infrastructure
-                </Link>
-                <div className="mt-2 space-y-2">
-                  <Link href="/robotic_world_models" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Robotic World Models
-                  </Link>
-                  <Link href="/data_weighting" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Data Weighting
-                  </Link>
-                  <Link href="/infrastructure/ecot" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Embodied Reasoning
-                  </Link>
-                  <Link href="/vla_arena" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    VLA Arena
-                  </Link>
-                </div>
-              </div>
-              <div>
-                <Link href="/careers" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-[23px] mb-[10px]">
-                  Careers
-                </Link>
-                <div className="mt-2 space-y-2">
-                  <Link href="/careers?department=Engineering" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Engineering
-                  </Link>
-                  <Link href="/careers?department=Research" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Research
-                  </Link>
-                  <Link href="/careers?department=Product" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Product
-                  </Link>
-                  <Link href="/careers?department=Media" onClick={() => setIsMobileMenuOpen(false)} className="block text-sm text-black">
-                    Media
-                  </Link>
-                </div>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
