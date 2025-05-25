@@ -279,10 +279,10 @@ export default function Home() {
                 </Link>
               </div>
               <p className="text-[15px] mb-10 leading-[2] max-w-[540px] mx-auto transition-all duration-300 ease-in-out overflow-show">
-                Coda delivers high-quality, large-scale data pipelines to power robotic neural networks.
-                We specialize in collecting, labeling, and structuring the complex datasets needed for
-                intelligent machines to learn and operate in the real world. From perception to
-                decision-making, we accelerate robotics innovation by providing the data infrastructure AI systems need to continuously evolve.
+                Coda builds advanced data engines and evaluation systems to power the next generation of robotic foundation models.
+                We specialize in creating scalable data pipelines that enable positive transfer from scale, addressing
+                the unique challenges of robotics AI. From world models to embodied reasoning, we're building the
+                infrastructure that bridges the gap between today's robotics research and tomorrow's embodied general intelligence.
               </p>
               <div className="flex justify-center space-x-4">
                 <a href="https://x.com/juliansaks" target="_blank" rel="noopener noreferrer">
