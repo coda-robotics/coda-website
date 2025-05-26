@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { StaticImageData } from 'next/image';
+import { captureEvent } from '../../../components/DirectPostHogCapture';
 
 interface CompanyMainArticleProps {
   date: string;
@@ -118,7 +119,17 @@ export default function CompanyPage() {
                             <Link href="/why-coda" className="underline underline-offset-2">Why Build Coda Robotics <span>↗</span></Link>
                         </p>  */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 items-stretch">
-                            <Link href="/why-coda">
+                            <Link 
+                                href="/why-coda"
+                                onClick={() => {
+                                    captureEvent('company_mission_card_clicked', {
+                                        section: 'company_page',
+                                        card: 'mission',
+                                        destination: '/why-coda',
+                                        page: typeof window !== 'undefined' ? window.location.pathname : ''
+                                    });
+                                }}
+                            >
                                 <div className="h-full">
                                     <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
                                         <Image
@@ -138,7 +149,17 @@ export default function CompanyPage() {
                                     </div>
                                 </div>
                             </Link>
-                            <Link href="/infrastructure#infrastructure">
+                            <Link 
+                                href="/infrastructure#infrastructure"
+                                onClick={() => {
+                                    captureEvent('company_vision_card_clicked', {
+                                        section: 'company_page',
+                                        card: 'vision',
+                                        destination: '/infrastructure#infrastructure',
+                                        page: typeof window !== 'undefined' ? window.location.pathname : ''
+                                    });
+                                }}
+                            >
                                 <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
                                     <Image
                                         src={"/vision.png"}
@@ -156,7 +177,17 @@ export default function CompanyPage() {
                                     </div>
                                 </div>
                             </Link>
-                            <Link href="/careers">
+                            <Link 
+                                href="/careers"
+                                onClick={() => {
+                                    captureEvent('company_culture_card_clicked', {
+                                        section: 'company_page',
+                                        card: 'culture',
+                                        destination: '/careers',
+                                        page: typeof window !== 'undefined' ? window.location.pathname : ''
+                                    });
+                                }}
+                            >
                                 <div>
                                     <div className="relative w-full h-full sm:aspect-[1/1.3] aspect-square overflow-hidden bg-gray-100 rounded-[5px] flex flex-col">
                                         <Image

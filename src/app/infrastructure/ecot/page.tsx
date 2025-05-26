@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { captureEvent } from '../../../../components/DirectPostHogCapture';
 import {
   BarChart,
   Bar,
@@ -587,14 +588,22 @@ const Reason = () => {
           
           <div className="mb-10">
             <button 
-              onClick={() => setShowApplicationModal(true)}
+              onClick={() => {
+                captureEvent('embodied_reasoning_add_reasoning_clicked', {
+                  section: 'embodied_reasoning_page',
+                  button: 'add_reasoning',
+                  action: 'open_application_modal',
+                  page: typeof window !== 'undefined' ? window.location.pathname : ''
+                });
+                setShowApplicationModal(true);
+              }}
               className="bg-black hover:bg-white px-5 py-2 text-white hover:text-black text-sm border border-black transition-colors cursor-pointer"
               style={{ 
                 borderRadius: '4px',
                 boxShadow: '1px 1px 0px rgba(0,0,0,0.5)'
               }}
             >
-              <strong>Convert Datasets</strong>
+              <strong>Add Reasoning</strong>
             </button>
           </div>
           

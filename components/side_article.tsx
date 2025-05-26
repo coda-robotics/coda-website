@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { StaticImageData } from 'next/image';
+import { captureEvent } from './DirectPostHogCapture';
 
 interface SideArticle {
   title: string;
@@ -9,11 +10,25 @@ interface SideArticle {
   image_url: string | StaticImageData;
   href: string;
   description?: string;
+  trackingId?: string;
 }
 
-export default function Side_Article({ title, date, image_url, href, description }: SideArticle) {
+export default function Side_Article({ title, date, image_url, href, description, trackingId }: SideArticle) {
   return (
-    <Link href={href} className="block group">
+    <Link 
+      href={href} 
+      className="block group"
+      onClick={() => {
+        const eventName = trackingId ? `infrastructure_${trackingId}_clicked` : `infrastructure_${title.toLowerCase().replace(/\s+/g, '_')}_clicked`;
+        captureEvent(eventName, {
+          section: 'infrastructure_section',
+          card_title: title,
+          card_type: 'side',
+          destination: href,
+          page: typeof window !== 'undefined' ? window.location.pathname : ''
+        });
+      }}
+    >
       <div
         className="
           relative

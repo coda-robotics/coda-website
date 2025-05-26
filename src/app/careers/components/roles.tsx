@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { roles, Role } from "@/data/roles";
+import { captureEvent } from "../../../../components/DirectPostHogCapture";
 
 export interface RolesProps {
   departmentFilter?: string;
@@ -58,7 +59,23 @@ export default function Roles({
             {departmentRoles.map(role => (
               <div key={role.id} className="border-b border-gray-200 py-5">
                 <div className="flex flex-col">
-                  <Link href={`/hiring/${role.slug}`} className="text-lg font-medium hover:underline">
+                  <Link 
+                    href={`/hiring/${role.slug}`} 
+                    className="text-lg font-medium hover:underline"
+                    onClick={() => {
+                      // Create a specific event name for each job title
+                      const eventName = `careers_${role.slug.replace(/-/g, '_')}_clicked`;
+                      captureEvent(eventName, {
+                        job_title: role.title,
+                        job_department: department,
+                        job_location: role.location,
+                        job_type: role.type,
+                        job_slug: role.slug,
+                        section: 'careers_page',
+                        page: typeof window !== 'undefined' ? window.location.pathname : ''
+                      });
+                    }}
+                  >
                     {role.title}
                   </Link>
                   <div className="text-sm text-gray-600 mt-1">

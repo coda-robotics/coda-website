@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState, Suspense } from 'react';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import posthog from 'posthog-js';
+import { captureEvent } from '../../components/PostHogProvider';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import '../styles/globals.css';
 import Head from 'next/head';
@@ -221,7 +222,16 @@ export default function Home() {
             <div className="relative z-10 px-4">
               <p className="text-[14px] md:text-[15px] mb-8">
                 Announcing{' '}
-                <Link href="/infrastructure/ecot" className="underline underline-offset-2">
+                <Link 
+                  href="/infrastructure/ecot" 
+                  className="underline underline-offset-2"
+                  onClick={() => {
+                    captureEvent('embodied_reasoning_link_clicked', {
+                      location: 'hero_section_announcement',
+                      page: window.location.pathname
+                    });
+                  }}
+                >
                   Embodied Reasoning <span>↗</span>
                 </Link>
               </p>
@@ -268,12 +278,24 @@ export default function Home() {
                 <Link
                   href="/infrastructure"
                   className="text-black text-[18px] md:text-[20px] underline underline-offset-4 decoration-[1.5px]"
+                  onClick={() => {
+                    captureEvent('infrastructure_button_clicked', {
+                      location: 'hero_section',
+                      page: window.location.pathname
+                    });
+                  }}
                 >
                   Infrastructure
                 </Link>
                 <Link
                   href="/careers"
                   className="text-black text-[18px] md:text-[20px] underline underline-offset-4 decoration-[1.5px]"
+                  onClick={() => {
+                    captureEvent('join_us_button_clicked', {
+                      location: 'hero_section',
+                      page: window.location.pathname
+                    });
+                  }}
                 >
                   Join Us
                 </Link>
@@ -285,13 +307,46 @@ export default function Home() {
                 infrastructure that bridges the gap between today's robotics research and tomorrow's embodied general intelligence.
               </p>
               <div className="flex justify-center space-x-4">
-                <a href="https://x.com/juliansaks" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://x.com/juliansaks" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    captureEvent('social_link_clicked', {
+                      platform: 'x',
+                      location: 'hero_section',
+                      page: window.location.pathname
+                    });
+                  }}
+                >
                   <Image src="/xlogo.png" alt="X logo" width={24} height={24} />
                 </a>
-                <a href="https://www.linkedin.com/in/juliansaks/" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://www.linkedin.com/in/juliansaks/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    captureEvent('social_link_clicked', {
+                      platform: 'linkedin',
+                      location: 'hero_section',
+                      page: window.location.pathname
+                    });
+                  }}
+                >
                   <Image src="/linkedinlogo.png" alt="LinkedIn logo" width={24} height={24} />
                 </a>
-                <a href="https://huggingface.co/Coda-Robotics" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://huggingface.co/Coda-Robotics" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    captureEvent('social_link_clicked', {
+                      platform: 'huggingface',
+                      location: 'hero_section',
+                      page: window.location.pathname
+                    });
+                  }}
+                >
                   <Image src="/hf.png" alt="Hugging Face logo" width={24} height={24} />
                 </a>
               </div>
@@ -385,7 +440,17 @@ export default function Home() {
               <ul className="mt-4 md:mt-6 space-y-4 md:space-y-6 max-w-md">
                 <li className="border-b pb-4">
                   <div className="pb-[4px]">
-                    <Link href="/why-coda" className="block text-[18px]">
+                    <Link 
+                      href="/why-coda" 
+                      className="block text-[18px]"
+                      onClick={() => {
+                        captureEvent('highlight_clicked', {
+                          highlight: 'why_build_coda',
+                          location: 'highlights_section',
+                          page: window.location.pathname
+                        });
+                      }}
+                    >
                       Why Build Coda Robotics?
                     </Link>
                   </div>
@@ -395,7 +460,17 @@ export default function Home() {
                 </li>
                 <li className="border-b pb-4">
                   <div className="pb-[4px]">
-                    <Link href="/infrastructure/ecot" className="block text-[18px]">
+                    <Link 
+                      href="/infrastructure/ecot" 
+                      className="block text-[18px]"
+                      onClick={() => {
+                        captureEvent('highlight_clicked', {
+                          highlight: 'embodied_reasoning',
+                          location: 'highlights_section',
+                          page: window.location.pathname
+                        });
+                      }}
+                    >
                       Embodied Reasoning
                     </Link>
                   </div>
@@ -405,7 +480,17 @@ export default function Home() {
                 </li>
                 <li className="border-b pb-4">
                   <div className="pb-[4px]">
-                    <Link href="/robotic_world_models" className="block text-[18px]">
+                    <Link 
+                      href="/robotic_world_models" 
+                      className="block text-[18px]"
+                      onClick={() => {
+                        captureEvent('highlight_clicked', {
+                          highlight: 'robotic_world_models',
+                          location: 'highlights_section',
+                          page: window.location.pathname
+                        });
+                      }}
+                    >
                       Robotic World Models
                     </Link>
                   </div>

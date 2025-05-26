@@ -2,6 +2,7 @@
 
 import { useState, FormEvent, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import { captureEvent } from './DirectPostHogCapture';
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
@@ -36,6 +37,13 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
+    
+    // Track the submission event
+    captureEvent('application_form_submitted', {
+      form_type: 'embodied_reasoning_request',
+      section: 'application_modal',
+      page: typeof window !== 'undefined' ? window.location.pathname : ''
+    });
 
     setLoading(true);
     setMessage('');
@@ -123,6 +131,16 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
                 type="submit"
                 disabled={loading}
                 className="w-full bg-white hover:bg-gray-200 text-black py-3 rounded transition duration-200 text-xl disabled:opacity-50"
+                onClick={() => {
+                  if (!loading && formData.name && formData.email) {
+                    captureEvent('application_submit_button_clicked', {
+                      form_type: 'embodied_reasoning_request',
+                      form_complete: !!(formData.name && formData.email),
+                      section: 'application_modal',
+                      page: typeof window !== 'undefined' ? window.location.pathname : ''
+                    });
+                  }
+                }}
               >
                 {loading ? 'SUBMITTING...' : 'SUBMIT'}
               </button>
