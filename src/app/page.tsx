@@ -302,8 +302,8 @@ export default function Home() {
               </div>
               <p className="text-[15px] mb-10 leading-[2] max-w-[540px] mx-auto transition-all duration-300 ease-in-out overflow-show">
                 Coda builds advanced data engines and evaluation systems to power the next generation of robotic foundation models.
-                We specialize in creating scalable data pipelines that enable positive transfer from scale, addressing
-                the unique challenges of robotics AI. From world models to embodied reasoning, we're building the
+                We specialize in creating products that enable positive transfer from scale and scalable evaluations, addressing
+                the unique challenges of AI robotics. From world models to embodied reasoning, we're building the
                 infrastructure that bridges the gap between today's robotics research and tomorrow's embodied general intelligence.
               </p>
               <div className="flex justify-center space-x-4">
