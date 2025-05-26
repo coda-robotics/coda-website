@@ -1,12 +1,12 @@
 'use client';
 
-import {useRef, useEffect} from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 
 export default function WhyCodaPage() {
     const [expandedSection, setExpandedSection] = useState<number | null>(null);
+    const [useMp4, setUseMp4] = useState(false);
 
     const toggleSection = (sectionId: number) => {
         setExpandedSection(expandedSection === sectionId ? null : sectionId);
@@ -15,6 +15,13 @@ export default function WhyCodaPage() {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     useEffect(() => {
         if (videoRef.current) videoRef.current.playbackRate = 1.75;
+    }, []);
+
+    useEffect(() => {
+        // Detect iOS or Safari
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        setUseMp4(isIOS || isSafari);
     }, []);
 
     return (
@@ -50,7 +57,7 @@ export default function WhyCodaPage() {
 
                         {/* Data Collection Methods */}
                         <div className="mb-0 sm:-mb-[3rem]">
-                            <div className="border-t border-b border-gray-200 py-6 sm:py-8 mb-4 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0">
+                            <div className="py-6 sm:py-8 mb-4 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0">
                                 <div className="flex items-center w-full">
                                     <div className="flex items-center flex-1">
                                         <span className="text-lg sm:text-xl font-bold mr-3 sm:mr-4">01</span>
@@ -64,7 +71,7 @@ export default function WhyCodaPage() {
                                 </div>
                             </div>
                             
-                            <div className="border-t border-b border-gray-200 py-6 sm:py-8 mb-4 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0">
+                            <div className="py-6 sm:py-8 mb-4 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0">
                                 <div className="flex items-center w-full">
                                     <div className="flex items-center flex-1">
                                         <span className="text-lg sm:text-xl font-bold mr-3 sm:mr-4">02</span>
@@ -78,7 +85,7 @@ export default function WhyCodaPage() {
                                 </div>
                             </div>
                             
-                            <div className="border-t border-b border-gray-200 py-6 sm:py-8 mb-4 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0">
+                            <div className="py-6 sm:py-8 mb-4 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0">
                                 <div className="flex items-center w-full">
                                     <div className="flex items-center flex-1">
                                         <span className="text-lg sm:text-xl font-bold mr-3 sm:mr-4">03</span>
@@ -94,22 +101,26 @@ export default function WhyCodaPage() {
                         </div>
 
                         {/* CODA Logo */}
-                        <div className = 'h-[500px]'>
+                        <div className="h-[500px] flex justify-center items-center">
                             <video
-                            ref={videoRef}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            onContextMenu={(e) => e.preventDefault()}
-                            className="ml-[6rem] w-[500px] h-[500px]"
-                            style={{
-                                backgroundColor: 'transparent',
-                                objectPosition: 'center center',
-                            }}
+                                ref={videoRef}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                onContextMenu={(e) => e.preventDefault()}
+                                className="w-[500px] h-[500px] -ml-[8rem]"
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    objectPosition: 'center center',
+                                }}
                             >
-                            <source src="/codalogo.webm" type="video/webm" />
-                        </video>
+                                {useMp4 ? (
+                                    <source src="/codalogo.mp4" type="video/mp4" />
+                                ) : (
+                                    <source src="/codalogo.webm" type="video/webm" />
+                                )}
+                            </video>
                         </div>
                         {/* Conclusion */}
                         <div className="mb-10 sm:mb-20 w-full max-w-[800px] md:max-w-[780px] mx-0 px-0" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -175,7 +186,7 @@ export default function WhyCodaPage() {
                                 <p className="text-base sm:text-lg mb-5 sm:mb-6">
                                 All paths point toward generalist models—but since they're capable of doing "anything", they must be evaluated on "everything". Labs working on pre-training robotics foundation models typically run 3,000–3,600 trials per evaluation cycle, often taking over a month since setting up the evaluation environment (real or sim) is done manually. This significantly slows down iteration. We view in-browser physics simulations with embedded simulation MCPs that run head-to-head model evaluations as a promising approach to offer more scalable and low-cost evaluations. 
                                 </p>
-                                <p className="text-base sm:text-lg mb-5 sm:mb-6">
+                                <span className="text-base sm:text-lg mb-5 sm:mb-6">
                                 <div className="flex justify-center my-6">
                                     <div className="w-full max-w-2xl">
                                         {/* VLA Arena Card */}
@@ -198,7 +209,7 @@ export default function WhyCodaPage() {
 
                                 <p className="text-base sm:text-lg mb-5">
                                 To close the gap between today's fragmented approaches and tomorrow's embodied general intelligence, the robotics community needs more than better models—it needs better infrastructure. The future of robotics hinges on scalable data pipelines, robust evaluation frameworks, and tooling that can keep pace with the ambitions of generalist systems. At Coda Robotics, we're building the data foundation for this next era: high-integrity engines for collection and evaluation, tools that enable fast iteration, and infrastructure designed to endure. As the field accelerates, we aim to serve as the backbone that helps robotics transition from research to real-world impact.</p>
-                                </p>
+                                </span>
                                 <p className="text-base sm:text-lg">
                                     Julian Saks 
                                 </p>
@@ -228,4 +239,4 @@ export default function WhyCodaPage() {
             </main>
         </div>
     );
-} 
+}

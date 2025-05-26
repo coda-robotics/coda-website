@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
 // Initialize Supabase client
@@ -20,6 +20,14 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
+  // Disable scrolling when modal is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -33,7 +41,6 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
     setMessage('');
 
     try {
-      // Insert data into 'embodied_reasoning_requests' table
       const { error } = await supabase
         .from('embodied_reasoning_requests')
         .insert([{ 
@@ -44,8 +51,6 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
       if (error) throw error;
       
       setMessage('Thank you for your interest! We will be in touch soon.');
-      
-      // Close the modal after 3 seconds of showing success message
       setTimeout(() => {
         onClose();
       }, 3000);
@@ -61,17 +66,26 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center pt-20">
-      {/* Overlay with blur effect */}
+      {/* Overlay with enhanced blur and semi-transparency */}
       <div 
-        className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm" 
+        className="absolute inset-0 bg-black opacity-50 backdrop-blur-lg transition-opacity duration-300"
+        style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
         onClick={onClose}
       ></div>
       
       {/* Modal */}
-      <div className="relative bg-[#1E1E1E] text-gray-300 rounded-xl w-full max-w-md mx-4 p-8 border border-gray-700 shadow-xl mt-10">
-        {/* Logo */}
+      <div className="relative bg-[#ffffff] text-black rounded-xl w-full max-w-md mx-4 p-8 border border-gray-700 shadow-xl mt-10">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-black hover:text-gray-600 text-2xl font-bold"
+          aria-label="Close modal"
+        >
+          ×
+        </button>
+        
         <div className="flex justify-center mb-12">
-          <h2 className="text-3xl md:text-3xl text-white tracking-wider" style={{ textShadow: "0 0 10px rgba(255,255,255,0.5)" }}>
+          <h2 className="text-3xl md:text-3xl text-black tracking-wider" style={{ textShadow: '0 0 10px rgba(255,255,255,0.5)' }}>
             ACCESS EMBODIED REASONING
           </h2>
         </div>
@@ -79,7 +93,7 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
         <form onSubmit={handleSubmit} className="px-4">
           <div className="space-y-8">
             <div>
-              <label htmlFor="name" className="block text-lg mb-2 text-white">NAME*</label>
+              <label htmlFor="name" className="block text-lg mb-2 text-black">NAME*</label>
               <input
                 type="text"
                 id="name"
@@ -87,12 +101,12 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full bg-transparent border-b border-gray-600 pb-2 focus:outline-none focus:border-gray-400 text-white"
+                className="w-full bg-transparent border-b border-gray-600 pb-2 focus:outline-none focus:border-gray-400 text-black"
               />
             </div>
             
             <div>
-              <label htmlFor="email" className="block text-lg mb-2 text-white">EMAIL*</label>
+              <label htmlFor="email" className="block text-lg mb-2 text-black">EMAIL*</label>
               <input
                 type="email"
                 id="email"
@@ -100,7 +114,7 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full bg-transparent border-b border-gray-600 pb-2 focus:outline-none focus:border-gray-400 text-white"
+                className="w-full bg-transparent border-b border-gray-600 pb-2 focus:outline-none focus:border-gray-400 text-black"
               />
             </div>
             
@@ -124,4 +138,4 @@ export default function ApplicationModal({ onClose }: ApplicationModalProps) {
       </div>
     </div>
   );
-} 
+}
