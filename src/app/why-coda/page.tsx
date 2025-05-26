@@ -116,7 +116,7 @@ export default function WhyCodaPage() {
                                 }}
                             >
                                 {useMp4 ? (
-                                    <source src="/codalogo.mp4" type="video/mp4" />
+                                    <source src="/codalogo.mov" type="video/mov" />
                                 ) : (
                                     <source src="/codalogo.webm" type="video/webm" />
                                 )}
