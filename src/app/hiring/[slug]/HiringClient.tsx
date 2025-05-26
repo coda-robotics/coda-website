@@ -35,6 +35,7 @@ export default function HiringClient({ role }: { role: Role }) {
     consent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const jobTitle = role.title;
@@ -109,6 +110,9 @@ export default function HiringClient({ role }: { role: Role }) {
 
       if (error) throw new Error(`Database error: ${error.message}`);
 
+      // Set submitted state to true
+      setIsSubmitted(true);
+      
       setFormData({
         name: '',
         email: '',
@@ -122,7 +126,7 @@ export default function HiringClient({ role }: { role: Role }) {
       });
 
       if (fileInputRef.current) fileInputRef.current.value = '';
-      alert('Application submitted successfully!');
+      // Change to details tab after successful submission
       setActiveTab('details');
     } catch (error) {
       console.error('Error submitting application:', error);
@@ -347,10 +351,10 @@ export default function HiringClient({ role }: { role: Role }) {
           <div className="pt-4">
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isSubmitting || isSubmitted}
+              className="w-full bg-black text-white py-3 px-4 rounded hover:bg-gray-800 transition duration-200 disabled:bg-gray-400"
             >
-              {isSubmitting ? 'Submitting...' : 'Submit Application'}
+              {isSubmitting ? 'Submitting...' : isSubmitted ? "We'll be in touch!" : 'Submit Application'}
             </button>
           </div>
 
