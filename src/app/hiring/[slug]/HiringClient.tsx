@@ -4,6 +4,7 @@
 import { useState, useRef, FormEvent } from 'react';
 import Link from 'next/link';
 import { createClient } from '@supabase/supabase-js';
+import { captureEvent } from '../../../../components/DirectPostHogCapture';
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
@@ -40,6 +41,7 @@ export default function HiringClient({ role }: { role: Role }) {
 
   const jobTitle = role.title;
   const jobLocation = role.location;
+  const jobSlug = role.slug;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -203,7 +205,17 @@ export default function HiringClient({ role }: { role: Role }) {
           <p className="mb-8">{role.compensation}</p>
 
           <button
-            onClick={() => setActiveTab('application')}
+            onClick={() => {
+              // Create a specific event name for this job's Apply Now button
+              const eventName = `careers_${jobSlug.replace(/-/g, '_')}_apply_now_clicked`;
+              captureEvent(eventName, {
+                job_title: jobTitle,
+                job_location: jobLocation,
+                section: 'job_details',
+                page: typeof window !== 'undefined' ? window.location.pathname : ''
+              });
+              setActiveTab('application');
+            }}
             className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition-colors"
           >
             Apply Now
@@ -353,6 +365,20 @@ export default function HiringClient({ role }: { role: Role }) {
               type="submit"
               disabled={isSubmitting || isSubmitted}
               className="w-full bg-black text-white py-3 px-4 rounded hover:bg-gray-800 transition duration-200 disabled:bg-gray-400"
+              onClick={() => {
+                if (!isSubmitting && !isSubmitted) {
+                  // Create a specific event name for this job's Submit Application button
+                  const eventName = `careers_${jobSlug.replace(/-/g, '_')}_submit_application_clicked`;
+                  captureEvent(eventName, {
+                    job_title: jobTitle,
+                    job_location: jobLocation,
+                    section: 'job_application',
+                    has_resume: !!formData.resume,
+                    has_cover_letter: !!formData.coverLetter.trim(),
+                    page: typeof window !== 'undefined' ? window.location.pathname : ''
+                  });
+                }
+              }}
             >
               {isSubmitting ? 'Submitting...' : isSubmitted ? "We'll be in touch!" : 'Submit Application'}
             </button>
