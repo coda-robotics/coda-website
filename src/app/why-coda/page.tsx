@@ -21,6 +21,7 @@ export default function WhyCodaPage() {
         // Detect iOS or Safari
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        console.log('isIOS:', isIOS, 'isSafari:', isSafari, 'userAgent:', navigator.userAgent);
         setUseMp4(isIOS || isSafari);
     }, []);
 
