@@ -475,7 +475,7 @@ export default function Home() {
                     </Link>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    Achieve +30% policy improvements with embodied reasoning
+                    Improve robotic foundation models by 27% by adding reasoning to your datasets
                   </p>
                 </li>
                 <li className="border-b pb-4">
