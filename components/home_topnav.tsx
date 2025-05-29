@@ -22,6 +22,11 @@ export function TopNav() {
     }
   }, [pathname, searchParams]);
 
+  // Reset dropdown state when pathname changes
+  useEffect(() => {
+    setActiveDropdown(null);
+  }, [pathname]);
+
   if (pathname.startsWith('/posts/')) {
     return null;
   }
