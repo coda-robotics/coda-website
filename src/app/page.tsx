@@ -9,6 +9,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import '../styles/globals.css';
 import Head from 'next/head';
 import Link from 'next/link';
+import BrowserDetector from '../../components/BrowserDetector';
 
 // Page view tracking
 function TrackPageView() {
@@ -418,21 +419,35 @@ export default function Home() {
           <div className="max-w-[48rem] w-full mx-auto flex flex-col md:flex-row">
             <div className="hidden md:block md:pr-6 flex-shrink-0 md:w-[400px] lg:w-fit">
               <div className="aspect-square">
-                <video
-                  ref={videoRef}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  onContextMenu={(e) => e.preventDefault()}
-                  className="object-cover mt-[-6rem] ml-[-3rem] w-[500px] h-[500px]"
-                  style={{
-                    backgroundColor: 'transparent',
-                    objectPosition: 'center center',
-                  }}
-                >
-                  <source src="/codalogo.webm" type="video/webm" />
-                </video>
+                <BrowserDetector>
+                  {(isSafari) => (
+                    isSafari ? (
+                      <Image
+                        src="/coda3d.png"
+                        alt="Coda Logo"
+                        width={500}
+                        height={500}
+                        className="object-cover mt-[-6rem] ml-[-3rem] w-[500px] h-[500px]"
+                      />
+                    ) : (
+                      <video
+                        ref={videoRef}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        onContextMenu={(e) => e.preventDefault()}
+                        className="object-cover mt-[-6rem] ml-[-3rem] w-[500px] h-[500px]"
+                        style={{
+                          backgroundColor: 'transparent',
+                          objectPosition: 'center center',
+                        }}
+                      >
+                        <source src="/codalogo.webm" type="video/webm" />
+                      </video>
+                    )
+                  )}
+                </BrowserDetector>
               </div>
             </div>
             <div className="mt-4 md:mt-0 md:ml-0 flex-1">
