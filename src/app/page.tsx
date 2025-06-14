@@ -239,7 +239,7 @@ export default function Home() {
               </span>
               <div className="flex justify-center flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
                 <Link
-                  href="/infrastructure"
+                  href="/why-coda"
                   className="text-black text-[18px] md:text-[20px] underline underline-offset-4 decoration-[1.5px]"
                   onClick={() => {
                     captureEvent('infrastructure_button_clicked', {
@@ -264,10 +264,7 @@ export default function Home() {
                 </Link>
               </div>
               <p className="text-[15px] mb-10 leading-[2] max-w-[540px] mx-auto transition-all duration-300 ease-in-out overflow-show">
-                Coda builds advanced data engines and evaluation systems to power the next generation of robotic foundation models.
-                We specialize in creating products that enable positive transfer from scale and scalable evaluations, addressing
-                the unique challenges of AI robotics. From world models to embodied reasoning, we're building the
-                infrastructure that bridges the gap between today's robotics research and tomorrow's embodied general intelligence.
+              Coda builds world models to improve the generalization of robotic foundation models. We focus on bringing two core principles to embodied intelligence, positive transfer from scale and robust safety. World models will produce robotic data at the cheapest rates, generate out-of-distribution environments for RL and evaluations, and allow for error replay. We're bridging the gap between today’s labor-intensive approaches and tomorrow’s generalist, physically intelligent agents.
               </p>
               <div className="flex justify-center space-x-4">
                 <a 

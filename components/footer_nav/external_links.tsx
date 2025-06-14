@@ -8,7 +8,7 @@ export default function ExternalLinks() {
     <>
       <div className="flex flex-col space-y-4 mb-6 sm:mb-0 ml-1 sm:ml-0">
         <Link 
-          href="/infrastructure" 
+          href="/why-coda" 
           className="hover:underline underline-offset-4 text-gray-600"
           onClick={() => {
             captureEvent('footer_link_clicked', {
