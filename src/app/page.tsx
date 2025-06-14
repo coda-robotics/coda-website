@@ -221,21 +221,7 @@ export default function Home() {
             </motion.div>
             {/* Rest of the section (text, links, etc.) */}
             <div className="relative z-10 px-4">
-              <p className="text-[14px] md:text-[15px] mb-8">
-                Announcing{' '}
-                <Link 
-                  href="/infrastructure/ecot" 
-                  className="underline underline-offset-2"
-                  onClick={() => {
-                    captureEvent('embodied_reasoning_link_clicked', {
-                      location: 'hero_section_announcement',
-                      page: window.location.pathname
-                    });
-                  }}
-                >
-                  Embodied Reasoning <span>↗</span>
-                </Link>
-              </p>
+              {/* Hero text section */}
               <span
                 className="
                   text-[clamp(30px,4vw,55px)]
@@ -247,33 +233,9 @@ export default function Home() {
               >
                 CODA DELIVERS
                 <br />
-                <div
-                  className="inline-block overflow-show"
-                  style={{
-                    perspective: 800,
-                    display: 'inline-block',
-                    verticalAlign: 'bottom',
-                  }}
-                >
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.span
-                      key={phrases[currentPhrase]}
-                      variants={cubeVariants}
-                      initial="initial"
-                      animate="animate"
-                      exit="exit"
-                      style={{
-                        transformStyle: 'preserve-3d',
-                        backfaceVisibility: 'hidden',
-                        transformOrigin: 'bottom center',
-                      } as React.CSSProperties}
-                      className="inline-block whitespace-nowrap"
-                    >
-                      {phrases[currentPhrase]}
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-                <br /> FOR AI ROBOTICS
+                WORLD MODELS
+                <br />
+                FOR AI ROBOTICS
               </span>
               <div className="flex justify-center flex-wrap gap-x-6 md:gap-x-8 my-6 md:my-8 font-inter">
                 <Link
@@ -286,7 +248,7 @@ export default function Home() {
                     });
                   }}
                 >
-                  Infrastructure
+                  World Models
                 </Link>
                 <Link
                   href="/careers"
@@ -471,26 +433,6 @@ export default function Home() {
                   </div>
                   <p className="text-gray-600 text-sm">
                     Why data infrastructure is key to advance embodied AI
-                  </p>
-                </li>
-                <li className="border-b pb-4">
-                  <div className="pb-[4px]">
-                    <Link 
-                      href="/infrastructure/ecot" 
-                      className="block text-[18px]"
-                      onClick={() => {
-                        captureEvent('highlight_clicked', {
-                          highlight: 'embodied_reasoning',
-                          location: 'highlights_section',
-                          page: window.location.pathname
-                        });
-                      }}
-                    >
-                      Embodied Reasoning
-                    </Link>
-                  </div>
-                  <p className="text-gray-600 text-sm">
-                    Improve robotic foundation models by 27% by adding reasoning to your datasets
                   </p>
                 </li>
                 <li className="border-b pb-4">

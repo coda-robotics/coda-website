@@ -18,7 +18,7 @@ export default function ExternalLinks() {
             });
           }}
         >
-          INFRASTRUCTURE 
+          WORLD MODELS
         </Link>
         <Link 
           href="https://huggingface.co/Coda-Robotics" 

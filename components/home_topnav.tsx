@@ -101,17 +101,18 @@ export function TopNav() {
               </div>
               <div className="relative">
                 <Link
-                  href="/infrastructure"
-                  className="text-gray-700 hover:text-gray-900 text-xs sm:text-sm font-medium"
-                  onMouseEnter={() => handleMouseEnter('infrastructure')}
-                  onClick={() => {
-                    captureEvent('topnav_infrastructure_clicked', {
+                  href="/why-coda"
+                  className="text-gray-700 text-xs sm:text-sm font-medium"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    captureEvent('topnav_why_coda_clicked', {
                       section: 'top_navigation',
                       page: typeof window !== 'undefined' ? window.location.pathname : ''
                     });
+                    window.location.href = '/why-coda';
                   }}
                 >
-                  Infrastructure
+                  World Models
                 </Link>
               </div>
               <div className="relative">
@@ -143,7 +144,7 @@ export function TopNav() {
                   className="block p-6 rounded-l-lg hover:bg-gray-200"
                   onClick={() => {
                     captureEvent('topnav_robotic_world_models_clicked', {
-                      parent_menu: 'infrastructure',
+                    parent_menu: 'infrastructure',
                       section: 'top_navigation',
                       page: typeof window !== 'undefined' ? window.location.pathname : ''
                     });

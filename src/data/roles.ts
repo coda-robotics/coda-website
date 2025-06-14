@@ -15,8 +15,8 @@ export interface Role {
 export const roles: Role[] = [
   {
     id: 1,
-    title: "Department Lead - World Models",
-    slug: "department-lead-world-models",
+    title: "Research Engineer - World Models",
+    slug: "research-engineer-world-models",
     department: "Engineering",
     location: "San Francisco",
     type: "Full time",
@@ -38,51 +38,28 @@ export const roles: Role[] = [
   },
   {
     id: 2,
-    title: "Department Lead - Embodied Reasoning",
-    slug: "department-lead-embodied-reasoning",
+    title: "GPU Kernel Engineer",
+    slug: "gpu-kernel-engineer",
     department: "Engineering",
     location: "San Francisco",
     type: "Full time",
-    description: "Coda Robotics is developing infrastructure to power the next generation of robotic foundation models. Once we have overcome the scarcity of robotic data, we will need systems to improve the quality of the data we collect. Adding embodied reasoning to the training datasets allows the robotic foundation model to iteratively reason over complex tasks before predicting the action. With reasoning, the policy is 27% more accurate. You will become a part of Coda's founding team and lead the development and deployment of Coda Robotics' embodied reasoning data engine.",
+    description: "Coda Robotics is scaling the compute infrastructure that powers next‑generation robotic foundation models. As training and inference workloads grow, we need kernel‑level innovations to reduce latency, memory usage, and energy consumption. You will join Coda's founding team to architect and optimize low‑level compute kernels, drivers, and runtime components—making model training and inference significantly cheaper and faster.",
     responsibilities: [
-      "Lead a team of researchers and engineers.",
-      "Add Human-in-the-loop feedback to improve reasoning annotations in the training datasets.",
-      "Explore test-time compute.",
-      "Explore reasoning dropout during inference and other ways to lower inference latency.",
-      "Develop efficient training strategies.",
-      "Define and own the technical roadmap for your assigned subsystem.",
-      "Drive rapid iteration, testing, and integration cycles to validate performance and de-risk development.",
-      "Own all key decisions, from architecture to tradeoffs in performance, cost, weight, and reliability.",
-      "Collaborate closely with other department leads.",
-      "Champion a high-accountability, high-velocity culture that values results, responsibility, and bold technical ambition."
+      "Lead a team of kernel and system engineers focused on performance-critical code",
+      "Design, implement, and optimize custom compute kernels for CPU (AVX/ARM NEON), GPU (CUDA/ROCm), and hardware accelerators",
+      "Find bottlenecks in memory hierarchy, thread scheduling, and data movement",
+      "Integrate kernel optimizations into distributed ML frameworks (e.g., PyTorch, TensorFlow) and orchestrate deployment in cloud and edge environments",
+      "Explore OS and driver‑level enhancements—such as zero‑copy I/O, custom scheduling, and power management—to further boost throughput",
+      "Define and own the technical roadmap for kernel and runtime subsystems, balancing performance, maintainability, and portability",
+      "Drive rapid iteration, testing, and benchmarking cycles to validate improvements and de‑risk large‑scale rollouts",
+      "Champion a high‑velocity culture that values bold technical ambition, clear accountability, and measurable impact"
     ],
     requirements: [
-      "Reasoning related research / experience",
-      "Experience developing vision models: DINO-Grounding, SAM 3, OWLv2, ...",
-      "Experience developing reasoning techniques: CoT, in-context learning, ..."
-    ],
-    compensation: "Base salary range: $100,000 - $120,000 per year, plus strong equity and benefits"
-  },
-  {
-    id: 3,
-    title: "Department Lead - Data Weighting",
-    slug: "department-lead-data-weighting",
-    department: "Engineering",
-    location: "San Francisco",
-    type: "Full time",
-    description: "Coda Robotics is developing infrastructure to power the next generation of robotic foundation models. Once we have overcome the scarcity of robotic data, we will need systems to weight the generated data and filter out the unwanted data. These types of systems will lead to more efficient trainning - lower compute and storage costs. You will become a part of Coda's founding team and lead the development and deployment of Coda Robotics' data weighting engine.",
-    responsibilities: [
-      "Lead a team of researchers and engineers.",
-      "Design, build, and deploy more efficient data weighting systems at scale.",
-      "Define and own the technical roadmap for your assigned subsystem.",
-      "Drive rapid iteration, testing, and integration cycles to validate performance and de-risk development.",
-      "Own all key decisions, from architecture to tradeoffs in performance, cost, weight, and reliability.",
-      "Collaborate closely with other department leads.",
-      "Champion a high-accountability, high-velocity culture that values results, responsibility, and bold technical ambition."
-    ],
-    requirements: [
-      "Experience in data weighting and filtering",
-      "Experience with world models / video generation models"
+      "Proven experience in low‑level systems programming (C/C++, assembly) targeting CPU and GPU architectures",
+      "Expertise in developing and optimizing compute kernels (CUDA, ROCm, OpenCL, SIMD intrinsics)",
+      "Deep understanding of performance profiling tools (nvprof, perf, Intel VTune) and techniques for memory and compute optimization",
+      "Strong familiarity with ML framework internals (PyTorch, TensorFlow) and integration of custom operations",
+      "Experience with compiler design or code generation (LLVM, MLIR) is a plus"
     ],
     compensation: "Base salary range: $100,000 - $120,000 per year, plus strong equity and benefits"
   },
